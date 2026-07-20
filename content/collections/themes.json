@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "original-paper",
+    "type": "theme",
+    "title": "Original Paper",
+    "access": "included",
+    "status": "available"
+  },
+  {
+    "slug": "old-summer-film",
+    "type": "theme",
+    "title": "Old Summer Film",
+    "access": "premium",
+    "productId": "nofi.theme.old_summer_film",
+    "status": "planned"
+  }
+]

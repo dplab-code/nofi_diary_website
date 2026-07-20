@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "nofi-original",
+    "type": "appearance",
+    "title": "NoFi Original",
+    "access": "included",
+    "status": "available"
+  },
+  {
+    "slug": "midnight-lavender",
+    "type": "appearance",
+    "title": "Midnight Lavender",
+    "access": "premium",
+    "productId": "nofi.appearance.midnight_lavender",
+    "status": "planned"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "starter-doodles",
+    "type": "sticker_pack",
+    "title": "Starter Doodles",
+    "access": "included",
+    "status": "available"
+  },
+  {
+    "slug": "rainy-window",
+    "type": "sticker_pack",
+    "title": "Rainy Window",
+    "access": "premium",
+    "productId": "nofi.stickers.rainy_window",
+    "status": "planned"
+  }
+]
