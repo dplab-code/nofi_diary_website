@@ -53,3 +53,12 @@
   .featureVisual{height:235px}
   .featureCard h3{font-size:2rem}
 }
+
+/* Show the four distinct quarters of the shared memory-system artwork. */
+.memoryCrop{box-shadow:0 12px 30px rgba(58,40,25,.1)}
+.memoryCrop img{width:400%!important;max-width:none!important;height:auto!important;top:50%!important;bottom:auto!important;transform:translateY(-50%);object-fit:initial!important}
+.crop0 img{left:0!important}
+.crop1 img{left:-100%!important}
+.crop2 img{left:-200%!important}
+.crop3 img{left:-300%!important}
+.memoryCrop .memoryCardImage{width:100%!important;max-width:100%!important;height:100%!important;left:0!important;top:0!important;bottom:0!important;transform:none;object-fit:cover!important}
