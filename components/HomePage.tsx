@@ -22,7 +22,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
     <section className="section memoryBand"><div className="shell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="fourGrid memoryGrid">{t.memories.map(([title, body], i) => <article key={title}><div className={`memoryCrop crop${i}`}><Image src="/images/editorial/memory-system.png" alt="" fill sizes="(max-width: 700px) 90vw, 25vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
 
-    <section id="how" className="section shell"><div className="sectionHeading"><p className="kicker">Four quiet steps</p><h2>{t.howTitle}</h2></div><div className="fourGrid steps">{t.steps.map((step, i) => <article key={step}><span>0{i + 1}</span><div className="stepFrame"><div className="stepUi"><b>{i === 0 ? "◎" : i === 1 ? "≋" : i === 2 ? "✿" : "◇"}</b></div></div><h3>{step}</h3></article>)}</div></section>
+    <section id="how" className="section howSection"><div className="shell"><div className="sectionHeading"><p className="kicker">Four quiet steps</p><h2>{t.howTitle}</h2></div><div className="fourGrid steps">{t.steps.map((step, i) => <article key={step}><span>0{i + 1}</span><div className={`stepObject stepVisual${i}`}><Image src="/images/editorial/how-it-works.png" alt="" fill sizes="(max-width: 700px) 70vw, 25vw" /></div><h3>{step}</h3></article>)}</div></div></section>
 
     <section className="capsuleBanner"><Image src="/images/editorial/time-capsule.png" alt="A sealed paper time capsule with lavender" fill sizes="100vw" /><div className="shell capsuleCopy"><p className="kicker">Time Capsules</p><h2>{t.capsuleTitle}</h2><p>{t.capsuleCopy}</p><Link className="button outline" href="#faq">Discover Time Capsules</Link></div></section>
 
