@@ -6,6 +6,16 @@ import { copy, Locale, localePath } from "@/lib/i18n";
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
 const memoryImages = ["memory-page.png", "memory-box.png", "memory-capsule.png", "memory-diary.png"];
 
+function PrivacyIcon({ index }: { index: number }) {
+  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.55, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  return <svg viewBox="0 0 64 64" aria-hidden="true" {...common}>
+    {index === 0 && <><circle cx="32" cy="21" r="8" /><path d="M17 50c1.5-10 6.5-15 15-15s13.5 5 15 15" /><path d="M13 13l38 38" /></>}
+    {index === 1 && <><rect x="13" y="15" width="38" height="34" rx="4" /><path d="M20 24h24M20 32h17M20 40h11" /><path d="M43 37l8 8M51 37l-8 8" /></>}
+    {index === 2 && <><rect x="21" y="9" width="22" height="46" rx="4" /><path d="M28 15h8M29 49h6" /><rect x="26" y="27" width="12" height="11" rx="2" /><path d="M29 27v-3a3 3 0 016 0v3" /></>}
+    {index === 3 && <><path d="M17 35v13h30V35" /><path d="M32 42V13M23 22l9-9 9 9" /><path d="M22 53h20" /></>}
+  </svg>;
+}
+
 export function HomePage({ locale }: { locale: Locale }) {
   const t = copy(locale);
   return <main>
@@ -29,7 +39,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
     <section id="collections" className="section shell"><div className="sectionHeading"><p className="kicker">Optional creative collections</p><h2>{t.collectionsTitle}</h2><p>{t.collectionsCopy}</p></div><div className="threeGrid collectionGrid">{t.collectionCards.map(([title, body], i) => <article key={title}><div className="collectionVisual"><Image className="collectionCardImage" src={`/images/editorial/${["collection-stickers.png", "collection-themes.png", "collection-appearances.png"][i]}`} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" /></div><h3>{title}</h3><p>{body}</p><span className="textLink">Explore →</span></article>)}</div></section>
 
-    <section id="privacy" className="section privacySection"><div className="shell"><div className="sectionHeading"><p className="kicker">Privacy & ownership</p><h2>{t.privacyTitle}</h2><p>{t.privacyCopy}</p></div><div className="fourGrid privacyGrid">{t.privacyItems.map(([title, body], i) => <article key={title}><span className="privacyIcon">{["♙", "◌", "▣", "⇥"][i]}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
+    <section id="privacy" className="section privacySection"><div className="shell privacyShell"><div className="sectionHeading"><p className="kicker">Privacy & ownership</p><h2>{t.privacyTitle}</h2><p>{t.privacyCopy}</p></div><div className="fourGrid privacyGrid">{t.privacyItems.map(([title, body], i) => <article key={title}><span className={`privacyIcon privacyIcon${i}`}><PrivacyIcon index={i} /></span><h3>{title}</h3><p>{body}</p></article>)}</div><div className="privacySeal" aria-hidden="true"><span>♡</span><i /><span>NoFi</span><i /><span>∞</span></div></div></section>
 
     <section id="gallery" className="section shell gallerySection"><div className="sectionHeading left"><p className="kicker">A few quiet moments</p><h2>{t.galleryTitle}</h2></div><div className="galleryVisual"><Image src="/images/editorial/gallery-pages.png" alt="A collection of tactile diary pages with photographs and pressed flowers" fill sizes="100vw" /></div></section>
 
