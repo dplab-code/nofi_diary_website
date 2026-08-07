@@ -35,3 +35,21 @@
   .stepObject{width:min(310px,100%);height:300px;margin-inline:auto}
   .steps h3{font-size:2rem}
 }
+
+.featureGrid{gap:0}
+.featureCard{padding:18px 48px 35px}
+.featureVisual{position:relative;width:100%;height:230px;margin:0 auto 24px;overflow:hidden}
+.featureVisual img{width:300%!important;max-width:none!important;height:auto!important;top:50%!important;bottom:auto!important;transform:translateY(-50%);object-fit:initial!important}
+.featureVisual0 img{left:0!important}
+.featureVisual1 img{left:-100%!important}
+.featureVisual2 img{left:-200%!important}
+.featureCard h3{font-size:1.85rem}
+@media(max-width:1050px){
+  .featureGrid{gap:20px}
+  .featureCard{padding:25px 25px 42px}
+  .featureVisual{width:min(470px,100%);height:290px}
+}
+@media(max-width:700px){
+  .featureVisual{height:235px}
+  .featureCard h3{font-size:2rem}
+}
