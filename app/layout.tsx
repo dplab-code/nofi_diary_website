@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { isPublicRelease } from "@/lib/site-release";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,6 +10,14 @@ export const metadata: Metadata = {
     template: "%s | NoFi Diary"
   },
   description: "A private, offline-first creative diary for photos, voice, tactile pages and time capsules.",
+  robots: {
+    index: isPublicRelease,
+    follow: isPublicRelease,
+    googleBot: {
+      index: isPublicRelease,
+      follow: isPublicRelease
+    }
+  },
   openGraph: {
     title: "NoFi Diary",
     description: "Your memories. Yours to keep.",
