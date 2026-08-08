@@ -5,6 +5,7 @@ import { copy, Locale, localePath } from "@/lib/i18n";
 
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
 const memoryImages = ["memory-page.png", "memory-box.png", "memory-capsule.png", "memory-diary.png"];
+const featureImages = ["feature-capture-cutout.png", "feature-create-cutout.png", "feature-keep-cutout.png"];
 
 function GooglePlayIcon() {
   return <svg className="googlePlayIcon" viewBox="0 0 32 36" aria-hidden="true">
@@ -46,7 +47,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
     <section className="manifestoPreview"><div className="shell manifestoPreviewInner"><p className="kicker">{t.manifestoLabel}</p><h2>{t.manifestoTitle}</h2><p>{t.manifestoCopy}</p><Link className="textLink" href={localePath(locale, "/manifesto")}>{t.readManifesto} <span>→</span></Link></div></section>
 
-    <section id="features" className="section shell"><div className="sectionHeading"><p className="kicker">Capture · Create · Keep</p><h2>{t.featureTitle}</h2></div><div className="threeGrid featureGrid">{t.features.map(([title, body], i) => <article className="featureCard" key={title}><div className={`featureVisual featureVisual${i}`}><Image src="/images/editorial/feature-journey.png" alt="" fill sizes="(max-width: 1050px) 90vw, 33vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></section>
+    <section id="features" className="section shell"><div className="sectionHeading"><p className="kicker">Capture · Create · Keep</p><h2>{t.featureTitle}</h2></div><div className="threeGrid featureGrid">{t.features.map(([title, body], i) => <article className="featureCard" key={title}><div className={`featureVisual featureVisual${i}`}><Image src={`/images/editorial/${featureImages[i]}`} alt="" fill sizes="(max-width: 1050px) 90vw, 33vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></section>
 
     <section className="section memoryBand"><div className="shell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="fourGrid memoryGrid">{t.memories.map(([title, body], i) => <article key={title}><div className="memoryCrop"><Image className="memoryCardImage" src={`/images/editorial/${memoryImages[i]}`} alt="" fill sizes="(max-width: 700px) 90vw, 25vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
 
