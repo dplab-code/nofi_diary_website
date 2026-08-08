@@ -6,6 +6,23 @@ import { copy, Locale, localePath } from "@/lib/i18n";
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
 const memoryImages = ["memory-page.png", "memory-box.png", "memory-capsule.png", "memory-diary.png"];
 
+function GooglePlayIcon() {
+  return <svg className="googlePlayIcon" viewBox="0 0 32 36" aria-hidden="true">
+    <path fill="#00d6ff" d="M2.4 2.3A3.4 3.4 0 001 4.9v26.2c0 1 .5 2 1.4 2.6l15.2-15.8L2.4 2.3z" />
+    <path fill="#ffcf3c" d="M22.5 12.8L17.6 18l4.9 5.1 6.2-3.5c1.7-.9 1.7-2.3 0-3.2l-6.2-3.6z" />
+    <path fill="#ff5963" d="M2.4 33.7c.8.5 1.8.5 2.8 0l17.3-10.6-4.9-5.1L2.4 33.7z" />
+    <path fill="#00e397" d="M2.4 2.3L17.6 18l4.9-5.2L5.2 2.3a2.8 2.8 0 00-2.8 0z" />
+  </svg>;
+}
+
+function NoAccountIcon() {
+  return <svg className="noAccountIcon" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="10" cy="7.5" r="3.25" />
+    <path d="M3.5 19c.55-4.05 2.7-6.1 6.5-6.1 1.05 0 1.96.16 2.74.49" />
+    <path d="M15 15l5 5M20 15l-5 5" />
+  </svg>;
+}
+
 function PrivacyIcon({ index }: { index: number }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.55, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return <svg viewBox="0 0 64 64" aria-hidden="true" {...common}>
@@ -21,8 +38,8 @@ export function HomePage({ locale }: { locale: Locale }) {
   return <main>
     <SiteHeader locale={locale} nav={t.nav} />
     <section className="hero" id="top"><div className="shell heroGrid">
-      <div className="heroCopy"><p className="kicker">Private by design · Offline-first</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><a className="playBadge" href={playUrl}><span className="playTriangle">▶</span><span><small>GET IT ON</small>Google Play</span></a><Link className="button outline" href="#how">{t.seeHow}</Link></div><p className="micro">♡ {t.micro}</p></div>
-      <figure className="heroVisual"><Image src="/images/editorial/hero-diary.png" alt="An open handmade diary beside a private journal app" fill priority sizes="(max-width: 900px) 100vw, 58vw" /></figure>
+      <div className="heroCopy"><p className="kicker">Private by design · Offline-first</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><a className="playBadge" href={playUrl} aria-label="Get NoFi Diary on Google Play"><GooglePlayIcon /><span><small>GET IT ON</small><strong>Google Play</strong></span></a><Link className="button heroSecondary" href="#how">{t.seeHow}</Link></div><p className="micro heroAssurance"><NoAccountIcon /><span>{t.micro}</span></p></div>
+      <figure className="heroVisual"><Image src="/images/editorial/hero-diary-cutout.png" alt="An open handmade diary beside a private journal app" fill priority sizes="(max-width: 900px) 100vw, 62vw" /></figure>
     </div></section>
 
     <section className="statement"><h2>{t.statement}</h2><p>{t.statementSub}</p></section>
