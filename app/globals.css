@@ -102,11 +102,15 @@
 .heroSecondary:hover{transform:translateY(-1px);border-color:#7f7165;background:rgba(255,255,255,.58)}
 .heroAssurance{display:flex;align-items:center;gap:10px;margin-top:23px;color:#5f574f;font-size:.79rem;font-weight:500}
 .noAccountIcon{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+
+/* Keep the manifesto heart beside and slightly below the title. */
+.manifestoPreview:after{right:clamp(24px,7vw,120px);top:52%;font-size:clamp(11rem,20vw,20rem);line-height:1;transform:translateY(-32%);opacity:.025}
 @media(max-width:1050px){
   .heroGrid{grid-template-columns:1fr;gap:12px}
   .heroVisual{width:100%;margin:0;aspect-ratio:16/10}
 }
 @media(max-width:700px){
+  .manifestoPreview:after{right:-1.5rem;top:62%;font-size:11rem;transform:translateY(-25%)}
   .heroVisual{aspect-ratio:1/1}
   .actions{gap:11px}
   .playBadge{min-width:190px}
