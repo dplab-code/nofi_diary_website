@@ -81,6 +81,45 @@
 .crop3 img{left:-300%!important}
 .memoryCrop .memoryCardImage{width:100%!important;max-width:100%!important;height:100%!important;left:0!important;top:0!important;bottom:0!important;transform:none;object-fit:cover!important}
 
+/* A memory evolves along a tactile, hand-drawn path rather than a rigid card grid. */
+.memoryShell{position:relative}
+.memoryShell .sectionHeading{margin-bottom:26px}
+.memoryPath{position:relative;min-height:520px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start}
+.memoryThread{position:absolute;z-index:0;left:0;top:12px;width:100%;height:330px;overflow:visible;fill:none;stroke:#9c7a63;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:2 6;opacity:.5}
+.memoryThread circle{fill:#9c7a63;stroke:none}
+.memoryItem{position:relative;z-index:1;text-align:center}
+.memoryItem0{transform:translateY(62px)}
+.memoryItem1{transform:translateY(0)}
+.memoryItem2{transform:translateY(82px)}
+.memoryItem3{transform:translateY(18px)}
+.memoryIndex{position:absolute;z-index:2;top:14px;left:12px;width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(121,91,70,.38);border-radius:50%;background:#e9ded2;color:#756659;font-size:.65rem;letter-spacing:.12em}
+.memoryObject{position:relative;height:285px;filter:drop-shadow(0 19px 15px rgba(68,45,29,.2)) drop-shadow(0 5px 4px rgba(68,45,29,.12))}
+.memoryObject img{object-fit:contain}
+.memoryItem0 .memoryObject{transform:rotate(-2.4deg) scale(.92)}
+.memoryItem1 .memoryObject{transform:rotate(1.8deg) scale(.88)}
+.memoryItem2 .memoryObject{transform:rotate(-1.2deg) scale(.94)}
+.memoryItem3 .memoryObject{transform:rotate(1.5deg) scale(1.02)}
+.memoryNote{max-width:280px;margin:2px auto 0}
+.memoryNote h3{margin:0 0 10px;font-size:1.65rem}
+.memoryNote p{font-size:.88rem;line-height:1.6}
+@media(max-width:900px){
+  .memoryPath{grid-template-columns:repeat(2,1fr);min-height:860px;gap:28px}
+  .memoryThread{display:none}
+  .memoryItem0,.memoryItem1,.memoryItem2,.memoryItem3{transform:none}
+}
+@media(max-width:700px){
+  .memoryShell .sectionHeading{margin-bottom:45px}
+  .memoryPath{display:block;min-height:0;padding-left:36px}
+  .memoryPath:before{content:"";position:absolute;left:15px;top:25px;bottom:45px;border-left:1px dashed rgba(121,91,70,.48)}
+  .memoryItem{margin-bottom:62px;text-align:left}
+  .memoryItem:last-child{margin-bottom:0}
+  .memoryIndex{left:-36px;top:14px;background:#e9ded2}
+  .memoryObject{height:280px}
+  .memoryItem0 .memoryObject,.memoryItem1 .memoryObject,.memoryItem2 .memoryObject,.memoryItem3 .memoryObject{transform:rotate(-1deg) scale(.96);transform-origin:center}
+  .memoryItem1 .memoryObject,.memoryItem3 .memoryObject{transform:rotate(1deg) scale(.96)}
+  .memoryNote{max-width:none;margin-top:0}
+}
+
 /* A soft botanical shadow gives the statement the depth of the original mockup. */
 .statement{position:relative;isolation:isolate;overflow:hidden}
 .statement>*{position:relative;z-index:1}

@@ -4,7 +4,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { copy, Locale, localePath } from "@/lib/i18n";
 
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
-const memoryImages = ["memory-page.png", "memory-box.png", "memory-capsule.png", "memory-diary.png"];
+const memoryImages = ["memory-page-cutout.png", "memory-box-cutout.png", "memory-capsule-cutout.png", "memory-diary-cutout.png"];
 const featureImages = ["feature-capture-cutout.png", "feature-create-cutout.png", "feature-keep-cutout.png"];
 
 function GooglePlayIcon() {
@@ -49,7 +49,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
     <section id="features" className="section shell"><div className="sectionHeading"><p className="kicker">Capture · Create · Keep</p><h2>{t.featureTitle}</h2></div><div className="threeGrid featureGrid">{t.features.map(([title, body], i) => <article className="featureCard" key={title}><div className={`featureVisual featureVisual${i}`}><Image src={`/images/editorial/${featureImages[i]}`} alt="" fill sizes="(max-width: 1050px) 90vw, 33vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></section>
 
-    <section className="section memoryBand"><div className="shell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="fourGrid memoryGrid">{t.memories.map(([title, body], i) => <article key={title}><div className="memoryCrop"><Image className="memoryCardImage" src={`/images/editorial/${memoryImages[i]}`} alt="" fill sizes="(max-width: 700px) 90vw, 25vw" /></div><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
+    <section className="section memoryBand"><div className="shell memoryShell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="memoryPath"><svg className="memoryThread" viewBox="0 0 1200 340" preserveAspectRatio="none" aria-hidden="true"><path d="M35 205 C170 205 240 70 430 100 S690 270 820 205 S1010 90 1165 135" /><circle cx="145" cy="174" r="4" /><circle cx="430" cy="100" r="4" /><circle cx="820" cy="205" r="4" /><circle cx="1080" cy="116" r="4" /></svg>{t.memories.map(([title, body], i) => <article className={`memoryItem memoryItem${i}`} key={title}><span className="memoryIndex">0{i + 1}</span><div className="memoryObject"><Image src={`/images/editorial/${memoryImages[i]}`} alt="" fill sizes="(max-width: 700px) 76vw, 25vw" /></div><div className="memoryNote"><h3>{title}</h3><p>{body}</p></div></article>)}</div></div></section>
 
     <section id="how" className="section howSection"><div className="shell"><div className="sectionHeading"><p className="kicker">Four quiet steps</p><h2>{t.howTitle}</h2></div><div className="fourGrid steps">{t.steps.map((step, i) => <article key={step}><span>0{i + 1}</span><div className={`stepObject stepVisual${i}`}><Image src="/images/editorial/how-it-works.png" alt="" fill sizes="(max-width: 700px) 70vw, 25vw" /></div><h3>{step}</h3></article>)}</div></div></section>
 
