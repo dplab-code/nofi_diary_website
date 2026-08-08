@@ -82,7 +82,7 @@
 .hero{overflow:hidden}
 .heroGrid{grid-template-columns:minmax(390px,.82fr) minmax(0,1.18fr);gap:22px}
 .heroVisual{width:calc(100% + 84px);margin:0 -84px 0 0;aspect-ratio:3/2;overflow:visible;box-shadow:none;border-radius:0}
-.heroVisual img{object-fit:contain;transform:translateY(-10px) scale(.97);transform-origin:center;filter:drop-shadow(0 24px 16px rgba(69,46,29,.24)) drop-shadow(0 6px 5px rgba(69,46,29,.14))}
+.heroVisual img{object-fit:contain;filter:drop-shadow(0 28px 14px rgba(54,36,24,.38)) drop-shadow(0 7px 4px rgba(54,36,24,.22))}
 .actions{align-items:stretch;gap:16px;margin-top:32px}
 .playBadge{min-width:202px;min-height:56px;padding:8px 17px;border:1px solid #090909;border-radius:8px;gap:13px;transition:transform .18s ease,box-shadow .18s ease}
 .playBadge:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(17,14,12,.16)}
