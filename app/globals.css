@@ -84,8 +84,8 @@
 /* A soft botanical shadow gives the statement the depth of the original mockup. */
 .statement{position:relative;isolation:isolate;overflow:hidden}
 .statement>*{position:relative;z-index:1}
-.statement:after{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.68;mix-blend-mode:multiply;background:url("/images/editorial/statement-tree-shadow.png") center/cover no-repeat}
-@media(max-width:700px){.statement:after{inset:0 -42% 0 0;opacity:.42;background-position:70% center}}
+.statement:after{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.68;mix-blend-mode:multiply;background-image:url("/images/editorial/statement-tree-shadow.png");background-repeat:no-repeat;background-size:min(1050px,68vw) auto;background-position:right center}
+@media(max-width:700px){.statement:after{inset:0;opacity:.42;background-size:auto 82%;background-position:118% center}}
 
 /* The hero artwork belongs to the page rather than sitting inside a card. */
 .hero{overflow:hidden}
