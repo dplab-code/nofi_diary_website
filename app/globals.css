@@ -292,7 +292,6 @@
 .appEvidenceReverse>div:first-child{order:2}.appEvidenceReverse>.androidScreen{order:1}
 .phoneCrop.productScreenshot{width:min(100%,360px);height:auto;aspect-ratio:1080/2400;margin:0 auto 28px;border:9px solid #171411;border-radius:40px;background:#171411;box-shadow:0 28px 45px rgba(50,34,23,.22)}
 .phoneCrop.productScreenshot img{inset:0!important;width:100%!important;max-width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
-.collectionVisual2{background:#dcebee}.collectionVisual2 img{object-fit:contain!important;padding:15px;filter:drop-shadow(0 12px 12px rgba(27,39,42,.2))}
 .explore-appearances .exploreHeroVisual{background:#dcebee;padding:52px}
 .explore-appearances .exploreHeroVisual img{inset:52px!important;width:calc(100% - 104px)!important;height:calc(100% - 104px)!important;object-fit:contain;border:8px solid #171411;border-radius:34px;box-shadow:0 28px 45px rgba(27,39,42,.24)}
 
