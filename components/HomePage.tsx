@@ -49,7 +49,7 @@ export function HomePage({ locale }: { locale: Locale }) {
     <SiteHeader locale={locale} nav={t.nav} />
     <section className="hero" id="top"><div className="shell heroGrid">
       <div className="heroCopy"><p className="kicker">{ui.hero}</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><a className="playBadge" href={playUrl} aria-label={ui.play}><GooglePlayIcon /><span><small>GET IT ON</small><strong>Google Play</strong></span></a><Link className="button heroSecondary" href="#how">{t.seeHow}</Link></div><p className="micro heroAssurance"><NoAccountIcon /><span>{t.micro}</span></p></div>
-      <figure className="heroVisual"><Image src="/images/editorial/hero-diary-cutout-v2.png" alt="An open handmade diary beside a private journal app" fill priority sizes="(max-width: 900px) 100vw, 62vw" /></figure>
+      <figure className="heroVisual"><Image src="/images/editorial/hero-diary-cutout-v3.webp" alt="An open handmade diary beside a private journal app" fill priority sizes="(max-width: 900px) 100vw, 62vw" /></figure>
     </div></section>
 
     <section className="statement"><h2>{t.statement}</h2><p>{t.statementSub}</p></section>
