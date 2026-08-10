@@ -6,7 +6,7 @@ import { exploreCopy, type ExplorePageId } from "@/content/explore";
 import { copy, localePath, locales, type Locale } from "@/lib/i18n";
 
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
-const imageFor: Record<ExplorePageId,string> = { "time-capsules":"/images/editorial/time-capsule.png", stickers:"/images/editorial/collection-stickers.png", themes:"/images/editorial/collection-themes.png", appearances:"/images/app/android-home.png" };
+const imageFor: Record<ExplorePageId,string> = { "time-capsules":"/images/editorial/time-capsule.png", stickers:"/images/editorial/collection-stickers.png", themes:"/images/editorial/collection-themes.png", appearances:"/images/editorial/collection-appearances.png" };
 const exploreUi: Record<Locale, { getApp:string; next:string; all:string; labels:Record<ExplorePageId,string>; expression:string; later:string; boundary:string }> = {
   en:{getApp:"Get NoFi on Google Play",next:"Continue exploring",all:"All creative collections",labels:{"time-capsules":"Time Capsules",stickers:"Sticker Packs",themes:"Themes",appearances:"Appearances"},expression:"Expression, not decoration",later:"For another day",boundary:"A clear boundary"},
   it:{getApp:"Scarica NoFi da Google Play",next:"Continua a esplorare",all:"Tutte le collezioni creative",labels:{"time-capsules":"Time Capsules",stickers:"Sticker Pack",themes:"Temi",appearances:"Aspetti"},expression:"Espressione, non decorazione",later:"Per un altro giorno",boundary:"Un confine chiaro"},
@@ -51,10 +51,10 @@ function Themes({ locale }: { locale:Locale }) { const t=exploreCopy(locale),p=t
   </>; }
 
 function Appearances({ locale }: { locale:Locale }) { const t=exploreCopy(locale),p=t.appearances,ui=exploreUi[locale]; return <>
-  <EditorialHero label={ui.labels.appearances} title={p.title} subtitle={p.subtitle} image={imageFor.appearances} imageAlt="NoFi Diary with the Ocean Memories appearance running on Android" cta={ui.getApp}/>
+  <EditorialHero label={ui.labels.appearances} title={p.title} subtitle={p.subtitle} image={imageFor.appearances} imageAlt="Three interface appearance previews showing the same memory" cta={ui.getApp}/>
   <section className="appearanceStatement section shell"><h2>{p.keyTitle}</h2></section>
   <section className="appearanceDifference section"><div className="shell differenceBook"><article><p className="kicker">01</p><h2>{p.theme}</h2><ul>{p.themeItems.map(x=><li key={x}>{x}</li>)}</ul></article><article><p className="kicker">02</p><h2>{p.appearance}</h2><ul>{p.appearanceItems.map(x=><li key={x}>{x}</li>)}</ul></article></div></section>
-  <section className="appearanceEditions section shell"><article><div className="phoneCrop productScreenshot"><Image src="/images/app/android-home.png" alt="NoFi Diary with the Ocean Memories appearance on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>Ocean Memories</h2><p>{p.subtitle}</p></article><article><div className="phoneCrop productScreenshot"><Image src="/images/app/android-appearance.png" alt="The NoFi appearance selector on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>{ui.labels.appearances}</h2><p>{p.readable}</p></article></section>
+  <section className="appearanceEditions section shell"><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-home.jpeg" alt="NoFi Diary with the Ocean Memories appearance on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>Ocean Memories</h2><p>{p.subtitle}</p></article><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-selector.jpeg" alt="The NoFi appearance selector on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>{ui.labels.appearances}</h2><p>{p.readable}</p></article></section>
   <section className="exportNote"><div className="shell"><h2>{p.exportTitle}</h2><p>{p.exportBody}</p><p className="readableNote">{p.readable}</p></div></section><RelatedPages locale={locale} page="appearances"/><FinalCTA title={p.finalTitle} locale={locale}/>
   </>; }
 

@@ -292,8 +292,6 @@
 .appEvidenceReverse>div:first-child{order:2}.appEvidenceReverse>.androidScreen{order:1}
 .phoneCrop.productScreenshot{width:min(100%,360px);height:auto;aspect-ratio:1080/2400;margin:0 auto 28px;border:9px solid #171411;border-radius:40px;background:#171411;box-shadow:0 28px 45px rgba(50,34,23,.22)}
 .phoneCrop.productScreenshot img{inset:0!important;width:100%!important;max-width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
-.explore-appearances .exploreHeroVisual{background:#dcebee;padding:52px}
-.explore-appearances .exploreHeroVisual img{inset:52px!important;width:calc(100% - 104px)!important;height:calc(100% - 104px)!important;object-fit:contain;border:8px solid #171411;border-radius:34px;box-shadow:0 28px 45px rgba(27,39,42,.24)}
 
 @media(max-width:1050px){
   .productProofGrid{grid-template-columns:1fr repeat(3,minmax(130px,.45fr));gap:20px}
@@ -305,7 +303,6 @@
 @media(max-width:700px){
   .productProofGrid{gap:8px}.productProofCopy h2{font-size:3.25rem}.androidScreen{border-width:5px;border-radius:23px}.androidScreenBack{transform:rotate(-3deg) translateY(20px)}.androidScreenFront{transform:rotate(2deg) translateY(-12px)}.androidScreenMemory{transform:rotate(-1deg) translateY(14px)}
   .appEvidence{gap:38px}.appEvidence .androidScreen{width:min(78vw,330px);border-width:7px;border-radius:32px}.phoneCrop.productScreenshot{width:min(82vw,360px);border-width:7px;border-radius:32px}
-  .explore-appearances .exploreHeroVisual{padding:28px}.explore-appearances .exploreHeroVisual img{inset:28px!important;width:calc(100% - 56px)!important;height:calc(100% - 56px)!important;border-width:6px;border-radius:27px}
 }
 
 /* Explore stories share the NoFi materials, never a rigid page template. */
