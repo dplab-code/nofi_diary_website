@@ -23,11 +23,13 @@
 .siteHeader nav{font-size:.86rem;font-weight:500;letter-spacing:.005em}
 .siteHeader .brand{gap:11px;font-size:1.18rem;letter-spacing:-.025em}
 .siteHeader .brandMark{width:56px;height:56px}
+.privacySection{scroll-margin-top:96px}
 @media(max-width:1050px){.siteHeader nav{top:100%}}
 @media(max-width:700px){
   .siteHeader{height:86px}
   .siteHeader .brand{gap:9px;font-size:1.08rem}
   .siteHeader .brandMark{width:48px;height:48px}
+  .privacySection{scroll-margin-top:86px}
 }
 
 .howSection{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(238,226,213,.48))}
