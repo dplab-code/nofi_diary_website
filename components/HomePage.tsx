@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MemoryJourney } from "@/components/MemoryJourney";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { copy, Locale, localePath } from "@/lib/i18n";
 
@@ -59,9 +60,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
     <section className="section memoryBand"><div className="shell memoryShell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="memoryPath"><svg className="memoryThread" viewBox="0 0 1200 340" preserveAspectRatio="none" aria-hidden="true"><path d="M35 205 C170 205 240 70 430 100 S690 270 820 205 S1010 90 1165 135" /><circle cx="145" cy="174" r="4" /><circle cx="430" cy="100" r="4" /><circle cx="820" cy="205" r="4" /><circle cx="1080" cy="116" r="4" /></svg>{t.memories.map(([title, body], i) => <article className={`memoryItem memoryItem${i}`} key={title}><span className="memoryIndex">0{i + 1}</span><div className="memoryObject"><Image src={`/images/editorial/${memoryImages[i]}`} alt="" fill sizes="(max-width: 700px) 76vw, 25vw" /></div><div className="memoryNote"><h3>{title}</h3><p>{body}</p></div></article>)}</div></div></section>
 
-    <section id="how" className="section howSection"><div className="shell"><div className="sectionHeading"><p className="kicker">{ui.steps}</p><h2>{t.howTitle}</h2></div><div className="howExperience"><div className="howArtwork"><Image src="/images/editorial/how-it-works-composition.png" alt="A camera, voice recording, handmade diary page and sealed leather diary forming one creative journey" fill sizes="(max-width: 700px) 100vw, 78vw" /></div>{t.steps.map((step, i) => <article className={`howCallout howCallout${i}`} key={step}><span>0{i + 1}</span><h3>{step}</h3><i aria-hidden="true" /></article>)}</div></div></section>
-
-    <section className="productProof section" aria-label={t.howTitle}><div className="shell productProofGrid"><div className="productProofCopy"><p className="kicker">{ui.steps}</p><h2>{t.memoryTitle}</h2><p>{t.heroLead}</p></div><div className="androidScreen androidScreenBack"><Image src="/images/app/android-home.png" alt="NoFi Diary home running on Android" fill sizes="(max-width:700px) 52vw, 19vw" /></div><div className="androidScreen androidScreenFront"><Image src="/images/app/android-create.png" alt="The NoFi memory composer running on Android" fill sizes="(max-width:700px) 56vw, 19vw" /></div><div className="androidScreen androidScreenMemory"><Image src="/images/app/android-memory.png" alt="A finished private memory in NoFi Diary on Android" fill sizes="(max-width:700px) 56vw, 19vw" /></div></div></section>
+    <MemoryJourney locale={locale}/>
 
     <section className="capsuleBanner"><Image src="/images/editorial/time-capsule.png" alt="A sealed paper time capsule with lavender" fill sizes="100vw" /><div className="shell capsuleCopy"><p className="kicker">{ui.capsules}</p><h2>{t.capsuleTitle}</h2><p>{t.capsuleCopy}</p><Link className="button outline" href={localePath(locale, "/time-capsules")}>{ui.discover}</Link></div></section>
 
