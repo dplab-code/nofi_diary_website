@@ -3,9 +3,9 @@ import type { Locale } from "@/lib/i18n";
 export type LegalDocumentId = "privacy" | "terms" | "disclaimer";
 
 export const legalConfig = {
-  legalName: "[LEGAL_NAME]",
-  contactEmail: "[CONTACT_EMAIL]",
-  legalContactDetails: "[LEGAL_CONTACT_DETAILS]",
+  legalName: process.env.NEXT_PUBLIC_LEGAL_NAME || "NoFi Diary",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact details published with the app",
+  legalContactDetails: process.env.NEXT_PUBLIC_LEGAL_CONTACT_DETAILS || "Italy",
 } as const;
 
 type Section = { heading: string; paragraphs: string[]; bullets?: string[] };

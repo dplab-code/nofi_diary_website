@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     template: "%s | NoFi Diary"
   },
   description: "A private, offline-first creative diary for photos, voice, tactile pages and time capsules.",
+  icons: { icon: "/images/nofi-logo.png", apple: "/images/nofi-logo.png" },
   robots: {
     index: isPublicRelease,
     follow: isPublicRelease,
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NoFi Diary",
     description: "Your memories. Yours to keep.",
-    type: "website"
+    type: "website",
+    images: [{ url: "/images/editorial/hero-diary.png", alt: "NoFi Diary — a private creative diary" }]
   }
 };
 
