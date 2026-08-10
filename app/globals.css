@@ -68,11 +68,11 @@
 .compareSection:before{content:"";position:absolute;width:420px;height:420px;right:-190px;top:-240px;border:1px solid rgba(110,83,66,.12);border-radius:50%;box-shadow:0 0 0 75px rgba(255,255,255,.08)}
 .compareGrid{grid-template-columns:.62fr 1.38fr;gap:80px}
 .compareIntro{position:relative;z-index:1}
-.compareLogo{position:relative;width:min(330px,88%);aspect-ratio:1;margin:42px auto 0;padding:18px;background:linear-gradient(145deg,#fbf2e7,#ead8c5);box-shadow:0 25px 45px rgba(70,48,33,.18),inset 0 0 0 1px rgba(255,255,255,.55);transform:rotate(-4deg);clip-path:polygon(2% 3%,97% 0,100% 96%,5% 100%,0 9%);transition:transform .4s ease,box-shadow .4s ease}
-.compareLogo:before{content:"";position:absolute;z-index:2;left:50%;top:-9px;width:112px;height:31px;background:rgba(205,177,145,.72);box-shadow:0 3px 7px rgba(76,51,35,.1);transform:translateX(-50%) rotate(3deg);pointer-events:none}
-.compareLogo:after{content:"♡";position:absolute;right:18px;bottom:13px;width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(122,76,73,.25);border-radius:50%;background:#b77f88;color:#fff8f1;box-shadow:0 7px 13px rgba(83,49,45,.19);font:1.7rem var(--serif);pointer-events:none}
-.compareLogo img{object-fit:contain;padding:12px;filter:drop-shadow(0 4px 4px rgba(84,54,39,.13));mix-blend-mode:multiply;transition:transform .45s ease,filter .45s ease}
-.compareLogo:hover{transform:rotate(-2deg) translateY(-5px);box-shadow:0 32px 52px rgba(70,48,33,.22),inset 0 0 0 1px rgba(255,255,255,.55)}.compareLogo:hover img{transform:scale(1.035);filter:drop-shadow(0 6px 6px rgba(84,54,39,.18))}
+.compareLogo{position:relative;width:min(330px,88%);aspect-ratio:1;margin:42px auto 0;padding:30px;background:radial-gradient(circle,rgba(255,250,244,.88) 0 42%,rgba(230,203,190,.42) 43% 57%,rgba(222,207,226,.22) 58% 68%,transparent 69%);transition:transform .45s ease}
+.compareLogo:before,.compareLogo:after{content:"";position:absolute;inset:15%;border:1px solid rgba(170,111,102,.2);border-radius:50%;pointer-events:none;transition:transform .55s ease}
+.compareLogo:before{transform:rotate(-11deg) scaleX(.92)}.compareLogo:after{inset:23%;border-color:rgba(121,93,128,.2);transform:rotate(14deg) scaleY(.9)}
+.compareLogo img{z-index:1;object-fit:contain;padding:22px;filter:drop-shadow(0 15px 16px rgba(84,54,39,.18));transition:transform .45s ease,filter .45s ease}
+.compareLogo:hover{transform:translateY(-5px)}.compareLogo:hover:before{transform:rotate(-18deg) scaleX(.96)}.compareLogo:hover:after{transform:rotate(21deg) scaleY(.94)}.compareLogo:hover img{transform:scale(1.04) rotate(1deg);filter:drop-shadow(0 20px 18px rgba(84,54,39,.22))}
 .compareBook{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:510px;margin-bottom:28px;filter:drop-shadow(0 28px 28px rgba(62,42,27,.2));transform:rotate(.5deg);isolation:isolate}
 .compareBook:before{content:"";position:absolute;inset:7px -15px -17px;border-radius:22px 27px 29px 21px;background:repeating-linear-gradient(180deg,#e8d9c8 0 3px,#cbb69f 4px 5px);border:9px solid #936b50;box-shadow:0 8px 0 #76503b;z-index:-2;transform:rotate(-.35deg)}
 .compareBook:after{content:"";position:absolute;left:50%;top:5px;bottom:-2px;width:12px;z-index:2;transform:translateX(-50%);background:linear-gradient(90deg,rgba(82,55,38,.16),rgba(255,255,255,.32) 46%,rgba(69,46,33,.18));border-radius:50%;filter:blur(.5px);pointer-events:none}
@@ -84,7 +84,7 @@
 .compareMark{flex:0 0 25px;width:25px;height:25px;display:grid;place-items:center;border-radius:50%;font:1.05rem var(--serif)}
 .compareMarkTypical{color:#8d7d71;border:1px solid #b6a99e;transform:rotate(-7deg)}
 .compareMarkNofi{color:#fff;background:#a67973;box-shadow:0 3px 7px rgba(105,70,64,.2);transform:rotate(5deg)}
-.compareRibbon{position:absolute;z-index:0;left:50%;top:46%;bottom:auto;width:22px;height:58%;background:linear-gradient(90deg,#9d606d,#c38a93 52%,#8c5662);box-shadow:0 4px 7px rgba(72,42,42,.25);clip-path:polygon(0 0,100% 0,100% 100%,50% 90%,0 100%);transform:translateX(-50%) rotate(1deg)}
+.compareRibbon{position:absolute;z-index:4;left:50%;top:-2px;bottom:auto;width:18px;height:calc(100% + 25px);background:linear-gradient(90deg,#8f5864,#c98d98 48%,#985e6a);box-shadow:0 3px 7px rgba(72,42,42,.24);clip-path:polygon(0 0,100% 0,100% 100%,50% 93%,0 100%);transform:translateX(-50%);pointer-events:none}
 @media(max-width:1050px){
   .compareGrid{grid-template-columns:1fr;gap:70px}
   .compareIntro{text-align:center}.compareIntro h2{max-width:700px;margin-inline:auto}.compareLogo{width:280px}
@@ -96,7 +96,7 @@
   .comparePageTypical{border-radius:17px 17px 2px 2px;box-shadow:inset 0 -15px 20px -23px rgba(45,30,20,.6)}
   .comparePageNofi{border-radius:2px 2px 18px 18px;box-shadow:inset 0 15px 20px -23px rgba(45,30,20,.6)}
   .comparePage p{min-height:52px}
-  .compareRibbon{left:50%;right:auto;top:48%;bottom:auto;height:54%;transform:translateX(-50%) rotate(1deg)}
+  .compareRibbon{left:50%;right:auto;top:-2px;bottom:auto;height:calc(100% + 23px);transform:translateX(-50%)}
 }
 @media(max-width:700px){
   .howSection .sectionHeading{margin-bottom:30px}
