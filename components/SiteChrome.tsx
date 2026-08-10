@@ -43,7 +43,7 @@ export function SiteFooter({ locale, text, nav }: { locale: Locale; text: string
   return <footer className="siteFooter shell">
     <Link className="brand" href={localePath(locale)}><BrandMark /><span>NoFi Diary</span></Link>
     <p>{text}</p>
-    <nav aria-label="Footer"><Link href={localePath(locale, "/manifesto")}>{nav[5]}</Link><span className="footerLegalLabel">{legal.legalLabel}</span><Link href={localePath(locale, "/privacy")}>{legal.documents.privacy.title}</Link><Link href={localePath(locale, "/terms")}>{legal.documents.terms.title}</Link><Link href={localePath(locale, "/disclaimer")}>{legal.documents.disclaimer.title}</Link></nav>
+    <nav aria-label="Footer"><Link href={localePath(locale, "/manifesto")}>{nav[5]}</Link><Link href={localePath(locale, "/privacy")}>{legal.documents.privacy.title}</Link><Link href={localePath(locale, "/terms")}>{legal.documents.terms.title}</Link><Link href={localePath(locale, "/disclaimer")}>{legal.documents.disclaimer.title}</Link></nav>
     <span>© 2026 NoFi Diary</span>
   </footer>;
 }
