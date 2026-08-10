@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 import { Locale, localeNames, localePath, locales } from "@/lib/i18n";
+import { getLegalContent } from "@/content/legal";
 
-export function SiteHeader({ locale, nav, manifesto = false }: { locale: Locale; nav: string[]; manifesto?: boolean }) {
+export function SiteHeader({ locale, nav, manifesto = false, currentPath }: { locale: Locale; nav: string[]; manifesto?: boolean; currentPath?: string }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => { document.documentElement.lang = locale; localStorage.setItem("nofi-locale", locale); }, [locale]);
@@ -29,7 +30,7 @@ export function SiteHeader({ locale, nav, manifesto = false }: { locale: Locale;
         <label className="srOnly" htmlFor="locale">Language</label>
         <select id="locale" value={locale} onChange={e => {
           const next = e.target.value as Locale;
-          window.location.href = localePath(next, manifesto ? "/manifesto" : "");
+          window.location.href = localePath(next, currentPath ?? (manifesto ? "/manifesto" : ""));
         }}>{locales.map(l => <option key={l} value={l}>{localeNames[l]}</option>)}</select>
         <a className="button dark headerCta" href={process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary"}>Get the app</a>
       </div>
@@ -38,10 +39,11 @@ export function SiteHeader({ locale, nav, manifesto = false }: { locale: Locale;
 }
 
 export function SiteFooter({ locale, text, nav }: { locale: Locale; text: string; nav: string[] }) {
+  const legal = getLegalContent(locale);
   return <footer className="siteFooter shell">
     <Link className="brand" href={localePath(locale)}><BrandMark /><span>NoFi Diary</span></Link>
     <p>{text}</p>
-    <nav><Link href={localePath(locale, "/manifesto")}>{nav[5]}</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></nav>
+    <nav aria-label="Footer"><Link href={localePath(locale, "/manifesto")}>{nav[5]}</Link><span className="footerLegalLabel">{legal.legalLabel}</span><Link href={localePath(locale, "/privacy")}>{legal.documents.privacy.title}</Link><Link href={localePath(locale, "/terms")}>{legal.documents.terms.title}</Link><Link href={localePath(locale, "/disclaimer")}>{legal.documents.disclaimer.title}</Link></nav>
     <span>© 2026 NoFi Diary</span>
   </footer>;
 }
