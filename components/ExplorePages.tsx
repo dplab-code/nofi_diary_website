@@ -6,7 +6,7 @@ import { exploreCopy, type ExplorePageId } from "@/content/explore";
 import { copy, localePath, locales, type Locale } from "@/lib/i18n";
 
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
-const imageFor: Record<ExplorePageId,string> = { "time-capsules":"/images/editorial/time-capsule.png", stickers:"/images/editorial/collection-stickers.png", themes:"/images/editorial/collection-themes.png", appearances:"/images/editorial/collection-appearances.png" };
+const imageFor: Record<ExplorePageId,string> = { "time-capsules":"/images/editorial/time-capsule.png", stickers:"/images/editorial/collection-stickers-transparent.png", themes:"/images/editorial/collection-themes.png", appearances:"/images/editorial/collection-appearances.png" };
 const exploreUi: Record<Locale, { getApp:string; next:string; all:string; labels:Record<ExplorePageId,string>; expression:string; later:string; boundary:string }> = {
   en:{getApp:"Get NoFi on Google Play",next:"Continue exploring",all:"All creative collections",labels:{"time-capsules":"Time Capsules",stickers:"Sticker Packs",themes:"Themes",appearances:"Appearances"},expression:"Expression, not decoration",later:"For another day",boundary:"A clear boundary"},
   it:{getApp:"Scarica NoFi da Google Play",next:"Continua a esplorare",all:"Tutte le collezioni creative",labels:{"time-capsules":"Time Capsules",stickers:"Sticker Pack",themes:"Temi",appearances:"Aspetti"},expression:"Espressione, non decorazione",later:"Per un altro giorno",boundary:"Un confine chiaro"},
