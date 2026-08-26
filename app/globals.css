@@ -374,7 +374,7 @@
 
 .realMemoryNote{border-bottom:0}.realMemoryVoice{border-top:1px solid rgba(91,67,52,.16)}.realMemory footer{border-top:1px solid rgba(91,67,52,.16)}
 
-.realMemory.realMemoryNative{padding:0;background:#faf3e9}
+.realMemory.realMemoryNative{padding:0;border:6px solid rgba(255,255,255,.94);border-radius:32px;background:#faf3e9;box-shadow:0 32px 65px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.28)}
 .realMemory.realMemoryNative:before,.realMemory.realMemoryNative:after{display:none}
 .realMemoryScreenshot{position:relative;width:100%;background:#faf3e9}
 .realMemoryScreenshot>img{display:block;width:100%;height:auto}
@@ -382,3 +382,8 @@
 .realMemoryScreenshot button{position:absolute;z-index:2;top:72.2%;left:17.2%;width:21%;aspect-ratio:1;border:0;border-radius:50%;background:transparent;cursor:pointer}
 .realMemoryScreenshot button:focus-visible{outline:4px solid rgba(183,104,8,.72);outline-offset:4px}
 .realMemoryScreenshot button.isPlaying{background:rgba(183,104,8,.1);box-shadow:0 0 0 5px rgba(183,104,8,.18)}
+.realMemoryTranslation{padding:20px 24px 25px;border-top:1px solid rgba(91,67,52,.16);background:#faf3e9;color:#47362b}
+.realMemoryTranslation summary{cursor:pointer;font:700 .82rem/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.realMemoryTranslation h3{margin:22px 0 12px;font-size:2rem}
+.realMemoryTranslation p{margin:.25em 0;color:#5f5047;font:italic 1rem/1.6 var(--sans)}
+.realMemoryTranslation footer{margin-top:20px}
