@@ -35,6 +35,13 @@ const timeEvidenceCopy: Record<Locale,string> = {
   es:"Elige mañana, el próximo mes, el próximo año—o una fecha que solo te pertenezca a ti.",
   de:"Wähle morgen, nächsten Monat, nächstes Jahr—oder ein Datum, das nur dir gehört."
 };
+const appearanceDifferenceCopy: Record<Locale,{theme:string;appearance:string;explore:string}> = {
+  en:{theme:"Shape the texture and atmosphere of your pages.",appearance:"Adjust how NoFi feels while you move through it.",explore:"Explore"},
+  it:{theme:"Modella la texture e l’atmosfera delle tue pagine.",appearance:"Scegli come si sente NoFi mentre ti muovi nell’app.",explore:"Esplora"},
+  fr:{theme:"Façonnez la texture et l’atmosphère de vos pages.",appearance:"Ajustez la sensation de NoFi au fil de votre navigation.",explore:"Explorer"},
+  es:{theme:"Da forma a la textura y la atmósfera de tus páginas.",appearance:"Ajusta cómo se siente NoFi mientras navegas por la app.",explore:"Explorar"},
+  de:{theme:"Präge Textur und Atmosphäre deiner Seiten.",appearance:"Bestimme, wie sich NoFi beim Navigieren anfühlt.",explore:"Entdecken"}
+};
 
 export function exploreMetadata(locale: Locale, page: ExplorePageId): Metadata {
   const t = exploreCopy(locale); const item = page === "time-capsules" ? t.timeCapsules : t[page];
@@ -72,11 +79,14 @@ function Themes({ locale }: { locale:Locale }) { const t=exploreCopy(locale),p=t
   <section className="themeClarify section"><div className="shell clarifyGrid"><div><p className="kicker">{ui.boundary}</p><h2>{p.clarifyTitle}</h2><p>{p.clarifyBody}</p></div><ul>{p.unchanged.map(item=><li key={item}>{item}<span>—</span></li>)}</ul></div></section><RelatedPages locale={locale} page="themes"/><FinalCTA title={p.finalTitle} locale={locale}/>
   </>; }
 
-function Appearances({ locale }: { locale:Locale }) { const t=exploreCopy(locale),p=t.appearances,ui=exploreUi[locale]; return <>
+function Appearances({ locale }: { locale:Locale }) { const t=exploreCopy(locale),p=t.appearances,ui=exploreUi[locale],panel=appearanceDifferenceCopy[locale]; return <>
   <EditorialHero label={ui.labels.appearances} title={p.title} subtitle={p.subtitle} image={imageFor.appearances} imageAlt="Three interface appearance previews showing the same memory" cta={ui.getApp}/>
   <section className="appearanceStatement section shell"><h2>{p.keyTitle}</h2></section>
-  <section className="appearanceDifference section"><div className="shell differenceBook"><article className="differenceTheme"><div className="differenceVisual" aria-hidden="true"><span className="memorySheet"><i/><i/><i/></span></div><p className="kicker">01</p><h2>{p.theme}</h2><ul>{p.themeItems.map(x=><li key={x}>{x}</li>)}</ul></article><article className="differenceAppearance"><div className="differenceVisual" aria-hidden="true"><span className="appShell"><i/><i/><i/><b/></span></div><p className="kicker">02</p><h2>{p.appearance}</h2><ul>{p.appearanceItems.map(x=><li key={x}>{x}</li>)}</ul></article></div></section>
-  <section className="appearanceEditions section shell"><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-home.jpeg" alt="NoFi Diary with the Ocean Memories appearance on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>Ocean Memories</h2><p>{p.subtitle}</p></article><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-selector.jpeg" alt="The NoFi appearance selector on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>{ui.labels.appearances}</h2><p>{p.readable}</p></article></section>
+  <section className="appearanceDifference section"><div className="shell differenceBook">
+    <Link className="differencePanel differenceTheme" href={localePath(locale,"/themes")}><article><div className="differenceVisual" aria-hidden="true"><span className="paperLayer paperLayerBack"/><span className="paperLayer paperLayerMiddle"/><span className="memorySheet"><i/><i/><i/></span></div><div className="differenceContent"><p className="kicker">01 / 02</p><h2>{p.theme}</h2><p className="differenceDescription">{panel.theme}</p><ul>{p.themeItems.map((x,i)=><li className={i===0?"isActive":undefined} key={x}>{i===0&&<span/>}{x}</li>)}</ul></div><span className="differenceExplore">{panel.explore}<b aria-hidden="true">→</b></span></article></Link>
+    <Link className="differencePanel differenceAppearance" href={`${localePath(locale,"/appearances")}#appearance-editions`}><article><div className="differenceVisual" aria-hidden="true"><span className="appGlow"/><span className="appShell"><i/><i/><i/><b/><em/></span></div><div className="differenceContent"><p className="kicker">02 / 02</p><h2>{p.appearance}</h2><p className="differenceDescription">{panel.appearance}</p><ul>{p.appearanceItems.map((x,i)=><li className={i===1?"isActive":undefined} key={x}>{i===1&&<span/>}{x}</li>)}</ul></div><span className="differenceExplore">{panel.explore}<b aria-hidden="true">→</b></span></article></Link>
+  </div></section>
+  <section id="appearance-editions" className="appearanceEditions section shell"><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-home.jpeg" alt="NoFi Diary with the Ocean Memories appearance on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>Ocean Memories</h2><p>{p.subtitle}</p></article><article><div className="phoneCrop productScreenshot"><Image src="/images/app/appearance-selector.jpeg" alt="The NoFi appearance selector on Android" fill sizes="(max-width:700px) 78vw, 32vw"/></div><p className="kicker">{t.common.included}</p><h2>{ui.labels.appearances}</h2><p>{p.readable}</p></article></section>
   <section className="exportNote"><div className="shell"><h2>{p.exportTitle}</h2><p>{p.exportBody}</p><p className="readableNote">{p.readable}</p></div></section><RelatedPages locale={locale} page="appearances"/><FinalCTA title={p.finalTitle} locale={locale}/>
   </>; }
 
