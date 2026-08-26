@@ -363,11 +363,13 @@
 
 /* Each complete memory lives inside one device: canvas, copy, audio and details. */
 .realMemoryGrid{grid-template-columns:repeat(2,minmax(360px,520px));justify-content:center;gap:clamp(52px,7vw,105px)}
-.realMemory.realMemory{position:relative;overflow:hidden;padding:42px 0 31px;border:11px solid #292625;border-radius:54px;background:#f9f0e4;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 38px 65px rgba(0,0,0,.32),0 8px 18px rgba(0,0,0,.2)}
+.realMemory.realMemory{position:relative;overflow:hidden;padding:42px 0 31px;border:11px solid #292625;border-radius:54px;background:#f9f0e4;box-shadow:0 0 0 5px rgba(255,255,255,.88),inset 0 0 0 1px rgba(255,255,255,.14),0 38px 65px rgba(0,0,0,.32),0 8px 18px rgba(0,0,0,.2)}
 .realMemory.realMemory:before{content:"";position:absolute;z-index:5;top:13px;left:50%;width:76px;height:18px;border-radius:999px;background:#171514;box-shadow:inset 0 -1px rgba(255,255,255,.12);transform:translateX(-50%)}
 .realMemory.realMemory:after{content:"";position:absolute;z-index:5;bottom:12px;left:50%;width:88px;height:5px;border-radius:999px;background:rgba(45,40,37,.64);transform:translateX(-50%)}
-.realMemoryCanvas{width:calc(100% - 24px);margin:0 12px;border:0;border-radius:32px 32px 12px 12px;background:#f8efe3;box-shadow:0 9px 22px rgba(70,47,34,.12)}
-.realMemoryCanvas img{filter:saturate(.98) contrast(1.01)}
+.realMemoryCanvas{width:100%;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.realMemoryCanvas img{position:static;display:block;width:100%;height:auto;max-width:100%;object-fit:contain;filter:saturate(.98) contrast(1.01)}
 .realMemoryBody{padding-bottom:20px}
-@media(max-width:900px){.realMemoryGrid{grid-template-columns:repeat(2,minmax(300px,1fr));gap:28px}.realMemory.realMemory{padding-top:36px;border-width:9px;border-radius:45px}.realMemory.realMemory:before{top:11px;width:64px;height:16px}.realMemoryCanvas{width:calc(100% - 16px);margin-inline:8px;border-radius:27px 27px 10px 10px}}
-@media(max-width:700px){.realMemoryGrid{grid-template-columns:minmax(0,520px)}.realMemory.realMemory{padding-top:34px;padding-bottom:27px;border-width:8px;border-radius:41px}.realMemory.realMemory:before{top:10px;width:58px;height:15px}.realMemory.realMemory:after{bottom:10px;width:72px}.realMemoryCanvas{width:calc(100% - 12px);margin-inline:6px;border-radius:25px 25px 9px 9px}}
+@media(max-width:900px){.realMemoryGrid{grid-template-columns:repeat(2,minmax(300px,1fr));gap:28px}.realMemory.realMemory{padding-top:36px;border-width:9px;border-radius:45px}.realMemory.realMemory:before{top:11px;width:64px;height:16px}}
+@media(max-width:700px){.realMemoryGrid{grid-template-columns:minmax(0,520px)}.realMemory.realMemory{padding-top:34px;padding-bottom:27px;border-width:8px;border-radius:41px}.realMemory.realMemory:before{top:10px;width:58px;height:15px}.realMemory.realMemory:after{bottom:10px;width:72px}}
+
+.realMemoryNote{border-bottom:0}.realMemoryVoice{border-top:1px solid rgba(91,67,52,.16)}.realMemory footer{border-top:1px solid rgba(91,67,52,.16)}
