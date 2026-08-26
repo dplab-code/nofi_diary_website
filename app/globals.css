@@ -373,3 +373,12 @@
 @media(max-width:700px){.realMemoryGrid{grid-template-columns:minmax(0,520px)}.realMemory.realMemory{padding-top:34px;padding-bottom:27px;border-width:8px;border-radius:41px}.realMemory.realMemory:before{top:10px;width:58px;height:15px}.realMemory.realMemory:after{bottom:10px;width:72px}}
 
 .realMemoryNote{border-bottom:0}.realMemoryVoice{border-top:1px solid rgba(91,67,52,.16)}.realMemory footer{border-top:1px solid rgba(91,67,52,.16)}
+
+.realMemory.realMemoryNative{padding:0;background:#faf3e9}
+.realMemory.realMemoryNative:before,.realMemory.realMemoryNative:after{display:none}
+.realMemoryScreenshot{position:relative;width:100%;background:#faf3e9}
+.realMemoryScreenshot>img{display:block;width:100%;height:auto}
+.realMemoryScreenshot audio{display:none}
+.realMemoryScreenshot button{position:absolute;z-index:2;top:72.2%;left:17.2%;width:21%;aspect-ratio:1;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.realMemoryScreenshot button:focus-visible{outline:4px solid rgba(183,104,8,.72);outline-offset:4px}
+.realMemoryScreenshot button.isPlaying{background:rgba(183,104,8,.1);box-shadow:0 0 0 5px rgba(183,104,8,.18)}
