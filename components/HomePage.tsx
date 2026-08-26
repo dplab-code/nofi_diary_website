@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MemoryJourney } from "@/components/MemoryJourney";
+import { RealMemories } from "@/components/RealMemories";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { copy, Locale, localePath } from "@/lib/i18n";
 
@@ -72,6 +73,8 @@ export function HomePage({ locale }: { locale: Locale }) {
     <section className="capsuleBanner"><Image src="/images/editorial/time-capsule.png" alt="A sealed paper time capsule with lavender" fill sizes="100vw" /><div className="shell capsuleCopy"><p className="kicker">{ui.capsules}</p><h2>{t.capsuleTitle}</h2><p>{t.capsuleCopy}</p><Link className="button outline" href={localePath(locale, "/time-capsules")}>{ui.discover}</Link></div></section>
 
     <section id="collections" className="section shell"><div className="sectionHeading"><p className="kicker">{ui.collections}</p><h2>{t.collectionsTitle}</h2><p>{t.collectionsCopy}</p></div><div className="threeGrid collectionGrid">{t.collectionCards.map(([title, body], i) => <article key={title}><div className="collectionVisual"><Image className="collectionCardImage" src={collectionImages[i]} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" /></div><h3>{title}</h3><p>{body}</p><Link className="textLink" href={localePath(locale, `/${["stickers","themes","appearances"][i]}`)}>{ui.explore} →</Link></article>)}</div></section>
+
+    <RealMemories locale={locale}/>
 
     <section id="privacy" className="section privacySection"><div className="shell privacyEditorial"><figure className="privacyVisual"><Image src="/images/editorial/privacy-still-life.png" alt="" fill sizes="(max-width: 900px) 100vw, 48vw" /></figure><div className="privacyContent"><div className="sectionHeading left"><p className="kicker">{ui.privacy}</p><h2>{t.privacyTitle}</h2><p>{t.privacyCopy}</p><Link className="textLink privacyPolicyLink" href={localePath(locale,"/privacy")}>{t.nav[3]} →</Link></div><div className="privacyGrid">{t.privacyItems.map(([title, body], i) => <article key={title}><span className="privacyIcon"><PrivacyIcon index={i} /></span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div></div></div></section>
 
