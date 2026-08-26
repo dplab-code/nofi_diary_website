@@ -342,3 +342,16 @@
 .stickerIntro{width:100%;margin-block:0;background:#eadfd5;box-sizing:border-box;padding-inline:max(32px,calc((100vw - 1420px)/2));border-bottom:1px solid var(--line)}
 .explore-stickers .stickerLibraryCrop{aspect-ratio:.78}
 @media(max-width:700px){.stickerIntro{padding-inline:23px}.explore-stickers .exploreHeroVisual{padding:20px}}
+
+/* Keep informational chips outside the full-panel link hit area. */
+.differencePanel.differencePanel{position:relative;display:block;min-height:610px;height:100%;padding:38px 46px 42px;overflow:hidden;border:1px solid rgba(78,58,48,.2);border-radius:30px!important;box-shadow:inset 0 1px rgba(255,255,255,.78),inset 0 -1px rgba(92,67,52,.04),0 18px 34px rgba(62,43,34,.09),0 4px 9px rgba(62,43,34,.05)!important}
+.differencePanel.differenceTheme{background:radial-gradient(circle at 50% 29%,rgba(255,255,255,.95),transparent 31%),linear-gradient(145deg,#fffaf1 0,#f5eadb 100%)}
+.differencePanel.differenceAppearance{background:radial-gradient(circle at 52% 28%,rgba(255,255,255,.6),transparent 30%),linear-gradient(145deg,#e9e0ed 0,#d8c8df 100%)}
+.differencePanel>.differencePanelLink{position:absolute;z-index:2;inset:0;border-radius:inherit}
+.differencePanel>.differenceContent{position:relative;z-index:3;pointer-events:none}
+.differencePanel>.differenceContent ul{position:relative;z-index:4;pointer-events:auto;cursor:default}
+.differencePanel>.differenceExplore{pointer-events:none}
+.differencePanel:focus-within{box-shadow:0 0 0 3px #f8f2eb,0 0 0 5px #856d7d}
+.differencePanel:focus-within .differenceExplore{opacity:1;transform:none;background:rgba(255,255,255,.55)}
+@media(max-width:900px){.differencePanel.differencePanel{min-height:580px;padding:30px 28px 36px}}
+@media(max-width:700px){.differencePanel.differencePanel{min-height:560px;padding:28px 24px 32px;border-radius:28px!important}}
