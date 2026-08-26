@@ -361,10 +361,13 @@
 @media(max-width:900px){.realMemoryGrid{gap:24px}.realMemory:nth-child(even){margin-top:45px}.realMemoryBody{padding:30px 28px}.realMemoryBody h3{font-size:2.65rem}}
 @media(max-width:700px){.realMemoriesIntro{margin-bottom:45px}.realMemoriesIntro h2{font-size:3.55rem}.realMemoryGrid{grid-template-columns:1fr;gap:28px}.realMemory:nth-child(even){margin-top:0}.realMemory{border-radius:24px}.realMemoryBody{padding:27px 22px 25px}.realMemoryBody h3{font-size:2.75rem}.realMemoryNote{grid-template-columns:36px 1fr;gap:13px}.realMemoryNote>span{width:36px;height:36px}.realVoicePlayer{grid-template-columns:50px 1fr;padding:12px}.realVoicePlayer button{width:49px;height:49px}}
 
-/* Device framing keeps each original canvas complete and visually authoritative. */
-.realMemoryCanvas{margin:30px 30px 0;border:10px solid #292625;border-radius:38px;background:#f8efe3;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 22px 38px rgba(26,19,15,.28),0 5px 12px rgba(26,19,15,.18)}
-.realMemoryCanvas:before{content:"";position:absolute;z-index:3;top:10px;left:50%;width:70px;height:18px;border-radius:999px;background:#242120;box-shadow:inset 0 -1px rgba(255,255,255,.12);transform:translateX(-50%)}
-.realMemoryCanvas:after{content:"";position:absolute;z-index:3;bottom:8px;left:50%;width:78px;height:4px;border-radius:999px;background:rgba(45,40,37,.58);transform:translateX(-50%)}
+/* Each complete memory lives inside one device: canvas, copy, audio and details. */
+.realMemoryGrid{grid-template-columns:repeat(2,minmax(360px,520px));justify-content:center;gap:clamp(52px,7vw,105px)}
+.realMemory.realMemory{position:relative;overflow:hidden;padding:42px 0 31px;border:11px solid #292625;border-radius:54px;background:#f9f0e4;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 38px 65px rgba(0,0,0,.32),0 8px 18px rgba(0,0,0,.2)}
+.realMemory.realMemory:before{content:"";position:absolute;z-index:5;top:13px;left:50%;width:76px;height:18px;border-radius:999px;background:#171514;box-shadow:inset 0 -1px rgba(255,255,255,.12);transform:translateX(-50%)}
+.realMemory.realMemory:after{content:"";position:absolute;z-index:5;bottom:12px;left:50%;width:88px;height:5px;border-radius:999px;background:rgba(45,40,37,.64);transform:translateX(-50%)}
+.realMemoryCanvas{width:calc(100% - 24px);margin:0 12px;border:0;border-radius:32px 32px 12px 12px;background:#f8efe3;box-shadow:0 9px 22px rgba(70,47,34,.12)}
 .realMemoryCanvas img{filter:saturate(.98) contrast(1.01)}
-@media(max-width:900px){.realMemoryCanvas{margin:22px 22px 0;border-width:8px;border-radius:31px}.realMemoryCanvas:before{top:8px;width:58px;height:15px}}
-@media(max-width:700px){.realMemoryCanvas{margin:16px 16px 0;border-width:7px;border-radius:28px}.realMemoryCanvas:before{top:7px;width:52px;height:14px}.realMemoryCanvas:after{bottom:6px;width:64px}}
+.realMemoryBody{padding-bottom:20px}
+@media(max-width:900px){.realMemoryGrid{grid-template-columns:repeat(2,minmax(300px,1fr));gap:28px}.realMemory.realMemory{padding-top:36px;border-width:9px;border-radius:45px}.realMemory.realMemory:before{top:11px;width:64px;height:16px}.realMemoryCanvas{width:calc(100% - 16px);margin-inline:8px;border-radius:27px 27px 10px 10px}}
+@media(max-width:700px){.realMemoryGrid{grid-template-columns:minmax(0,520px)}.realMemory.realMemory{padding-top:34px;padding-bottom:27px;border-width:8px;border-radius:41px}.realMemory.realMemory:before{top:10px;width:58px;height:15px}.realMemory.realMemory:after{bottom:10px;width:72px}.realMemoryCanvas{width:calc(100% - 12px);margin-inline:6px;border-radius:25px 25px 9px 9px}}

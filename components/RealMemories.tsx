@@ -48,10 +48,10 @@ const translations: Record<Locale,Record<MemoryId,MemoryCopy>> = {
 };
 
 const memories: Array<{id:MemoryId;screen:string;audio?:string;duration:number;date:string;crop:[number,number,number,number]}> = [
-  {id:"eccoli",screen:"/memories/images/eccoli-screen.png",audio:"/memories/audio/eccoli.m4a",duration:14,date:"2026-08-18T17:46:54+02:00",crop:[26,246,928,1370]},
-  {id:"fuori",screen:"/memories/images/fuori-strada-screen.png",audio:"/memories/audio/fuori-strada.m4a",duration:23,date:"2026-08-17T12:56:40+02:00",crop:[58,286,964,1300]},
-  {id:"sancius",screen:"/memories/images/sancius-rex-screen.png",duration:0,date:"2026-08-20T14:16:06+02:00",crop:[78,286,924,1248]},
-  {id:"altrove",screen:"/memories/images/altrove-screen.png",audio:"/memories/audio/altrove.m4a",duration:26,date:"2026-08-17T21:57:47+02:00",crop:[102,334,896,1152]}
+  {id:"eccoli",screen:"/memories/images/eccoli-screen.png",audio:"/memories/audio/eccoli.m4a",duration:14,date:"2026-08-18T17:46:54+02:00",crop:[12,226,968,1412]},
+  {id:"fuori",screen:"/memories/images/fuori-strada-screen.png",audio:"/memories/audio/fuori-strada.m4a",duration:23,date:"2026-08-17T12:56:40+02:00",crop:[38,266,1004,1340]},
+  {id:"sancius",screen:"/memories/images/sancius-rex-screen.png",duration:0,date:"2026-08-20T14:16:06+02:00",crop:[58,266,964,1290]},
+  {id:"altrove",screen:"/memories/images/altrove-screen.png",audio:"/memories/audio/altrove.m4a",duration:26,date:"2026-08-17T21:57:47+02:00",crop:[82,314,936,1192]}
 ];
 
 function formatTime(value:number){const seconds=Math.max(0,Math.floor(value));return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,"0")}`;}
