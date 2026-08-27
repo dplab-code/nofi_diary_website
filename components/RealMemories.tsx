@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import type { Locale } from "@/lib/i18n";
 
 type MemoryId = "eccoli" | "fuori" | "sancius" | "altrove";
@@ -63,13 +64,13 @@ function VoicePlayer({src,duration,labels}:{src:string;duration:number;labels:{p
   return <div className="realVoicePlayer"><audio ref={audio} src={src} preload="metadata" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onEnded={()=>{setPlaying(false);setPosition(0);}} onTimeUpdate={event=>setPosition(event.currentTarget.currentTime)}/><button type="button" onClick={toggle} aria-label={playing?labels.pause:labels.play}>{playing?"Ⅱ":"▶"}</button><div><input aria-label={labels.play} type="range" min="0" max={duration} step="0.1" value={Math.min(position,duration)} onChange={event=>{const value=Number(event.target.value);if(audio.current){audio.current.currentTime=value;setPosition(value);}}}/><span><b>{formatTime(position)}</b><b>{formatTime(duration)}</b></span></div></div>;
 }
 
-function NativeMemoryScreen({screen,audio,labels}:{screen:string;audio?:string;labels:{play:string;pause:string}}){
-  const player=useRef<HTMLAudioElement>(null); const [playing,setPlaying]=useState(false);
+function NativeMemoryScreen({screen,audio,fragment,labels}:{screen:string;audio?:string;fragment:MemoryId;labels:{play:string;pause:string}}){
+  const player=useRef<HTMLAudioElement>(null); const trackedPlay=useRef(false); const [playing,setPlaying]=useState(false);
   const toggle=async()=>{if(!player.current)return;if(player.current.paused)await player.current.play();else player.current.pause();};
-  return <div className={`realMemoryScreenshot${audio?" hasAudio":""}`}><img src={screen} alt="" />{audio&&<><audio ref={player} src={audio} preload="metadata" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onEnded={()=>setPlaying(false)}/><button type="button" className={playing?"isPlaying":""} onClick={toggle} aria-label={playing?labels.pause:labels.play}/></>}</div>;
+  return <div className={`realMemoryScreenshot${audio?" hasAudio":""}`}><img src={screen} alt="" />{audio&&<><audio ref={player} src={audio} preload="metadata" onPlay={()=>{setPlaying(true);if(!trackedPlay.current){trackedPlay.current=true;track("gallery_interaction",{interaction_type:"audio_start",gallery:"real_memories",fragment});}}} onPause={()=>setPlaying(false)} onEnded={()=>setPlaying(false)}/><button type="button" className={playing?"isPlaying":""} onClick={toggle} aria-label={playing?labels.pause:labels.play}/></>}</div>;
 }
 
 export function RealMemories({locale}:{locale:Locale}){
   const section=sectionCopy[locale]; const localized=translations[locale];
-  return <section className="section realMemories" aria-labelledby="real-memories-title"><div className="shell"><header className="realMemoriesIntro"><p className="kicker">{section.kicker}</p><h2 id="real-memories-title">{section.title}</h2><p>{section.body}</p></header><div className="realMemoryGrid">{memories.map((memory,index)=>{const item=localized[memory.id];return <article className={`realMemory realMemoryNative realMemory${index}`} key={memory.id} aria-label={item.title}><NativeMemoryScreen screen={memory.screen} audio={memory.audio} labels={section}/>{locale!=="it"&&<details className="realMemoryTranslation"><summary>{section.note}</summary><h3>{item.title}</h3>{item.note.split("\n").map(line=><p key={line}>{line}</p>)}<footer><span>{section.atmosphere}</span><b>{item.atmosphere}</b></footer></details>}</article>;})}</div></div></section>;
+  return <section className="section realMemories" aria-labelledby="real-memories-title"><div className="shell"><header className="realMemoriesIntro"><p className="kicker">{section.kicker}</p><h2 id="real-memories-title">{section.title}</h2><p>{section.body}</p></header><div className="realMemoryGrid">{memories.map((memory,index)=>{const item=localized[memory.id];return <article className={`realMemory realMemoryNative realMemory${index}`} key={memory.id} aria-label={item.title}><NativeMemoryScreen screen={memory.screen} audio={memory.audio} fragment={memory.id} labels={section}/>{locale!=="it"&&<details className="realMemoryTranslation"><summary>{section.note}</summary><h3>{item.title}</h3>{item.note.split("\n").map(line=><p key={line}>{line}</p>)}<footer><span>{section.atmosphere}</span><b>{item.atmosphere}</b></footer></details>}</article>;})}</div></div></section>;
 }

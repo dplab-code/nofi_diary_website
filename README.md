@@ -53,6 +53,12 @@ npm run build
 
 The project should always build successfully before deployment.
 
+## Analytics and observability
+
+The public website uses Vercel Web Analytics and Vercel Speed Insights for aggregated product discovery, selected conversion-intent events and real-user performance. No behavioural analytics are introduced into the NoFi app.
+
+See [docs/ANALYTICS_MODEL.md](docs/ANALYTICS_MODEL.md) for the events registry, UTM convention, KPI definitions, privacy boundary and production activation checklist. The future private administrative domain is seeded under [project-hub](project-hub/README.md); it is not a public website route.
+
 ---
 
 ## Environment Variables

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { isPublicRelease } from "@/lib/site-release";
 import "./globals.css";
 
@@ -28,5 +30,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><body><Script id="locale-lang" strategy="beforeInteractive">{`(function(){var p=location.pathname.split('/')[1];if(['it','fr','es','de'].includes(p))document.documentElement.lang=p})()`}</Script>{children}</body></html>;
+  return <html lang="en" suppressHydrationWarning><body><Script id="locale-lang" strategy="beforeInteractive">{`(function(){var p=location.pathname.split('/')[1];if(['it','fr','es','de'].includes(p))document.documentElement.lang=p})()`}</Script>{children}<Analytics /><SpeedInsights /></body></html>;
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MemoryJourney } from "@/components/MemoryJourney";
 import { RealMemories } from "@/components/RealMemories";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { TrackedStoreLink } from "@/components/TrackedStoreLink";
 import { copy, Locale, localePath } from "@/lib/i18n";
 
 const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
@@ -56,7 +57,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   return <main>
     <SiteHeader locale={locale} nav={t.nav} />
     <section className="hero" id="top"><div className="shell heroGrid">
-      <div className="heroCopy"><p className="kicker">{ui.hero}</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><a className="playBadge" href={playUrl} aria-label={ui.play}><GooglePlayIcon /><span><small>GET IT ON</small><strong>Google Play</strong></span></a><Link className="button heroSecondary" href="#how">{t.seeHow}</Link></div><p className="micro heroAssurance"><NoAccountIcon /><span>{t.micro}</span></p></div>
+      <div className="heroCopy"><p className="kicker">{ui.hero}</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><TrackedStoreLink className="playBadge" href={playUrl} placement="hero" variant="google_play_badge" aria-label={ui.play}><GooglePlayIcon /><span><small>GET IT ON</small><strong>Google Play</strong></span></TrackedStoreLink><Link className="button heroSecondary" href="#how">{t.seeHow}</Link></div><p className="micro heroAssurance"><NoAccountIcon /><span>{t.micro}</span></p></div>
       <figure className="heroVisual"><Image src="/images/editorial/hero-diary-cutout-v3.webp" alt="An open handmade diary beside a private journal app" fill priority sizes="(max-width: 900px) 100vw, 62vw" /></figure>
     </div></section>
 
@@ -83,7 +84,7 @@ export function HomePage({ locale }: { locale: Locale }) {
     <section className="section compareSection"><div className="shell compareGrid"><div className="compareIntro"><p className="kicker">{ui.different}</p><h2>{t.compareTitle}</h2><div className="compareLogo"><Image src="/images/nofi-logo.png" alt="NoFi Diary" fill sizes="(max-width: 1050px) 280px, 24vw" /></div></div><div className="compareBook"><div className="comparePage comparePageTypical"><h3>{t.typical}</h3>{t.comparison.map(([a]) => <p key={a}><span className="compareMark compareMarkTypical" aria-hidden="true">×</span>{a}</p>)}</div><div className="comparePage comparePageNofi"><h3>{t.nofi}</h3>{t.comparison.map(([,b]) => <p key={b}><span className="compareMark compareMarkNofi" aria-hidden="true">✓</span>{b}</p>)}</div><span className="compareRibbon" aria-hidden="true" /></div></div></section>
 
     <section id="faq" className="section shell faqGrid"><div><p className="kicker">{ui.questions}</p><h2>{t.faqTitle}</h2></div><div className="faqList">{t.faqs.map(([q,a]) => <details key={q}><summary>{q}<span>＋</span></summary><p>{a}</p></details>)}</div></section>
-    <section className="finalCta"><div className="shell"><p className="kicker">{ui.start}</p><h2>{t.finalTitle}</h2><p>{t.finalCopy}</p><a className="button light" href={playUrl}>{ui.play}</a></div></section>
+    <section className="finalCta"><div className="shell"><p className="kicker">{ui.start}</p><h2>{t.finalTitle}</h2><p>{t.finalCopy}</p><TrackedStoreLink className="button light" href={playUrl} placement="final_cta" variant="button">{ui.play}</TrackedStoreLink></div></section>
     <SiteFooter locale={locale} text={t.footer} nav={t.nav} />
   </main>;
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
+import { TrackedStoreLink } from "@/components/TrackedStoreLink";
 import { Locale, localeNames, localePath, locales } from "@/lib/i18n";
 import { getLegalContent } from "@/content/legal";
 
@@ -54,7 +55,7 @@ export function SiteHeader({ locale, nav, manifesto = false, currentPath }: { lo
           const next = event.target.value as Locale;
           window.location.href = localePath(next, currentPath ?? (manifesto ? "/manifesto" : ""));
         }}>{locales.map(item => <option key={item} value={item}>{localeNames[item]}</option>)}</select>
-        <a className="button dark headerCta" href={process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary"} aria-label={ui.getApp}>{ui.getApp}</a>
+        <TrackedStoreLink className="button dark headerCta" href={process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary"} placement="header" variant="button" aria-label={ui.getApp}>{ui.getApp}</TrackedStoreLink>
       </div>
     </div>
   </header>;
