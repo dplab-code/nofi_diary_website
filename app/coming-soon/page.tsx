@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { redirect } from "next/navigation";
-import { BrandMark } from "@/components/BrandMark";
 import { isComingSoon } from "@/lib/coming-soon";
 
 export const metadata: Metadata = {
@@ -26,7 +26,15 @@ export default function ComingSoonPage() {
       <div className="comingSoonGlow" aria-hidden="true" />
       <section className="comingSoonContent" aria-labelledby="coming-soon-title">
         <div className="comingSoonBrand" aria-hidden="true">
-          <BrandMark />
+          <Image
+            className="brandMark"
+            src="/images/nofi-logo.png"
+            alt=""
+            width={210}
+            height={210}
+            sizes="(max-width: 700px) 160px, 210px"
+            priority
+          />
         </div>
         <p className="comingSoonKicker">NoFi</p>
         <h1 id="coming-soon-title">Keep what mattered.</h1>
