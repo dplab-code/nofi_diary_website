@@ -402,3 +402,9 @@
 .realMemoryTranslation h3{margin:22px 0 12px;font-size:2rem}
 .realMemoryTranslation p{margin:.25em 0;color:#5f5047;font:italic 1rem/1.6 var(--sans)}
 .realMemoryTranslation footer{margin-top:20px}
+
+/* Keep every complete memory visible within a single phone viewport. */
+@media(max-width:700px){
+  .realMemoryGrid{justify-items:center;gap:clamp(36px,7svh,58px)}
+  .realMemory.realMemoryNative{width:min(calc(100vw - 56px),26svh);border-radius:clamp(20px,4.8svh,34px);box-shadow:0 0 0 5px #292625,0 0 0 9px rgba(255,255,255,.96),0 24px 48px rgba(0,0,0,.32)}
+}

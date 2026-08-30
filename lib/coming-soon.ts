@@ -1,2 +1,2 @@
-// Keep unreleased deployments closed unless the full site is explicitly enabled.
-export const isComingSoon = process.env.COMING_SOON !== "false";
+// Candidate deployments show the full site unless the holding page is explicitly enabled.
+export const isComingSoon = process.env.COMING_SOON === "true";
