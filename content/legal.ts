@@ -4,7 +4,7 @@ export type LegalDocumentId = "privacy" | "terms" | "disclaimer";
 
 export const legalConfig = {
   legalName: process.env.NEXT_PUBLIC_LEGAL_NAME || "NoFi Diary",
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact details published with the app",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "privacy@nofidiary.com",
   legalContactDetails: process.env.NEXT_PUBLIC_LEGAL_CONTACT_DETAILS || "Italy",
 } as const;
 
