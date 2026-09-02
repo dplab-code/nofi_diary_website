@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ComingSoonHeader } from "./ComingSoonHeader";
 import { FragmentAudio } from "./FragmentAudio";
+import { DocumentLanguage } from "./DocumentLanguage";
 import { comingSoonCopy, fragments } from "./content";
 import styles from "./coming-soon.module.css";
 import { isComingSoon } from "@/lib/coming-soon";
-import { isLocale, localeNames, localePath, locales, type Locale } from "@/lib/i18n";
+import { isLocale, localePath, locales, type Locale } from "@/lib/i18n";
 
 function localeFrom(value: string | string[] | undefined): Locale {
   const candidate = Array.isArray(value) ? value[0] : value;
@@ -31,12 +33,8 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
   if (!isComingSoon) redirect("/");
   const locale = localeFrom((await searchParams).locale);
   const copy = comingSoonCopy[locale];
-  return <main className={styles.page}>
-    <header className={styles.header}>
-      <Link className={styles.brand} href={localePath(locale)} aria-label="NoFi Diary — Home"><Image src="/images/nofi-logo.png" alt="" width={52} height={52} priority /><span>NoFi Diary</span></Link>
-      <nav className={styles.primaryNav} aria-label={copy.navigation}><a href="#fragments">{copy.fragmentsLink}</a><Link className={styles.privacyLink} href={localePath(locale, "/privacy")}>{copy.privacy}</Link></nav>
-      <nav className={styles.languages} aria-label={copy.languageLabel}>{locales.map(item => <Link key={item} href={localePath(item)} aria-current={item === locale ? "page" : undefined} hrefLang={item}>{localeNames[item]}</Link>)}</nav>
-    </header>
+  return <><DocumentLanguage locale={locale} /><main className={styles.page}>
+    <ComingSoonHeader locale={locale} />
     <section className={styles.hero} aria-labelledby="coming-soon-title">
       <div className={styles.heroCopy}><p className={styles.eyebrow}>NoFi Diary · Android</p><h1 id="coming-soon-title">{copy.heroTitle}</h1><p className={styles.status}>{copy.comingSoon}</p><p className={styles.promise}>{copy.promise}</p><a className={styles.discover} href="#fragments">{copy.discover}<span aria-hidden="true">↓</span></a></div>
       <div className={styles.heroObject} aria-hidden="true"><figure className={styles.heroPhoto}><Image src="/images/coming-soon/hero-memory.webp" alt="" fill priority sizes="(max-width: 760px) 96vw, 48vw" /></figure><p className={styles.heroNote}>{copy.heroNote}</p><div className={styles.stamp}><span>NOFI</span><b>{copy.stamp[0]}<br />{copy.stamp[1]}</b></div></div>
@@ -47,5 +45,5 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
     </section>
     <aside className={styles.foundNote} aria-label={copy.privateTitle}><Image src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 900px) 96vw, 980px" /><div><p>{copy.privateTitle}</p><span>{copy.privateBody}</span></div></aside>
     <footer className={styles.footer}><div><strong>NoFi Diary</strong><p>{copy.footerLine}</p></div><Link className={styles.footerPrivacy} href={localePath(locale, "/privacy")}>{copy.privacy}</Link><span>© 2026 NoFi Diary</span></footer>
-  </main>;
+  </main></>;
 }
