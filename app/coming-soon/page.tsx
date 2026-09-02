@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ComingSoonHeader } from "./ComingSoonHeader";
-import { FragmentAudio } from "./FragmentAudio";
 import { DocumentLanguage } from "./DocumentLanguage";
-import { comingSoonCopy, fragments } from "./content";
+import { FragmentAudio } from "./FragmentAudio";
+import { HoldToRemember } from "./HoldToRemember";
+import { comingSoonCopy } from "./content";
 import styles from "./coming-soon.module.css";
 import { isComingSoon } from "@/lib/coming-soon";
 import { isLocale, localePath, locales, type Locale } from "@/lib/i18n";
@@ -36,14 +37,24 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
   return <><DocumentLanguage locale={locale} /><main className={styles.page}>
     <ComingSoonHeader locale={locale} />
     <section className={styles.hero} aria-labelledby="coming-soon-title">
-      <div className={styles.heroCopy}><p className={styles.eyebrow}>NoFi Diary · Android</p><h1 id="coming-soon-title">{copy.heroTitle}</h1><p className={styles.status}>{copy.comingSoon}</p><p className={styles.promise}>{copy.promise}</p><a className={styles.discover} href="#fragments">{copy.discover}<span aria-hidden="true">↓</span></a></div>
-      <div className={styles.heroObject} aria-hidden="true"><figure className={styles.heroPhoto}><Image src="/images/coming-soon/hero-memory.webp" alt="" fill priority sizes="(max-width: 760px) 96vw, 48vw" /></figure><p className={styles.heroNote}>{copy.heroNote}</p><div className={styles.stamp}><span>NOFI</span><b>{copy.stamp[0]}<br />{copy.stamp[1]}</b></div></div>
+      <div className={styles.heroCopy}><p className={styles.eyebrow}>NoFi Diary</p><h1 id="coming-soon-title">{copy.heroTitle}</h1><p className={styles.heroSubline}>{copy.heroSubline}</p><div className={styles.arrival}><span>{copy.almostReady}</span><small>{copy.platform}</small></div></div>
+      <HoldToRemember label={copy.hold} confirmation={copy.kept}>
+        <span className={styles.memoryDate}>{copy.memoryDate}</span>
+        <span className={styles.heroPhoto}><Image src="/images/coming-soon/fragment-001-road-to-sea.webp" alt="" fill priority sizes="(max-width: 760px) 92vw, 46vw" /></span>
+        <span className={styles.memoryWave} aria-hidden="true">{Array.from({ length: 28 }, (_, index) => <i key={index} />)}</span>
+        <span className={styles.memoryWords}>{copy.heroMemory}</span><time className={styles.memoryTime}>{copy.memoryTime}</time>
+      </HoldToRemember>
     </section>
+    <section className={styles.positioning} aria-labelledby="position-title"><span aria-hidden="true">♡</span><h2 id="position-title">{copy.positionTitle}</h2><p>{copy.positionBody}</p></section>
     <section id="fragments" className={styles.fragments} aria-labelledby="fragments-title">
-      <header className={styles.sectionIntro}><p>{copy.foundLabel}</p><h2 id="fragments-title">{copy.foundTitle}</h2><span>{copy.foundIntro}</span></header>
-      <div className={styles.fragmentList}>{fragments.map((fragment, index) => { const localized = fragment.copy[locale]; return <article className={`${styles.fragment} ${styles[`fragment${index + 1}`]}`} key={fragment.id}><div className={styles.fragmentImage}><Image src={fragment.image} alt={localized.alt} fill sizes="(max-width: 760px) 92vw, 48vw" /></div><div className={styles.fragmentPaper}><p className={styles.fragmentNumber}>{copy.fragment} {fragment.id}</p><h3>{localized.title}</h3>{localized.text.map(line => <p key={line}>{line}</p>)}{fragment.audio && <FragmentAudio src={fragment.audio} duration={fragment.duration ?? 0} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment={fragment.slug} />}</div></article>; })}<div className={styles.nextFragment} aria-label={copy.moreSoon}><span>004</span><p>{copy.moreSoon}</p></div></div>
+      <header className={styles.sectionIntro}><p>{copy.fragmentsEyebrow}</p><h2 id="fragments-title">{copy.fragmentsTitle}</h2></header>
+      <div className={styles.fragmentShelf}>
+        <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" /></article>
+        <article className={styles.photoFragment}><div><Image src="/images/coming-soon/fragment-002-dolphins.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 86vw, 30vw" /></div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span></article>
+        <article className={styles.capsuleFragment}><span className={styles.capsuleString} aria-hidden="true" /><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong><i aria-hidden="true">✦</i></article>
+      </div>
     </section>
-    <aside className={styles.foundNote} aria-label={copy.privateTitle}><Image src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 900px) 96vw, 980px" /><div><p>{copy.privateTitle}</p><span>{copy.privateBody}</span></div></aside>
-    <footer className={styles.footer}><div><strong>NoFi Diary</strong><p>{copy.footerLine}</p></div><Link className={styles.footerPrivacy} href={localePath(locale, "/privacy")}>{copy.privacy}</Link><span>© 2026 NoFi Diary</span></footer>
+    <section className={styles.ownership} aria-labelledby="ownership-title"><div><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></section>
+    <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><Link className={styles.footerPrivacy} href={localePath(locale, "/privacy")}>{copy.privacy}</Link><span>© 2026</span></footer>
   </main></>;
 }
