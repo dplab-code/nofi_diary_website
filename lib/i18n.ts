@@ -3,7 +3,9 @@ export type Locale = (typeof locales)[number];
 
 export const localeNames: Record<Locale, string> = { en: "EN", it: "IT", fr: "FR", es: "ES", de: "DE" };
 export const isLocale = (value: string): value is Locale => locales.includes(value as Locale);
-export const localePath = (locale: Locale, path = "") => `${locale === "en" ? "" : `/${locale}`}${path || "/"}`;
+export const localePath = (locale: Locale, path = "") => path
+  ? `${locale === "en" ? "" : `/${locale}`}${path}`
+  : locale === "en" ? "/" : `/${locale}`;
 
 type Copy = {
   nav: string[]; heroTitle: string; heroLead: string; getApp: string; seeHow: string; micro: string;

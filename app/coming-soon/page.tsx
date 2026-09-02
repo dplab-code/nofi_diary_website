@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ComingSoonHeader } from "./ComingSoonHeader";
 import { DocumentLanguage } from "./DocumentLanguage";
@@ -10,31 +9,46 @@ import { comingSoonCopy } from "./content";
 import styles from "./coming-soon.module.css";
 import { isComingSoon } from "@/lib/coming-soon";
 import { isLocale, localePath, locales, type Locale } from "@/lib/i18n";
+import { ComingSoonAnalytics } from "./ComingSoonAnalytics";
+import { TrackedComingSoonLink } from "./TrackedComingSoonLink";
 
 function localeFrom(value: string | string[] | undefined): Locale {
   const candidate = Array.isArray(value) ? value[0] : value;
   return candidate && isLocale(candidate) ? candidate : "en";
 }
 
-export async function generateMetadata({ searchParams }: { searchParams: Promise<{ locale?: string | string[] }> }): Promise<Metadata> {
-  const locale = localeFrom((await searchParams).locale);
+const seoDescriptions: Record<Locale, string> = {
+  en: "NoFi Diary is a private, offline diary for photographs, voice notes and memories. Coming soon on Android.",
+  it: "NoFi Diary è un diario privato e offline per fotografie, note vocali e ricordi. Prossimamente su Android.",
+  fr: "NoFi Diary est un journal privé et hors ligne pour vos photos, vos notes vocales et vos souvenirs. Bientôt sur Android.",
+  es: "NoFi Diary es un diario privado y sin conexión para fotografías, notas de voz y recuerdos. Muy pronto en Android.",
+  de: "NoFi Diary ist ein privates Offline-Tagebuch für Fotos, Sprachnotizen und Erinnerungen. Demnächst für Android."
+};
+
+export function comingSoonMetadata(locale: Locale, indexable: boolean): Metadata {
   const copy = comingSoonCopy[locale];
   const canonical = localePath(locale);
   const languages = Object.fromEntries(locales.map(item => [item, localePath(item)]));
   return {
-    title: { absolute: copy.metaTitle }, description: copy.metaDescription,
+    title: { absolute: copy.metaTitle }, description: seoDescriptions[locale],
     alternates: { canonical, languages: { ...languages, "x-default": "/" } },
-    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
-    openGraph: { title: copy.metaTitle, description: copy.socialDescription, type: "website", url: canonical, images: [{ url: "/images/coming-soon/hero-memory.webp", alt: copy.socialImageAlt }] },
-    twitter: { card: "summary_large_image", title: copy.metaTitle, description: copy.socialDescription, images: ["/images/coming-soon/hero-memory.webp"] },
+    robots: { index: indexable, follow: indexable, googleBot: { index: indexable, follow: indexable } },
+    openGraph: { siteName: "NoFi Diary", title: copy.metaTitle, description: copy.socialDescription, type: "website", locale, url: canonical, images: [{ url: "/coming-soon/opengraph-image", width: 1200, height: 630, alt: copy.socialImageAlt }] },
+    twitter: { card: "summary_large_image", title: copy.metaTitle, description: copy.socialDescription, images: ["/coming-soon/opengraph-image"] },
   };
 }
 
-export default async function ComingSoonPage({ searchParams }: { searchParams: Promise<{ locale?: string | string[] }> }) {
-  if (!isComingSoon) redirect("/");
-  const locale = localeFrom((await searchParams).locale);
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ locale?: string | string[] }> }): Promise<Metadata> {
+  return comingSoonMetadata(localeFrom((await searchParams).locale), false);
+}
+
+export function ComingSoonExperience({ locale }: { locale: Locale }) {
   const copy = comingSoonCopy[locale];
-  return <><DocumentLanguage locale={locale} /><main className={styles.page}>
+  const structuredData = [
+    { "@context": "https://schema.org", "@type": "Organization", name: "NoFi Diary", url: "https://nofidiary.com", logo: "https://nofidiary.com/images/nofi-logo.png" },
+    { "@context": "https://schema.org", "@type": "WebSite", name: "NoFi Diary", url: "https://nofidiary.com", inLanguage: locales }
+  ];
+  return <><DocumentLanguage locale={locale} /><ComingSoonAnalytics locale={locale} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} /><main className={styles.page}>
     <ComingSoonHeader locale={locale} />
     <section className={styles.hero} aria-labelledby="coming-soon-title">
       <div className={styles.heroCopy}><p className={styles.eyebrow}>NoFi Diary</p><h1 id="coming-soon-title">{copy.heroTitle}</h1><p className={styles.heroSubline}>{copy.heroSubline}</p><div className={styles.arrival}><span>{copy.almostReady}</span><small>{copy.platform}</small></div></div>
@@ -55,6 +69,11 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
       </div>
     </section>
     <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
-    <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><Link className={styles.footerPrivacy} href={localePath(locale, "/privacy")}>{copy.privacy}</Link><span>© 2026</span></footer>
+    <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><TrackedComingSoonLink className={styles.footerPrivacy} href={localePath(locale, "/privacy")} event="privacy_open" value="footer">{copy.privacy}</TrackedComingSoonLink><span>© 2026</span></footer>
   </main></>;
+}
+
+export default async function ComingSoonPage({ searchParams }: { searchParams: Promise<{ locale?: string | string[] }> }) {
+  if (!isComingSoon) redirect("/");
+  return <ComingSoonExperience locale={localeFrom((await searchParams).locale)} />;
 }
