@@ -26,7 +26,7 @@ export const fragments: Array<{ id:string; slug:string; image:string; audio?:str
     es:{title:"Entonces el agua se movió",text:["Durante media hora, solo azul.","Luego una aleta. Otra. Y tres pequeñas sombras que no se separaban."],alt:"El recuerdo de unos delfines apareciendo en el mar, creado con NoFi"},
     de:{title:"Dann bewegte sich das Wasser",text:["Eine halbe Stunde lang nur Blau.","Dann eine Flosse. Noch eine. Und drei kleine Schatten, die ganz nah blieben."],alt:"Eine Erinnerung an Delfine im Meer, gestaltet mit NoFi"},
   }},
-  {id:"003",slug:"altrove",image:"/memories/screens/altrove-full.jpeg",audio:"/memories/audio/altrove.m4a",duration:26,copy:{
+  {id:"003",slug:"altrove",image:"/images/coming-soon/fragment-003-elsewhere.webp",audio:"/memories/audio/altrove.m4a",duration:26,copy:{
     en:{title:"Elsewhere, for a moment",text:["A red giant stood in the dark while a low note filled the room.","Portugal disappeared. We stayed exactly where we were."],alt:"A surreal evening memory made in NoFi"},
     it:{title:"Altrove, per un momento",text:["Un gigante rosso stava nel buio mentre un suono profondo riempiva la stanza.","Il Portogallo è scomparso. Noi siamo rimasti esattamente lì."],alt:"Un ricordo surreale della sera creato con NoFi"},
     fr:{title:"Ailleurs, le temps d’un instant",text:["Un géant rouge se tenait dans l’obscurité tandis qu’une note profonde emplissait la pièce.","Le Portugal a disparu. Nous sommes restés exactement là."],alt:"Un souvenir surréaliste du soir créé dans NoFi"},
