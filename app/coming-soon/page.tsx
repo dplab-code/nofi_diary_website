@@ -45,13 +45,13 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
         <span className={styles.memoryWords}>{copy.heroMemory}</span><time className={styles.memoryTime}>{copy.memoryTime}</time>
       </HoldToRemember>
     </section>
-    <section className={styles.positioning} aria-labelledby="position-title"><div className={styles.positionInner}><span className={styles.pencilMark} aria-hidden="true" /><h2 id="position-title">{copy.positionTitle}</h2><p>{copy.positionBody}</p></div></section>
+    <section className={styles.positioning} aria-labelledby="position-title"><div className={styles.positionInner}><h2 id="position-title">{copy.positionTitle}</h2><p>{copy.positionBody}</p></div></section>
     <section id="fragments" className={styles.fragments} aria-labelledby="fragments-title">
       <header className={styles.sectionIntro}><p>{copy.fragmentsEyebrow}</p><h2 id="fragments-title">{copy.fragmentsTitle}</h2></header>
       <div className={styles.fragmentShelf}>
         <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><span className={styles.voiceNote}>{copy.voiceNote}</span><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} gain={2.25} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" /></article>
-        <article className={styles.photoFragment}><div><Image src="/images/coming-soon/fragment-002-dolphins.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 86vw, 30vw" /></div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span></article>
-        <article className={styles.capsuleFragment}><span className={styles.capsuleString} aria-hidden="true" /><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong><i aria-hidden="true">✦</i></article>
+        <article className={styles.photoFragment}><div><Image src="/images/coming-soon/dolphins-instant-v2.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 88vw, 32vw" /></div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span></article>
+        <article className={styles.capsuleFragment}><div className={styles.capsuleVisual}><Image src="/images/coming-soon/time-capsule-envelope-v2.webp" alt="" fill sizes="(max-width: 700px) 76vw, 27vw" /></div><div className={styles.capsuleTag}><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong></div></article>
       </div>
     </section>
     <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
