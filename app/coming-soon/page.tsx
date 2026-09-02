@@ -45,16 +45,16 @@ export default async function ComingSoonPage({ searchParams }: { searchParams: P
         <span className={styles.memoryWords}>{copy.heroMemory}</span><time className={styles.memoryTime}>{copy.memoryTime}</time>
       </HoldToRemember>
     </section>
-    <section className={styles.positioning} aria-labelledby="position-title"><span aria-hidden="true">♡</span><h2 id="position-title">{copy.positionTitle}</h2><p>{copy.positionBody}</p></section>
+    <section className={styles.positioning} aria-labelledby="position-title"><div className={styles.positionInner}><span className={styles.pencilMark} aria-hidden="true" /><h2 id="position-title">{copy.positionTitle}</h2><p>{copy.positionBody}</p></div></section>
     <section id="fragments" className={styles.fragments} aria-labelledby="fragments-title">
       <header className={styles.sectionIntro}><p>{copy.fragmentsEyebrow}</p><h2 id="fragments-title">{copy.fragmentsTitle}</h2></header>
       <div className={styles.fragmentShelf}>
-        <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" /></article>
+        <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><span className={styles.voiceNote}>{copy.voiceNote}</span><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} gain={2.25} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" /></article>
         <article className={styles.photoFragment}><div><Image src="/images/coming-soon/fragment-002-dolphins.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 86vw, 30vw" /></div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span></article>
         <article className={styles.capsuleFragment}><span className={styles.capsuleString} aria-hidden="true" /><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong><i aria-hidden="true">✦</i></article>
       </div>
     </section>
-    <section className={styles.ownership} aria-labelledby="ownership-title"><div><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></section>
+    <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
     <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><Link className={styles.footerPrivacy} href={localePath(locale, "/privacy")}>{copy.privacy}</Link><span>© 2026</span></footer>
   </main></>;
 }
