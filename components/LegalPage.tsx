@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getLegalContent, type LegalDocumentId } from "@/content/legal";
 import { copy, localePath, locales, type Locale } from "@/lib/i18n";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { BrandMark } from "@/components/BrandMark";
+import { ComingSoonHeader } from "@/app/coming-soon/ComingSoonHeader";
 import { isComingSoon } from "@/lib/coming-soon";
 
 const documentIds: LegalDocumentId[] = ["privacy", "terms", "disclaimer"];
@@ -14,7 +14,7 @@ export function legalMetadata(locale: Locale, id: LegalDocumentId): Metadata {
 }
 export function LegalPage({ locale, documentId }: { locale: Locale; documentId: LegalDocumentId }) {
   const siteCopy = copy(locale); const legal = getLegalContent(locale); const document = legal.documents[documentId];
-  return <div className="legalPage">{isComingSoon ? <header className="legalComingSoonHeader shell" aria-label="NoFi Diary"><BrandMark /><span>NoFi Diary</span></header> : <SiteHeader locale={locale} nav={siteCopy.nav} currentPath={`/${documentId}`} />}<main id="top" className="legalMain">
+  return <div className="legalPage">{isComingSoon ? <ComingSoonHeader locale={locale} privacyPage={documentId === "privacy"} /> : <SiteHeader locale={locale} nav={siteCopy.nav} currentPath={`/${documentId}`} />}<main id="top" className="legalMain">
     <header className="legalHero"><p className="kicker">{legal.legalLabel}</p><h1>{document.title}</h1><p className="legalIntroduction">{document.introduction}</p><p className="legalUpdated"><time dateTime={document.lastUpdated}>{document.updatedLabel}: {document.lastUpdated}</time></p></header>
     <nav className="legalContents" aria-label={`${document.title} contents`}><ol>{document.sections.map((section, index) => <li key={section.heading}><a href={`#${documentId}-${index}`}>{section.heading}</a></li>)}</ol></nav>
     <div className="legalBody">{document.sections.map((section, index) => <section id={`${documentId}-${index}`} key={section.heading} aria-labelledby={`${documentId}-${index}-title`}><h2 id={`${documentId}-${index}-title`}>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}<a className="backToTop" href="#top">↑</a></section>)}</div>
