@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ComingSoonHeader } from "./ComingSoonHeader";
 import { DocumentLanguage } from "./DocumentLanguage";
@@ -11,6 +12,9 @@ import { isComingSoon } from "@/lib/coming-soon";
 import { isLocale, localePath, locales, type Locale } from "@/lib/i18n";
 import { ComingSoonAnalytics } from "./ComingSoonAnalytics";
 import { TrackedComingSoonLink } from "./TrackedComingSoonLink";
+import { findPublishedFragment } from "@/content/fragments";
+
+const voiceFragment = findPublishedFragment("002-the-song-kept-playing");
 
 function localeFrom(value: string | string[] | undefined): Locale {
   const candidate = Array.isArray(value) ? value[0] : value;
@@ -63,7 +67,7 @@ export function ComingSoonExperience({ locale }: { locale: Locale }) {
     <section id="fragments" className={styles.fragments} aria-labelledby="fragments-title">
       <header className={styles.sectionIntro}><p>{copy.fragmentsEyebrow}</p><h2 id="fragments-title">{copy.fragmentsTitle}</h2></header>
       <div className={styles.fragmentShelf}>
-        <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><span className={styles.voiceNote}>{copy.voiceNote}</span><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} gain={2.25} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" /></article>
+        <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><span className={styles.voiceNote}>{copy.voiceNote}</span><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} gain={2.25} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" />{voiceFragment && <Link className={styles.fragmentLink} href={localePath(locale, `/fragments/${voiceFragment.slug}`)}>{voiceFragment.copy[locale].title}<span aria-hidden="true">→</span></Link>}</article>
         <article className={styles.photoFragment}><div><Image src="/images/coming-soon/dolphins-instant-v2.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 88vw, 32vw" /></div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span></article>
         <article className={styles.capsuleFragment}><div className={styles.capsuleVisual}><Image src="/images/coming-soon/time-capsule-envelope-v2.webp" alt="" fill sizes="(max-width: 700px) 76vw, 27vw" /></div><div className={styles.capsuleTag}><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong></div></article>
       </div>
