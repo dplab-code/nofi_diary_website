@@ -5,7 +5,7 @@ The first month is prepared as static repository content; no CMS is required.
 | Moment | Fragment | State | Editorial role |
 | --- | --- | --- | --- |
 | Day 1 — 2026-09-02 | 001 — Before we reached the sea | Published | Establish the visual and emotional language; canonical shareable URL. |
-| Day 7–10 — 2026-09-10 | 002 — The song kept playing | Draft | Introduce voice and the R&B road-memory narrative. |
+| Day 7–10 — 2026-09-10 | 002 — The song kept playing | Published | Introduce voice and the R&B road-memory narrative. |
 | Day 18–20 — 2026-09-20 | 003 — Three small shadows | Draft | Return with a photographic observation. |
 | Day 30 — 2026-10-02 | 004 — Some memories have a sound | Draft | State the role of sound without turning it into a feature announcement. |
 
@@ -21,3 +21,14 @@ After the first month, publish one Fragment every two to four weeks. The rhythm 
 6. Verify its localized URLs, social preview, analytics event and sitemap entry on the real domain.
 
 Automatic scheduling should be introduced only when manual commit + deploy becomes an operational burden.
+
+## Fragment 002 publication record
+
+Fragment 002 was promoted to production on 2026-09-10 at commit `a0bb122`.
+
+- Canonical URL: `https://nofidiary.com/fragments/002-the-song-kept-playing`
+- Approved visual: `public/images/coming-soon/fragment-002-draft-canvas-v1.png`
+- Rendering contract: the approved 941 × 1672 canvas is served without Next.js image optimization or recompression. Narrow viewports scale the complete canvas proportionally; its internal composition must not reflow.
+- Interaction contract: transparent hotspots preserve navigation, locale links, Privacy links and voice-note playback without adding visible elements to the approved canvas.
+- Accessibility and discovery: localized semantic copy remains available in the document while the decorative canvas uses an empty alternative attribute to avoid duplicate screen-reader output.
+- Release validation: production build passed; the public route returns HTTP 200, declares its self-canonical, allows `index, follow` and appears in the generated sitemap.

@@ -15,6 +15,12 @@ Baseline frozen from `main` at commit `6519d38` on 2026-09-02. Subsequent work b
 
 Audio playback advances and exposes play/pause state correctly. Touch targets are at least 44 px. The Privacy link remains visible in the Coming Soon header and footer. The mobile Privacy page uses the same horizontal pre-launch header.
 
+## Production promotions
+
+| Date | Commit | Scope | Validation |
+| --- | --- | --- | --- |
+| 2026-09-10 | `a0bb122` | Publish Fragment 002, add its Coming Soon link, voice playback and approved full-page canvas. | Production build passed; public route HTTP 200; canonical, robots and sitemap verified; live URL tests passed in Google Search Console and Bing Webmaster Tools; indexing requested in both. |
+
 ## Translation sign-off
 
 English, Italian, French, Spanish and German Coming Soon copy was reviewed under “Mandatory Native Grammar & Idiomatic Correctness” and committed in `6519d38`. The review includes visible copy, control labels, alternative text and social metadata.
