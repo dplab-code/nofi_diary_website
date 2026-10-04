@@ -17,6 +17,14 @@ import { findPublishedFragment } from "@/content/fragments";
 const voiceFragment = findPublishedFragment("002-the-song-kept-playing");
 const photoFragment = findPublishedFragment("003-three-small-shadows");
 
+const imageAlts: Record<Locale, { hero: string; capsule: string; ownership: string }> = {
+  en: { hero: "A printed photograph of a coastal road at sunset", capsule: "A sealed paper time capsule envelope", ownership: "A handmade paper card about keeping memories private" },
+  it: { hero: "Una fotografia stampata di una strada costiera al tramonto", capsule: "Una busta di carta sigillata come capsula del tempo", ownership: "Un cartoncino artigianale dedicato alla privacy dei ricordi" },
+  fr: { hero: "Une photographie imprimée d’une route côtière au coucher du soleil", capsule: "Une enveloppe en papier scellée comme capsule temporelle", ownership: "Une carte en papier artisanal consacrée à la confidentialité des souvenirs" },
+  es: { hero: "Una fotografía impresa de una carretera costera al atardecer", capsule: "Un sobre de papel sellado como cápsula del tiempo", ownership: "Una tarjeta de papel artesanal sobre la privacidad de los recuerdos" },
+  de: { hero: "Ein gedrucktes Foto einer Küstenstraße bei Sonnenuntergang", capsule: "Ein versiegelter Papierumschlag als Zeitkapsel", ownership: "Eine handgefertigte Papierkarte über private Erinnerungen" }
+};
+
 function localeFrom(value: string | string[] | undefined): Locale {
   const candidate = Array.isArray(value) ? value[0] : value;
   return candidate && isLocale(candidate) ? candidate : "en";
@@ -49,6 +57,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
 export function ComingSoonExperience({ locale }: { locale: Locale }) {
   const copy = comingSoonCopy[locale];
+  const alt = imageAlts[locale];
   const structuredData = [
     { "@context": "https://schema.org", "@type": "Organization", name: "NoFi Diary", url: "https://nofidiary.com", logo: "https://nofidiary.com/images/nofi-logo.png" },
     { "@context": "https://schema.org", "@type": "WebSite", name: "NoFi Diary", url: "https://nofidiary.com", inLanguage: locales }
@@ -59,7 +68,7 @@ export function ComingSoonExperience({ locale }: { locale: Locale }) {
       <div className={styles.heroCopy}><p className={styles.eyebrow}>NoFi Diary</p><h1 id="coming-soon-title">{copy.heroTitle}</h1><p className={styles.heroSubline}>{copy.heroSubline}</p><div className={styles.arrival}><span>{copy.almostReady}</span><small>{copy.platform}</small></div></div>
       <HoldToRemember label={copy.hold} confirmation={copy.kept}>
         <span className={styles.memoryDate}>{copy.memoryDate}</span>
-        <span className={styles.heroPhoto}><Image src="/images/coming-soon/fragment-001-road-to-sea.webp" alt="" fill priority sizes="(max-width: 760px) 92vw, 46vw" /></span>
+        <span className={styles.heroPhoto}><Image src="/images/coming-soon/fragment-001-road-to-sea.webp" alt={alt.hero} fill priority sizes="(max-width: 760px) 92vw, 46vw" /></span>
         <span className={styles.memoryWave} aria-hidden="true">{Array.from({ length: 28 }, (_, index) => <i key={index} />)}</span>
         <span className={styles.memoryWords}>{copy.heroMemory}</span><time className={styles.memoryTime}>{copy.memoryTime}</time>
       </HoldToRemember>
@@ -70,10 +79,10 @@ export function ComingSoonExperience({ locale }: { locale: Locale }) {
       <div className={styles.fragmentShelf}>
         <article className={styles.voiceFragment}><p>{copy.voiceLabel}</p><blockquote>“{copy.voiceQuote}”</blockquote><span className={styles.voiceNote}>{copy.voiceNote}</span><FragmentAudio src="/memories/audio/fuori-strada.m4a" duration={23} gain={2.25} labels={{ play: copy.play, pause: copy.pause, timeline: copy.timeline }} fragment="voice-preview" />{voiceFragment && <Link className={styles.fragmentLink} href={localePath(locale, `/fragments/${voiceFragment.slug}`)}>{voiceFragment.copy[locale].title}<span aria-hidden="true">→</span></Link>}</article>
         <article className={styles.photoFragment}><div>{photoFragment ? <Link className={styles.photoImageLink} href={localePath(locale, `/fragments/${photoFragment.slug}`)} aria-label={photoFragment.copy[locale].title}><Image src={photoFragment.image} alt={copy.photoAlt} fill sizes="(max-width: 700px) 88vw, 32vw" /></Link> : <Image src="/images/coming-soon/dolphins-instant-v2.webp" alt={copy.photoAlt} fill sizes="(max-width: 700px) 88vw, 32vw" />}</div><p>{copy.photoLabel} · {copy.photoDate}</p><span>{copy.photoNote}</span>{photoFragment && <Link className={`${styles.fragmentLink} ${styles.photoStoryLink}`} href={localePath(locale, `/fragments/${photoFragment.slug}`)}>{photoFragment.copy[locale].title}<span aria-hidden="true">→</span></Link>}</article>
-        <article className={styles.capsuleFragment}><div className={styles.capsuleVisual}><Image src="/images/coming-soon/time-capsule-envelope-v2.webp" alt="" fill sizes="(max-width: 700px) 76vw, 27vw" /></div><div className={styles.capsuleTag}><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong></div></article>
+        <article className={styles.capsuleFragment}><div className={styles.capsuleVisual}><Image src="/images/coming-soon/time-capsule-envelope-v2.webp" alt={alt.capsule} fill sizes="(max-width: 700px) 76vw, 27vw" /></div><div className={styles.capsuleTag}><p>{copy.capsuleLabel}</p><span>{copy.capsuleOpen}</span><strong>{copy.capsuleDuration}</strong></div></article>
       </div>
     </section>
-    <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt="" fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
+    <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt={alt.ownership} fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
     <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><TrackedComingSoonLink className={styles.footerPrivacy} href={localePath(locale, "/privacy")} event="privacy_open" value="footer">{copy.privacy}</TrackedComingSoonLink><span>© 2026</span></footer>
   </main></>;
 }

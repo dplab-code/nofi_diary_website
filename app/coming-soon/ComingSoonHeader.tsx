@@ -11,7 +11,7 @@ export function ComingSoonHeader({ locale, privacyPage = false, currentPath }: {
   const localizedPath = currentPath ?? (privacyPage ? "/privacy" : "");
 
   return <header className={styles.header}>
-    <Link className={styles.brand} href={home} aria-label="NoFi Diary — Home"><Image src="/images/nofi-logo.png" alt="" width={52} height={52} priority /><span>NoFi Diary</span></Link>
+    <Link className={styles.brand} href={home} aria-label="NoFi Diary — Home"><Image src="/images/nofi-logo.png" alt="NoFi Diary" aria-hidden="true" width={52} height={52} priority /><span>NoFi Diary</span></Link>
     <nav className={styles.primaryNav} aria-label={copy.navigation}>
       <Link href={`${home}#fragments`}>{copy.fragmentsLink}</Link>
       <TrackedComingSoonLink className={styles.privacyLink} href={localePath(locale, "/privacy")} current={privacyPage} event="privacy_open" value="header">{copy.privacy}</TrackedComingSoonLink>

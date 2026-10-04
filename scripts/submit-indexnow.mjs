@@ -1,7 +1,14 @@
 const host = "nofidiary.com";
 const key = "f1f3fab70bfd46d892cb8ee8719b6568";
 const keyLocation = `https://${host}/${key}.txt`;
-const defaults = ["/", "/it", "/fr", "/es", "/de", "/fragments/001-road-to-sea", "/it/fragments/001-road-to-sea", "/fr/fragments/001-road-to-sea", "/es/fragments/001-road-to-sea", "/de/fragments/001-road-to-sea"];
+const localePrefixes = ["", "/it", "/fr", "/es", "/de"];
+const publishedFragmentSlugs = ["001-road-to-sea", "002-the-song-kept-playing"];
+const localizedPaths = path => localePrefixes.map(prefix => `${prefix}${path}` || "/");
+const defaults = [
+  ...localizedPaths(""),
+  ...localizedPaths("/privacy"),
+  ...publishedFragmentSlugs.flatMap(slug => localizedPaths(`/fragments/${slug}`))
+];
 const paths = process.argv.slice(2);
 const urlList = (paths.length ? paths : defaults).map(value => new URL(value, `https://${host}`).href);
 
