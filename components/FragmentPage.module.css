@@ -44,3 +44,6 @@
 .canvasFooterBrand{top:95.1%;left:3.3%;width:6%;height:2.8%}
 .canvasPrivacyBottom{top:95.1%;left:80%;width:7.2%;height:2.8%}
 .srOnly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.journalImage{display:block;width:100%;height:auto;margin:56px 0 30px}
+@media(max-width:700px){.journalImage{margin:36px 0 24px}}
