@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MemoryJourney } from "@/components/MemoryJourney";
+import { PrivateMemories } from "@/components/PrivateMemories";
 import { RealMemories } from "@/components/RealMemories";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { TrackedStoreLink } from "@/components/TrackedStoreLink";
@@ -70,6 +71,7 @@ export function HomePage({ locale }: { locale: Locale }) {
     <section className="section memoryBand"><div className="shell memoryShell"><div className="sectionHeading"><h2>{t.memoryTitle}</h2></div><div className="memoryPath"><svg className="memoryThread" viewBox="0 0 1200 340" preserveAspectRatio="none" aria-hidden="true"><path d="M35 205 C170 205 240 70 430 100 S690 270 820 205 S1010 90 1165 135" /><circle cx="145" cy="174" r="4" /><circle cx="430" cy="100" r="4" /><circle cx="820" cy="205" r="4" /><circle cx="1080" cy="116" r="4" /></svg>{t.memories.map(([title, body], i) => <article className={`memoryItem memoryItem${i}`} key={title}><span className="memoryIndex">0{i + 1}</span><div className="memoryObject"><Image src={`/images/editorial/${memoryImages[i]}`} alt="" fill sizes="(max-width: 700px) 76vw, 25vw" /></div><div className="memoryNote"><h3>{title}</h3><p>{body}</p></div></article>)}</div></div></section>
 
     <MemoryJourney locale={locale}/>
+    <PrivateMemories locale={locale}/>
 
     <section className="capsuleBanner"><Image src="/images/editorial/time-capsule.png" alt="A sealed paper time capsule with lavender" fill sizes="100vw" /><div className="shell capsuleCopy"><p className="kicker">{ui.capsules}</p><h2>{t.capsuleTitle}</h2><p>{t.capsuleCopy}</p><Link className="button outline" href={localePath(locale, "/time-capsules")}>{ui.discover}</Link></div></section>
 
