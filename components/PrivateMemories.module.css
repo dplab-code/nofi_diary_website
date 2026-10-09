@@ -1,23 +1,12 @@
 .section { background: linear-gradient(135deg, #f0e9ed, #f8f2eb 70%); border-block: 1px solid var(--line); }
 .layout { display: grid; gap: 36px; }
-.copy { min-width: 0; }
+.copy { min-width: 0; align-self: center; }
 .copy h2 { font-size: clamp(2.4rem, 4.3vw, 4.4rem); line-height: 1.05; }
 .copy h2 span { display: block; color: #65536b; }
 .copy p:not(:first-child) { max-width: 60ch; line-height: 1.8; }
-.story { margin: 0; min-width: 0; align-self: center; background: var(--cream); padding: 32px 20px; border: 1px solid var(--line); border-radius: 3px 14px 5px 8px; box-shadow: 0 12px 32px rgba(58,40,25,.08); }
-.meeting, .travel { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.nofi { display: grid; place-items: center; flex: 0 0 48px; height: 66px; border: 1px solid #a99887; border-radius: 8px; background: #f3ebe0; color: var(--ink); font-family: var(--serif); font-size: 1.2rem; box-shadow: 2px 3px 0 #e7ddcf; }
-.meeting .nofi:first-child { transform: rotate(-5deg); }
-.meeting .nofi:last-child { transform: rotate(5deg); }
-.symbols { display: grid; grid-template-columns: repeat(3, 24px); gap: 7px; justify-content: center; flex: 1; color: #77627e; }
-.symbols svg { width: 24px; height: 24px; }
-.symbols svg:nth-child(2n) { color: #657863; }
-.caption { text-align: center; font-size: .78rem; margin: 18px 0 28px; }
-.travel { padding-top: 24px; border-top: 1px dashed #c7b8a7; }
-.file { flex: 1; min-width: 0; text-align: center; font-size: .76rem; padding: 12px 4px; background: #ede3ef; border-radius: 2px; color: #56455c; overflow-wrap: anywhere; }
-.file span { display: block; font-size: 1.4rem; line-height: 1; }
-.arrival { text-align: center; font-size: .85rem; }
-.story figcaption { text-align: center; font-family: var(--serif); font-size: 1.8rem; line-height: 1.2; color: var(--ink); padding-top: 16px; }
+.story { margin: 0; min-width: 0; align-self: center; }
+.illustration { display: block; width: 100%; height: auto; border-radius: 14px; }
+.story figcaption { text-align: center; font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 1.8rem); line-height: 1.2; color: var(--ink); padding: 20px 8px 0; }
 .distinction { margin: 0; padding-top: 24px; border-top: 1px solid var(--line); font-size: .8rem; line-height: 1.75; max-width: 90ch; }
-@media (min-width: 900px) { .layout { grid-template-columns: 1.15fr 1fr; gap: 40px 64px; } .distinction { grid-column: 1 / -1; } .story { padding: 40px 32px; } .symbols { grid-template-columns: repeat(6, 24px); } }
+@media (min-width: 900px) { .layout { grid-template-columns: 1.15fr 1fr; gap: 40px 64px; } .distinction { grid-column: 1 / -1; } }
 @media (max-width: 450px) { .section { padding-block: 64px; } .layout { width: calc(100% - 40px); } }
