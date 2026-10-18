@@ -7,13 +7,13 @@ const require = createRequire(import.meta.url);
 const ts = require("typescript");
 const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
-function load(path, mocks = {}) {
+function load(path, mocks = {}, env = process.env) {
   const source = readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
   const compiled = ts.transpileModule(source, { compilerOptions: {
     module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2017,
   } }).outputText;
   const module = { exports: {} };
-  new Function("require", "module", "exports", compiled)(name => name in mocks ? mocks[name] : require(name), module, module.exports);
+  new Function("require", "module", "exports", "process", compiled)(name => name in mocks ? mocks[name] : require(name), module, module.exports, { env });
   return module.exports;
 }
 const config = load("lib/social-channels.ts");
@@ -26,6 +26,22 @@ export const fixtureUrls = [
   "https://it.pinterest.com/test_only_fixture/", "https://x.com/test_fixture",
 ];
 const fixtures = config.socialChannels.map((channel, i) => ({ ...channel, enabled: true, url: fixtureUrls[i] }));
+
+test("full-site candidates are scoped to Vercel previews; production and other branches retain Coming Soon", () => {
+  for (const branch of ["codex/private-memories", "feature/nofi-elsewhere"]) {
+    for (const flag of [undefined, "true", "false"]) {
+      assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: branch, COMING_SOON: flag }).isComingSoon, false);
+    }
+  }
+  for (const environment of ["production", "development", undefined]) {
+    for (const branch of ["main", "feature/nofi-elsewhere", "codex/private-memories"]) {
+      assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: environment, VERCEL_GIT_COMMIT_REF: branch, COMING_SOON: "true" }).isComingSoon, true);
+    }
+  }
+  assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: "feature/other" }).isComingSoon, true);
+  assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "production", COMING_SOON: "false" }).isComingSoon, false);
+  assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: "feature/nofi-elsewhere" }).isIndexable, false);
+});
 
 test("safe publication: empty, disabled, invalid and partially configured channels", () => {
   assert.deepEqual(config.getPublishedSocialChannels(fixtures.map(c => ({ ...c, url: null }))), []);

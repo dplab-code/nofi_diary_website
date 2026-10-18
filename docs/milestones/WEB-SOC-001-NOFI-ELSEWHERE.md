@@ -21,7 +21,7 @@ La sezione editoriale presenta luoghi di conversazione senza catturare l’atten
 
 - Coming Soon: dopo ownership/privacy, immediatamente prima del footer.
 - Homepage: dopo le FAQ e prima della CTA conclusiva.
-- Flag `COMING_SOON`, `lib/site-release.ts`, proxy, routing, SEO e pagine legali invariati.
+- La preview Vercel della branch `feature/nofi-elsewhere` mostra il sito completo come la candidate di base `codex/private-memories`. L’eccezione in `lib/coming-soon.ts` è limitata a queste due branch e a `VERCEL_ENV=preview`. Il comportamento production del flag `COMING_SOON` rimane invariato, come `lib/site-release.ts`, proxy, routing, SEO e pagine legali.
 - Worktree separato dalla copia originale, le cui modifiche preesistenti sono preservate.
 - La PR #2 punta a `codex/private-memories`, corrispondente alla base richiesta `1af7b15`; `main` era precedente alla base al momento della creazione.
 
@@ -29,7 +29,7 @@ La sezione editoriale presenta luoghi di conversazione senza catturare l’atten
 
 Creati: `components/NoFiElsewhere.tsx`, `components/NoFiElsewhere.module.css`, `components/ElsewhereThought.tsx`, `components/SocialExitTracking.tsx`, `lib/social-channels.ts`, `lib/elsewhere-copy.ts`, `scripts/test-elsewhere.mjs`, `scripts/test-elsewhere-browser.mjs`, questo report e quattro screenshot con log finale in `docs/milestones/evidence/WEB-SOC-001/`.
 
-Modificati: `components/HomePage.tsx`, `app/coming-soon/page.tsx`, `package.json` (comandi di test), `docs/ANALYTICS_MODEL.md`.
+Modificati: `components/HomePage.tsx`, `app/coming-soon/page.tsx`, `lib/coming-soon.ts` (eccezione preview per la candidate), `package.json` (comandi di test), `docs/ANALYTICS_MODEL.md`.
 
 ## Configurazione dei canali
 
@@ -53,7 +53,8 @@ Per modificare un indirizzo, aggiornare `url` in `lib/social-channels.ts`. Per a
 | --- | --- | --- |
 | `npm run typecheck` | PASS | TypeScript senza errori |
 | `npm run build` | PASS | Build production; nessuna route temporanea nella consegna |
-| `npm run test:elsewhere` | PASS | Quattro gruppi: filtro, sicurezza URL, localizzazione, rendering server |
+| Build con ambiente candidate Vercel | PASS | `VERCEL_ENV=preview`, `VERCEL_GIT_COMMIT_REF=feature/nofi-elsewhere`, `COMING_SOON=true`: HTML delle cinque homepage con `nofi-elsewhere-home` e CTA finale, senza titolo Coming Soon |
+| `npm run test:elsewhere` | PASS | Cinque gruppi: flag candidate/production, filtro, sicurezza URL, localizzazione, rendering server |
 | `npm run test:elsewhere:browser` | PASS | Chromium headless locale, sette canali forniti dall’utente |
 | Configurazione vuota / disabilitata / parziale / non valida | PASS | Test automatici; browser con configurazione temporaneamente vuota nelle cinque route e nelle due modalità |
 | Posizionamento, ordine e sette link esatti | PASS | Entrambe le esperienze, tutte le cinque lingue |
