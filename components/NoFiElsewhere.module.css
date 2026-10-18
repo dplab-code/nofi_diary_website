@@ -1,0 +1,27 @@
+.section{background:#e6dce8;color:#302733;padding:clamp(56px,8vw,112px) 24px;border-block:1px solid #c4afc6}
+.inner{max-width:1120px;margin-inline:auto;min-width:0}
+.intro{max-width:850px}
+.kicker{color:#514354;font:600 .72rem/1.6 var(--sans);letter-spacing:.14em}
+.kicker span{display:block;margin-top:8px;font-weight:400;letter-spacing:.04em}
+.intro h2{font-size:clamp(2.6rem,5.7vw,5.5rem);line-height:1.04;letter-spacing:-.035em;margin:26px 0}
+.intro h2 em{font-weight:400}
+.description{max-width:650px;color:#514354;font:1.2rem/1.65 var(--serif)}
+.invitation{max-width:650px;color:#514354;font-size:.86rem;line-height:1.7;margin-top:24px}
+.destinations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;padding:0;margin:48px 0 0;column-gap:48px}
+.destinations li{min-width:0;border-top:1px solid #a38ba7}
+.destinations a{display:grid;grid-template-columns:24px minmax(0,1fr) 24px;gap:14px;align-items:start;min-height:150px;padding:25px 8px;color:inherit;overflow-wrap:anywhere}
+.number{padding-top:9px;color:#625068;font-size:.7rem;font-variant-numeric:tabular-nums}
+.destinations h3{font-size:clamp(2.1rem,3.3vw,3rem);line-height:1.1;margin:0 0 8px}
+.destinations p{color:#514354;font-size:.86rem;margin:0;line-height:1.6}
+.destinations small{display:block;color:#625068;font-size:.69rem;margin-top:8px}
+.arrow{font-size:1.4rem;padding-top:4px}
+.destinations a:hover h3{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.section a:focus-visible,.section button:focus-visible{outline:2px solid #514354;outline-offset:5px}
+.thought{border-top:1px solid #a38ba7;margin-top:32px;padding-top:32px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:24px}
+.thoughtText{display:grid;min-width:0}
+.thoughtText p{grid-area:1/1;color:#514354;font:italic clamp(1.4rem,2.5vw,2rem)/1.4 var(--serif);margin:0;overflow-wrap:anywhere}
+.thoughtText .measure{visibility:hidden;pointer-events:none;user-select:none}
+.thought button{border:0;border-bottom:1px solid #625068;padding:10px 0;min-height:44px;background:transparent;color:#514354;font-size:.8rem;cursor:pointer;text-align:left}
+.thought button span{margin-left:12px}
+@media(max-width:600px){.destinations{grid-template-columns:minmax(0,1fr);margin-top:32px}.destinations a{min-height:140px;padding-block:24px}.thought{grid-template-columns:minmax(0,1fr);gap:16px}.thought button{justify-self:start}.section{padding-inline:20px}}
+/* No animations or transitions: the interaction also respects reduced motion. */

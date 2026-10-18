@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ComingSoonHeader } from "./ComingSoonHeader";
+import { NoFiElsewhere } from "@/components/NoFiElsewhere";
 import { DocumentLanguage } from "./DocumentLanguage";
 import { FragmentAudio } from "./FragmentAudio";
 import { HoldToRemember } from "./HoldToRemember";
@@ -83,6 +84,7 @@ export function ComingSoonExperience({ locale }: { locale: Locale }) {
       </div>
     </section>
     <section className={styles.ownership} aria-labelledby="ownership-title"><div className={styles.ownershipObject}><Image className={styles.ownershipPaper} src="/images/coming-soon/private-by-design-paper-v2.webp" alt={alt.ownership} fill sizes="(max-width: 760px) 96vw, 1120px" /><div className={styles.ownershipCopy}><p className={styles.eyebrow}>NoFi Diary</p><h2 id="ownership-title">{copy.privacyTitle}</h2><span>{copy.privacyBody}</span><strong>{copy.privacyLine}</strong></div></div></section>
+    <NoFiElsewhere locale={locale} placement="coming_soon" />
     <footer className={styles.footer}><strong>NoFi</strong><p>{copy.footerLine}</p><TrackedComingSoonLink className={styles.footerPrivacy} href={localePath(locale, "/privacy")} event="privacy_open" value="footer">{copy.privacy}</TrackedComingSoonLink><span>© 2026</span></footer>
   </main></>;
 }
