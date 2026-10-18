@@ -1,23 +1,25 @@
 import type { Locale } from "@/lib/i18n";
 
-export const socialChannelIds = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "linkedin"] as const;
+export const socialChannelIds = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "x"] as const;
 export type SocialChannelId = (typeof socialChannelIds)[number];
 export type SocialChannel = { id: SocialChannelId; name: string; url: string | null; enabled: boolean; order: number };
 
 // Publication settings only. Add verified official URLs, then explicitly enable.
 export const socialChannels: readonly SocialChannel[] = [
-  { id: "instagram", name: "Instagram", url: null, enabled: false, order: 1 },
-  { id: "bluesky", name: "Bluesky", url: null, enabled: false, order: 2 },
-  { id: "youtube", name: "YouTube", url: null, enabled: false, order: 3 },
-  { id: "tiktok", name: "TikTok", url: null, enabled: false, order: 4 },
-  { id: "reddit", name: "Reddit", url: null, enabled: false, order: 5 },
-  { id: "linkedin", name: "LinkedIn", url: null, enabled: false, order: 6 },
+  { id: "instagram", name: "Instagram", url: "https://www.instagram.com/nofi_diary", enabled: true, order: 1 },
+  { id: "bluesky", name: "Bluesky", url: "https://bsky.app/profile/nofidiary.bsky.social", enabled: true, order: 2 },
+  { id: "youtube", name: "YouTube", url: "https://www.youtube.com/@NoFiDiary", enabled: true, order: 3 },
+  { id: "tiktok", name: "TikTok", url: "https://www.tiktok.com/@nofidiary", enabled: true, order: 4 },
+  { id: "reddit", name: "Reddit", url: "https://www.reddit.com/user/nofi_diary/", enabled: true, order: 5 },
+  { id: "pinterest", name: "Pinterest", url: "https://it.pinterest.com/nofidiary/", enabled: true, order: 6 },
+  { id: "x", name: "X", url: "https://x.com/NoFiDiary", enabled: true, order: 7 },
 ];
 
 const hosts: Record<SocialChannelId, readonly string[]> = {
   instagram: ["instagram.com", "www.instagram.com"], bluesky: ["bsky.app"],
   youtube: ["youtube.com", "www.youtube.com"], tiktok: ["tiktok.com", "www.tiktok.com"],
-  reddit: ["reddit.com", "www.reddit.com"], linkedin: ["linkedin.com", "www.linkedin.com"],
+  reddit: ["reddit.com", "www.reddit.com"],
+  pinterest: ["pinterest.com", "www.pinterest.com", "it.pinterest.com"], x: ["x.com", "www.x.com"],
 };
 
 export function isSocialProfileUrl(id: SocialChannelId, value: string | null): value is string {
@@ -29,11 +31,12 @@ export function isSocialProfileUrl(id: SocialChannelId, value: string | null): v
     if (/placeholder|your[_-]|example/i.test(path)) return false;
     const patterns: Record<SocialChannelId, RegExp> = {
       instagram: /^\/(?!explore(?:\/|$)|accounts(?:\/|$)|reels?(?:\/|$)|p(?:\/|$)|stories(?:\/|$)|direct(?:\/|$))[a-zA-Z0-9._]+\/?$/,
+      pinterest: /^\/(?!pin(?:\/|$)|search(?:\/|$)|ideas(?:\/|$))[a-zA-Z0-9_]+\/?$/,
+      x: /^\/(?!home(?:\/|$)|explore(?:\/|$)|search(?:\/|$)|settings(?:\/|$)|i(?:\/|$)|messages(?:\/|$))[a-zA-Z0-9_]{1,15}\/?$/,
       bluesky: /^\/profile\/[a-zA-Z0-9.:-]+\/?$/,
       youtube: /^\/(?:@[a-zA-Z0-9._-]+|channel\/[a-zA-Z0-9_-]+|c\/[a-zA-Z0-9_-]+|user\/[a-zA-Z0-9_-]+)\/?$/,
       tiktok: /^\/@[a-zA-Z0-9._]+\/?$/,
       reddit: /^\/(?:r|user|u)\/[a-zA-Z0-9_-]+\/?$/,
-      linkedin: /^\/(?:company|in)\/[a-zA-Z0-9_%-]+\/?$/,
     };
     return patterns[id].test(path);
   } catch { return false; }

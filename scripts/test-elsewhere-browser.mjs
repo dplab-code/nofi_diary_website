@@ -22,9 +22,9 @@ const output = path.join(root, "tmp/elsewhere-evidence");
 const port = process.env.ELSEWHERE_TEST_PORT || "3107";
 const origin = `http://localhost:${port}`;
 const locales = ["en", "it", "fr", "es", "de"];
-const ids = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "linkedin"];
-// Fictional addresses are used only in the local fixture; all external requests are intercepted.
-const urls = ["https://www.instagram.com/test_only_fixture/", "https://bsky.app/profile/test-only.invalid", "https://www.youtube.com/@test-only-fixture", "https://www.tiktok.com/@test_only_fixture", "https://www.reddit.com/r/test_only_fixture/", "https://www.linkedin.com/company/test-only-fixture/"];
+const ids = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "x"];
+// User-provided official destinations; all external requests are intercepted.
+const urls = ["https://www.instagram.com/nofi_diary", "https://bsky.app/profile/nofidiary.bsky.social", "https://www.youtube.com/@NoFiDiary", "https://www.tiktok.com/@nofidiary", "https://www.reddit.com/user/nofi_diary/", "https://it.pinterest.com/nofidiary/", "https://x.com/NoFiDiary"];
 const headings = ["We are here.", "Siamo qui.", "Nous sommes ici.", "Estamos aquí.", "Wir sind hier."];
 const results = [];
 const record = message => { results.push(message); console.log(message); };
@@ -42,6 +42,7 @@ export default async function Fixture({searchParams}: {searchParams: Promise<{lo
 const p = await searchParams; const locale = p.locale && isLocale(p.locale) ? p.locale : 'en';
 return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience locale={locale}/>;
 }`);
+  await writeFile(configPath, original.replace(/url: (?:null|"[^"]*"), enabled: (?:true|false)/g, "url: null, enabled: false"));
   server = spawn(process.execPath, [require.resolve("next/dist/bin/next"), "dev", "--port", port], { cwd: root, windowsHide: true, env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" }, stdio: ["ignore", "pipe", "pipe"] });
   server.stdout.on("data", chunk => { logs += chunk; });
   server.stderr.on("data", chunk => { logs += chunk; });
@@ -64,7 +65,7 @@ return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience l
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
-  // Real public routes must remain hidden with the shipped empty configuration.
+  // Real public routes must remain hidden with a temporarily empty configuration.
   for (const locale of locales) {
     await page.goto(`${origin}${locale === "en" ? "/" : `/${locale}`}`);
     assert.equal(await page.locator('[id^="nofi-elsewhere-"]').count(), 0);
@@ -75,9 +76,7 @@ return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience l
     assert.equal(await page.locator('[id^="nofi-elsewhere-"]').count(), 0);
   }
   record("PASS: empty configuration hides section in both experiences");
-  let index = 0;
-  await writeFile(configPath, original.replace(/url: null, enabled: false/g, () => `url: ${JSON.stringify(urls[index++])}, enabled: true`));
-  assert.equal(index, 6);
+  await writeFile(configPath, original);
   // Wait for Next's file watcher before testing the newly configured section.
   for (let attempt = 0; attempt < 20; attempt++) {
     await page.goto(`${origin}${fixturePath}?mode=home&refresh=${attempt}`);
@@ -104,7 +103,7 @@ return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience l
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${mode}/${locale}/${width}: page overflow`);
       assert.equal(await section.locator("ol").evaluate(el => getComputedStyle(el).gridTemplateColumns.split(" ").length), width <= 600 ? 1 : 2);
       assert.ok(await section.locator("a").first().evaluate(el => el.getBoundingClientRect().height >= 44));
-      if (locale === "it" && [375, 1440].includes(width)) await section.screenshot({ path: path.join(output, `${mode}-it-${width}-FIXTURE.png`), style: ".siteHeaderFrame,nextjs-portal{visibility:hidden!important}" });
+      if (locale === "it" && [375, 1440].includes(width)) await section.screenshot({ path: path.join(output, `${mode}-it-${width}-CONFIGURED.png`), style: ".siteHeaderFrame,nextjs-portal{visibility:hidden!important}" });
     }
     const thought = section.locator('[aria-live="polite"]');
     const button = section.locator("button");
@@ -161,11 +160,11 @@ return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience l
     await popup.close();
   }
   assert.deepEqual(await page.evaluate(() => window.__socialEvents.map(event => event.data)), ids.map(channel => ({ channel, placement: "coming_soon", locale: "de" })));
-  record("PASS: all six channels open native new tabs and emit once with exact properties");
+  record("PASS: all seven channels open native new tabs and emit once with exact properties");
   await page.locator('#nofi-elsewhere-coming_soon a').first().dispatchEvent("auxclick", { button: 1 });
-  assert.equal(await page.evaluate(() => window.__socialEvents.length), 7);
+  assert.equal(await page.evaluate(() => window.__socialEvents.length), ids.length + 1);
   await page.locator('#nofi-elsewhere-coming_soon a').first().dispatchEvent("auxclick", { button: 2 });
-  assert.equal(await page.evaluate(() => window.__socialEvents.length), 7);
+  assert.equal(await page.evaluate(() => window.__socialEvents.length), ids.length + 1);
   record("PASS: synthetic middle-click emits once; right-click emits nothing (native middle-tab opening NOT RUN)");
   // A missing or throwing analytics API must never suppress native navigation.
   for (const behavior of ["missing", "throwing"]) {
@@ -184,7 +183,7 @@ return p.mode === 'home' ? <HomePage locale={locale}/> : <ComingSoonExperience l
   for (const mode of ["home", "coming_soon"]) {
     await plain.goto(`${origin}${fixturePath}?mode=${mode}&locale=it`);
     const links = plain.locator(`#nofi-elsewhere-${mode} a`);
-    assert.equal(await links.count(), 6);
+    assert.equal(await links.count(), ids.length);
     const popupPromise = plain.waitForEvent("popup");
     await links.first().click();
     const popup = await popupPromise;

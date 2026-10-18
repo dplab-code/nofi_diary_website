@@ -22,14 +22,15 @@ const copy = load("lib/elsewhere-copy.ts");
 export const fixtureUrls = [
   "https://www.instagram.com/test_only_fixture/", "https://bsky.app/profile/test-only.invalid",
   "https://www.youtube.com/@test-only-fixture", "https://www.tiktok.com/@test_only_fixture",
-  "https://www.reddit.com/r/test_only_fixture/", "https://www.linkedin.com/company/test-only-fixture/",
+  "https://www.reddit.com/r/test_only_fixture/",
+  "https://it.pinterest.com/test_only_fixture/", "https://x.com/test_fixture",
 ];
 const fixtures = config.socialChannels.map((channel, i) => ({ ...channel, enabled: true, url: fixtureUrls[i] }));
 
 test("safe publication: empty, disabled, invalid and partially configured channels", () => {
   assert.deepEqual(config.getPublishedSocialChannels(fixtures.map(c => ({ ...c, url: null }))), []);
   assert.deepEqual(config.getPublishedSocialChannels([]), []);
-  assert.equal(config.getPublishedSocialChannels(fixtures).length, 6);
+  assert.equal(config.getPublishedSocialChannels(fixtures).length, config.socialChannelIds.length);
   assert.deepEqual(config.getPublishedSocialChannels([...fixtures].reverse()).map(c => c.id), config.socialChannelIds);
   assert.equal(config.getPublishedSocialChannels(fixtures.map(c => ({ ...c, enabled: false }))).length, 0);
   const mixed = fixtures.map((c, i) => ({ ...c, enabled: i === 2 }));
@@ -76,8 +77,8 @@ test("server section hides when empty and renders native localized links in both
   assert.equal(render([], "en", "home"), "");
   for (const placement of ["home", "coming_soon"]) for (const locale of ["en", "it", "fr", "es", "de"]) {
     const html = render(fixtures, locale, placement);
-    assert.equal((html.match(/target="_blank"/g) || []).length, 6);
-    assert.equal((html.match(/rel="noopener noreferrer"/g) || []).length, 6);
+    assert.equal((html.match(/target="_blank"/g) || []).length, config.socialChannelIds.length);
+    assert.equal((html.match(/rel="noopener noreferrer"/g) || []).length, config.socialChannelIds.length);
     assert.ok(html.includes(`lang="${locale}"`));
     assert.ok(html.includes(`id="nofi-elsewhere-${placement}"`));
     for (const channel of fixtures) assert.ok(html.includes(`href="${channel.url}"`));

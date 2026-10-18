@@ -22,13 +22,13 @@ Vercel Web Analytics is configured in `app/layout.tsx`. Store CTAs use `TrackedS
 | `language_change` | Localization usefulness | A language link is selected | `to_locale` | Navigation choice only |
 | `privacy_open` | Privacy-information interest | A Coming Soon Privacy link is selected | `placement=header|footer` | Link intent, not confirmation that the policy was read |
 | `shared_fragment_view` | Shared Fragment reach | A published Fragment page mounts | `fragment`, `locale` | Page exposure; the fragment value is a public editorial ID |
-| `social_exit_click` | Voluntary interest in an Elsewhere destination | Explicit activation of a published social link | `channel=instagram|bluesky|youtube|tiktok|reddit|linkedin`, `placement=coming_soon|home`, `locale=en|it|fr|es|de` | Link intent only; not a completed visit, conversion or new follower |
+| `social_exit_click` | Voluntary interest in an Elsewhere destination | Explicit activation of a published social link | `channel=instagram|bluesky|youtube|tiktok|reddit|pinterest|x`, `placement=coming_soon|home`, `locale=en|it|fr|es|de` | Link intent only; not a completed visit, conversion or new follower |
 
 ### Elsewhere exit measurement
 
 `SocialExitTracking` progressively enhances the server-rendered native anchors in `NoFiElsewhere`. One scoped listener is cleaned up on unmount and locale changes; no existing store or Coming Soon link tracker wraps these anchors. Only `social_exit_click` is added. Rendering, section exposure and “Another thought” do not emit this event. The handler never prevents default navigation and catches analytics failures. Profile URLs are used unchanged; no outbound UTM parameters are added.
 
-Only the three registered, enumerated properties are sent. No profile URL, visitor handle, identifier, session information, memory content or other behavior is included. No platform SDK, advertising cookie, remarketing pixel or additional analytics dependency is introduced. Browser tests intercept the local Vercel API to check event name, properties and single emission; this verifies code integration, not production ingestion. Actual receipt still requires a published official channel and observation in the production Vercel dashboard. No social URLs are currently verified, so public activation and production event verification remain pending.
+Only the three registered, enumerated properties are sent. No profile URL, visitor handle, identifier, session information, memory content or other behavior is included. No platform SDK, advertising cookie, remarketing pixel or additional analytics dependency is introduced. Browser tests intercept the local Vercel API to check event name, properties and single emission; this verifies code integration, not production ingestion. Actual receipt still requires a published official channel and observation in the production Vercel dashboard. Seven profile URLs supplied by the project owner are configured and enabled (Instagram, Bluesky, YouTube, TikTok, Reddit, Pinterest and X). The section is active in the candidate; production event receipt remains unverified.
 
 `app_share_landing` is intentionally represented through acquisition parameters rather than a JavaScript event. A NoFi-generated share uses:
 
@@ -48,7 +48,7 @@ Required fields:
 
 | Parameter | Meaning | Format |
 | --- | --- | --- |
-| `utm_source` | Originating platform or owned surface | lowercase `snake_case`, e.g. `nofi_app`, `instagram`, `reddit`, `linkedin`, `newsletter`, `direct_share` |
+| `utm_source` | Originating platform or owned surface | lowercase `snake_case`, e.g. `nofi_app`, `instagram`, `reddit`, `pinterest`, `newsletter`, `direct_share` |
 | `utm_medium` | Distribution mechanism | lowercase `snake_case`, e.g. `share`, `social`, `organic`, `post`, `bio` |
 | `utm_campaign` | Stable initiative identifier | lowercase `snake_case`; descriptive, date-independent where possible, e.g. `memory_share`, `fragment_gallery_launch` |
 | `utm_content` | Optional creative or placement variant | lowercase `snake_case`, e.g. `carousel_01`, `profile_bio`; never an audience or individual identifier |

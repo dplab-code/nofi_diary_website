@@ -12,7 +12,7 @@ PASS: coming_soon/es: four widths, order, placement, keyboard, stable height, si
 PASS: coming_soon/de: four widths, order, placement, keyboard, stable height, single exact analytics event
 PASS: reduced-motion: no animated interaction
 PASS: actual language navigation it → de replaces section copy and resets thought
-PASS: all six channels open native new tabs and emit once with exact properties
+PASS: all seven channels open native new tabs and emit once with exact properties
 PASS: synthetic middle-click emits once; right-click emits nothing (native middle-tab opening NOT RUN)
 PASS: native navigation with missing/throwing analytics
 PASS: both experiences render and open native links without JavaScript
