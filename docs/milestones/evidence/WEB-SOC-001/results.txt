@@ -1,0 +1,19 @@
+PASS: empty configuration hides section on all five actual localized routes
+PASS: empty configuration hides section in both experiences
+PASS: home/en: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: home/it: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: home/fr: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: home/es: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: home/de: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: coming_soon/en: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: coming_soon/it: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: coming_soon/fr: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: coming_soon/es: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: coming_soon/de: four widths, order, placement, keyboard, stable height, single exact analytics event
+PASS: reduced-motion: no animated interaction
+PASS: actual language navigation it → de replaces section copy and resets thought
+PASS: all seven channels open native new tabs and emit once with exact properties
+PASS: synthetic middle-click emits once; right-click emits nothing (native middle-tab opening NOT RUN)
+PASS: native navigation with missing/throwing analytics
+PASS: both experiences render and open native links without JavaScript
+PASS: no uncaught browser exceptions
