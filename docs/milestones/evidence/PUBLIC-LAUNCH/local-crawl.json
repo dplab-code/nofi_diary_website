@@ -1,0 +1,2114 @@
+{
+  "origin": "http://localhost:3110",
+  "timestamp": "2026-10-20T19:46:14.358Z",
+  "checks": [
+    "PASS crawl 60 public/legal pages; 45 internal destinations; no missing metadata, canonical or hreflang; previews noindex; draft/unknown fragments 404; preview sitemap empty",
+    "PASS six representative routes on mobile/desktop: no overflow, eager images loaded, no hydration exceptions, Metricool once per page with exact hash",
+    "PASS real language selector and internal navigation; Metricool records one additional page on client navigation",
+    "PASS Fragment audio starts and progresses",
+    "PASS exact Google Play CTA; no failing app resources or uncaught browser exceptions"
+  ],
+  "records": [
+    {
+      "pathname": "/",
+      "title": "NoFi Diary — Private, Local-First Diary for Photos & Voice",
+      "description": "A private, local-first Android diary for photos, voice and tactile pages. No account, no public feed, designed to work offline.",
+      "canonical": "https://nofidiary.com",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com"
+        ]
+      ]
+    },
+    {
+      "pathname": "/privacy",
+      "title": "Privacy Policy — NoFi Diary",
+      "description": "How NoFi Diary handles your data, local memories, device permissions and website services.",
+      "canonical": "https://nofidiary.com/privacy",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/privacy"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/privacy"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/privacy"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/privacy"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/privacy"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/privacy"
+        ]
+      ]
+    },
+    {
+      "pathname": "/manifesto",
+      "title": "The NoFi Manifesto — NoFi Diary",
+      "description": "Your memories don’t need an audience.",
+      "canonical": "https://nofidiary.com/manifesto",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/manifesto"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/manifesto"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/manifesto"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/manifesto"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/manifesto"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/manifesto"
+        ]
+      ]
+    },
+    {
+      "pathname": "/time-capsules",
+      "title": "Some memories are meant for later. — NoFi Diary",
+      "description": "Discover Time Capsules in NoFi Diary: seal a private memory on your device and meet it again on a date you choose.",
+      "canonical": "https://nofidiary.com/time-capsules",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/time-capsules"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/time-capsules"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/time-capsules"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/time-capsules"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/time-capsules"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/time-capsules"
+        ]
+      ]
+    },
+    {
+      "pathname": "/stickers",
+      "title": "Small marks. Personal language. — NoFi Diary",
+      "description": "Explore NoFi Diary sticker packs as a personal visual language for private diary pages.",
+      "canonical": "https://nofidiary.com/stickers",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/stickers"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/stickers"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/stickers"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/stickers"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/stickers"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/stickers"
+        ]
+      ]
+    },
+    {
+      "pathname": "/themes",
+      "title": "Give a memory an atmosphere. — NoFi Diary",
+      "description": "Explore NoFi Diary themes and see how the same memory can carry a different atmosphere.",
+      "canonical": "https://nofidiary.com/themes",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/themes"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/themes"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/themes"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/themes"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/themes"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/themes"
+        ]
+      ]
+    },
+    {
+      "pathname": "/appearances",
+      "title": "Make NoFi feel like your place. — NoFi Diary",
+      "description": "Explore NoFi Diary appearances and learn how they change the app around your memories, not the memories themselves.",
+      "canonical": "https://nofidiary.com/appearances",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/appearances"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/appearances"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/appearances"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/appearances"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/appearances"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/appearances"
+        ]
+      ]
+    },
+    {
+      "pathname": "/terms",
+      "title": "Terms of Use — NoFi Diary",
+      "description": "Terms governing the use of the NoFi Diary app and website.",
+      "canonical": "https://nofidiary.com/terms",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/terms"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/terms"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/terms"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/terms"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/terms"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/terms"
+        ]
+      ]
+    },
+    {
+      "pathname": "/disclaimer",
+      "title": "Disclaimer — NoFi Diary",
+      "description": "Important information about local storage, sharing and technical limitations in NoFi Diary.",
+      "canonical": "https://nofidiary.com/disclaimer",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/disclaimer"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/disclaimer"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/disclaimer"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/disclaimer"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/disclaimer"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/disclaimer"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fragments/001-road-to-sea",
+      "title": "Fragment 001 — Before we reached the sea | NoFi Diary",
+      "description": "One of the first fragments from NoFi Diary: a private, offline place for the moments you want to keep.",
+      "canonical": "https://nofidiary.com/fragments/001-road-to-sea",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/001-road-to-sea"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/001-road-to-sea"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/001-road-to-sea"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/001-road-to-sea"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fragments/002-the-song-kept-playing",
+      "title": "Fragment 002 — The song kept playing | NoFi Diary",
+      "description": "A small voice fragment from NoFi Diary.",
+      "canonical": "https://nofidiary.com/fragments/002-the-song-kept-playing",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fragments/003-three-small-shadows",
+      "title": "Fragment 003 — When the shadows surfaced | NoFi Diary",
+      "description": "At first, three shadows beneath the water. Then they surfaced: dolphins, just a few metres from us. The sunset caught their backs. For a moment, we forgot to speak.",
+      "canonical": "https://nofidiary.com/fragments/003-three-small-shadows",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/003-three-small-shadows"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/003-three-small-shadows"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/003-three-small-shadows"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/003-three-small-shadows"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it",
+      "title": "NoFi Diary — Diario privato e local-first per foto e voce",
+      "description": "Un diario Android privato e local-first per foto, voce e pagine tattili. Nessun account, nessun feed pubblico, progettato per funzionare offline.",
+      "canonical": "https://nofidiary.com/it",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/privacy",
+      "title": "Informativa sulla privacy — NoFi Diary",
+      "description": "Come NoFi Diary tratta dati, ricordi locali, permessi del dispositivo e servizi del sito.",
+      "canonical": "https://nofidiary.com/it/privacy",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/privacy"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/privacy"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/privacy"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/privacy"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/privacy"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/privacy"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/manifesto",
+      "title": "Il Manifesto NoFi — NoFi Diary",
+      "description": "I tuoi ricordi non hanno bisogno di un pubblico.",
+      "canonical": "https://nofidiary.com/it/manifesto",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/manifesto"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/manifesto"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/manifesto"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/manifesto"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/manifesto"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/manifesto"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/time-capsules",
+      "title": "Alcuni ricordi sono fatti per il futuro. — NoFi Diary",
+      "description": "Scopri le Capsule del tempo di NoFi Diary: sigilla un ricordo privato sul dispositivo e ritrovalo nella data scelta.",
+      "canonical": "https://nofidiary.com/it/time-capsules",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/time-capsules"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/time-capsules"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/time-capsules"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/time-capsules"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/time-capsules"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/time-capsules"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/stickers",
+      "title": "Piccoli segni. Un linguaggio personale. — NoFi Diary",
+      "description": "Esplora gli sticker pack di NoFi Diary come linguaggio visivo personale per le pagine del tuo diario.",
+      "canonical": "https://nofidiary.com/it/stickers",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/stickers"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/stickers"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/stickers"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/stickers"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/stickers"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/stickers"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/themes",
+      "title": "Dai un’atmosfera a un ricordo. — NoFi Diary",
+      "description": "Esplora i temi di NoFi Diary e scopri come lo stesso ricordo può assumere un’atmosfera diversa.",
+      "canonical": "https://nofidiary.com/it/themes",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/themes"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/themes"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/themes"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/themes"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/themes"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/themes"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/appearances",
+      "title": "Fai sentire NoFi come il tuo posto. — NoFi Diary",
+      "description": "Esplora gli Aspetti di NoFi Diary e scopri come cambiano l’app intorno ai ricordi, non i ricordi stessi.",
+      "canonical": "https://nofidiary.com/it/appearances",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/appearances"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/appearances"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/appearances"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/appearances"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/appearances"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/appearances"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/terms",
+      "title": "Termini di utilizzo — NoFi Diary",
+      "description": "Termini che regolano l'uso dell'app e del sito NoFi Diary.",
+      "canonical": "https://nofidiary.com/it/terms",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/terms"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/terms"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/terms"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/terms"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/terms"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/terms"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/disclaimer",
+      "title": "Avvertenze — NoFi Diary",
+      "description": "Informazioni importanti su archiviazione locale, condivisione e limiti tecnici di NoFi Diary.",
+      "canonical": "https://nofidiary.com/it/disclaimer",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/disclaimer"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/disclaimer"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/disclaimer"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/disclaimer"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/disclaimer"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/disclaimer"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/fragments/001-road-to-sea",
+      "title": "Frammento 001 — Prima di arrivare al mare | NoFi Diary",
+      "description": "Uno dei primi frammenti di NoFi Diary: un luogo privato e offline per i momenti che vuoi custodire.",
+      "canonical": "https://nofidiary.com/it/fragments/001-road-to-sea",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/001-road-to-sea"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/001-road-to-sea"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/001-road-to-sea"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/001-road-to-sea"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/fragments/002-the-song-kept-playing",
+      "title": "Frammento 002 — La canzone continuava | NoFi Diary",
+      "description": "Un piccolo frammento sonoro di NoFi Diary.",
+      "canonical": "https://nofidiary.com/it/fragments/002-the-song-kept-playing",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ]
+      ]
+    },
+    {
+      "pathname": "/it/fragments/003-three-small-shadows",
+      "title": "Frammento 003 — Quando le ombre sono affiorate | NoFi Diary",
+      "description": "All’inizio, tre ombre sotto l’acqua. Poi sono affiorate: delfini, a pochi metri da noi. Il tramonto illuminava i loro dorsi. Per un momento, ci siamo dimenticati di parlare.",
+      "canonical": "https://nofidiary.com/it/fragments/003-three-small-shadows",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/003-three-small-shadows"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/003-three-small-shadows"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/003-three-small-shadows"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/003-three-small-shadows"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr",
+      "title": "NoFi Diary — Journal privé pour photos et voix, conservé sur votre appareil",
+      "description": "Un journal Android privé pour vos photos, votre voix et vos pages tactiles, gardé sur votre appareil. Sans compte ni fil public, conçu pour fonctionner hors ligne.",
+      "canonical": "https://nofidiary.com/fr",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/privacy",
+      "title": "Politique de confidentialité — NoFi Diary",
+      "description": "Comment NoFi Diary traite vos données, souvenirs locaux, autorisations et services du site.",
+      "canonical": "https://nofidiary.com/fr/privacy",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/privacy"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/privacy"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/privacy"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/privacy"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/privacy"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/privacy"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/manifesto",
+      "title": "Le Manifeste NoFi — NoFi Diary",
+      "description": "Vos souvenirs n’ont pas besoin d’un public.",
+      "canonical": "https://nofidiary.com/fr/manifesto",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/manifesto"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/manifesto"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/manifesto"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/manifesto"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/manifesto"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/manifesto"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/time-capsules",
+      "title": "Certains souvenirs sont faits pour plus tard. — NoFi Diary",
+      "description": "Découvrez les Capsules temporelles de NoFi Diary : scellez un souvenir privé sur votre appareil et retrouvez-le à la date choisie.",
+      "canonical": "https://nofidiary.com/fr/time-capsules",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/time-capsules"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/time-capsules"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/time-capsules"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/time-capsules"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/time-capsules"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/time-capsules"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/stickers",
+      "title": "Petits signes. Langage personnel. — NoFi Diary",
+      "description": "Découvrez les stickers NoFi Diary comme langage visuel personnel pour vos pages privées.",
+      "canonical": "https://nofidiary.com/fr/stickers",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/stickers"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/stickers"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/stickers"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/stickers"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/stickers"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/stickers"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/themes",
+      "title": "Donnez une atmosphère à un souvenir. — NoFi Diary",
+      "description": "Découvrez les thèmes NoFi Diary et voyez comment un même souvenir change d’atmosphère.",
+      "canonical": "https://nofidiary.com/fr/themes",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/themes"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/themes"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/themes"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/themes"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/themes"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/themes"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/appearances",
+      "title": "Faites de NoFi votre espace. — NoFi Diary",
+      "description": "Découvrez les apparences NoFi Diary et comment elles changent l’app autour des souvenirs, jamais les souvenirs.",
+      "canonical": "https://nofidiary.com/fr/appearances",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/appearances"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/appearances"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/appearances"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/appearances"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/appearances"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/appearances"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/terms",
+      "title": "Conditions d'utilisation — NoFi Diary",
+      "description": "Conditions régissant l'utilisation de l'app et du site NoFi Diary.",
+      "canonical": "https://nofidiary.com/fr/terms",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/terms"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/terms"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/terms"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/terms"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/terms"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/terms"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/disclaimer",
+      "title": "Avertissement — NoFi Diary",
+      "description": "Informations importantes sur le stockage local, le partage et les limites techniques de NoFi Diary.",
+      "canonical": "https://nofidiary.com/fr/disclaimer",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/disclaimer"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/disclaimer"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/disclaimer"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/disclaimer"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/disclaimer"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/disclaimer"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/fragments/001-road-to-sea",
+      "title": "Fragment 001 — Avant d’arriver à la mer | NoFi Diary",
+      "description": "L’un des premiers fragments de NoFi Diary : un lieu privé et hors ligne pour les moments que vous souhaitez garder.",
+      "canonical": "https://nofidiary.com/fr/fragments/001-road-to-sea",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/001-road-to-sea"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/001-road-to-sea"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/001-road-to-sea"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/001-road-to-sea"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/fragments/002-the-song-kept-playing",
+      "title": "Fragment 002 — La chanson continuait | NoFi Diary",
+      "description": "Un petit fragment sonore de NoFi Diary.",
+      "canonical": "https://nofidiary.com/fr/fragments/002-the-song-kept-playing",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ]
+      ]
+    },
+    {
+      "pathname": "/fr/fragments/003-three-small-shadows",
+      "title": "Fragment 003 — Quand les ombres ont émergé | NoFi Diary",
+      "description": "D’abord, trois ombres sous l’eau. Puis elles ont émergé : des dauphins, à quelques mètres de nous. Le soleil couchant éclairait leur dos. Un instant, nous avons oublié de parler.",
+      "canonical": "https://nofidiary.com/fr/fragments/003-three-small-shadows",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/003-three-small-shadows"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/003-three-small-shadows"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/003-three-small-shadows"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/003-three-small-shadows"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es",
+      "title": "NoFi Diary — Diario privado para fotos y voz, guardado en tu dispositivo",
+      "description": "Un diario Android privado para fotos, voz y páginas táctiles, guardado en tu dispositivo. Sin cuenta ni feed público, diseñado para funcionar sin conexión.",
+      "canonical": "https://nofidiary.com/es",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/privacy",
+      "title": "Política de privacidad — NoFi Diary",
+      "description": "Cómo gestiona NoFi Diary tus datos, recuerdos locales, permisos y servicios web.",
+      "canonical": "https://nofidiary.com/es/privacy",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/privacy"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/privacy"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/privacy"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/privacy"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/privacy"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/privacy"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/manifesto",
+      "title": "El Manifiesto NoFi — NoFi Diary",
+      "description": "Tus recuerdos no necesitan público.",
+      "canonical": "https://nofidiary.com/es/manifesto",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/manifesto"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/manifesto"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/manifesto"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/manifesto"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/manifesto"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/manifesto"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/time-capsules",
+      "title": "Algunos recuerdos son para más adelante. — NoFi Diary",
+      "description": "Descubre las Cápsulas del tiempo de NoFi Diary: sella un recuerdo privado en tu dispositivo y vuelve a encontrarlo en la fecha elegida.",
+      "canonical": "https://nofidiary.com/es/time-capsules",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/time-capsules"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/time-capsules"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/time-capsules"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/time-capsules"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/time-capsules"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/time-capsules"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/stickers",
+      "title": "Pequeñas marcas. Lenguaje personal. — NoFi Diary",
+      "description": "Explora los stickers de NoFi Diary como lenguaje visual personal para tus páginas privadas.",
+      "canonical": "https://nofidiary.com/es/stickers",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/stickers"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/stickers"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/stickers"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/stickers"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/stickers"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/stickers"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/themes",
+      "title": "Dale una atmósfera a un recuerdo. — NoFi Diary",
+      "description": "Explora los temas de NoFi Diary y descubre cómo un mismo recuerdo puede tener otra atmósfera.",
+      "canonical": "https://nofidiary.com/es/themes",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/themes"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/themes"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/themes"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/themes"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/themes"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/themes"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/appearances",
+      "title": "Haz de NoFi tu lugar. — NoFi Diary",
+      "description": "Explora las apariencias de NoFi Diary y cómo cambian la app alrededor de los recuerdos, no los recuerdos.",
+      "canonical": "https://nofidiary.com/es/appearances",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/appearances"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/appearances"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/appearances"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/appearances"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/appearances"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/appearances"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/terms",
+      "title": "Términos de uso — NoFi Diary",
+      "description": "Términos que regulan el uso de la app y el sitio NoFi Diary.",
+      "canonical": "https://nofidiary.com/es/terms",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/terms"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/terms"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/terms"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/terms"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/terms"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/terms"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/disclaimer",
+      "title": "Aviso legal — NoFi Diary",
+      "description": "Información importante sobre almacenamiento local, uso compartido y limitaciones técnicas de NoFi Diary.",
+      "canonical": "https://nofidiary.com/es/disclaimer",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/disclaimer"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/disclaimer"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/disclaimer"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/disclaimer"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/disclaimer"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/disclaimer"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/fragments/001-road-to-sea",
+      "title": "Fragmento 001 — Antes de llegar al mar | NoFi Diary",
+      "description": "Uno de los primeros fragmentos de NoFi Diary: un lugar privado y sin conexión para los momentos que quieres guardar.",
+      "canonical": "https://nofidiary.com/es/fragments/001-road-to-sea",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/001-road-to-sea"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/001-road-to-sea"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/001-road-to-sea"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/001-road-to-sea"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/fragments/002-the-song-kept-playing",
+      "title": "Fragmento 002 — La canción seguía sonando | NoFi Diary",
+      "description": "Un pequeño fragmento sonoro de NoFi Diary.",
+      "canonical": "https://nofidiary.com/es/fragments/002-the-song-kept-playing",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ]
+      ]
+    },
+    {
+      "pathname": "/es/fragments/003-three-small-shadows",
+      "title": "Fragmento 003 — Cuando las sombras salieron a la superficie | NoFi Diary",
+      "description": "Al principio, tres sombras bajo el agua. Luego salieron a la superficie: delfines, a pocos metros de nosotros. El atardecer iluminaba sus lomos. Por un momento, nos olvidamos de hablar.",
+      "canonical": "https://nofidiary.com/es/fragments/003-three-small-shadows",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/003-three-small-shadows"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/003-three-small-shadows"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/003-three-small-shadows"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/003-three-small-shadows"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de",
+      "title": "NoFi Diary — Privates Tagebuch für Fotos und Stimme, lokal auf deinem Gerät",
+      "description": "Ein privates Android-Tagebuch für Fotos, Stimme und fühlbare Seiten, lokal auf deinem Gerät. Ohne Konto und öffentlichen Feed, auch offline nutzbar.",
+      "canonical": "https://nofidiary.com/de",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/privacy",
+      "title": "Datenschutzerklärung — NoFi Diary",
+      "description": "Wie NoFi Diary Daten, lokale Erinnerungen, Berechtigungen und Website-Dienste behandelt.",
+      "canonical": "https://nofidiary.com/de/privacy",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/privacy"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/privacy"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/privacy"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/privacy"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/privacy"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/privacy"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/manifesto",
+      "title": "Das NoFi Manifest — NoFi Diary",
+      "description": "Deine Erinnerungen brauchen kein Publikum.",
+      "canonical": "https://nofidiary.com/de/manifesto",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/manifesto"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/manifesto"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/manifesto"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/manifesto"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/manifesto"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/manifesto"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/time-capsules",
+      "title": "Manche Erinnerungen sind für später. — NoFi Diary",
+      "description": "Entdecke Zeitkapseln in NoFi Diary: Versiegle eine private Erinnerung auf deinem Gerät und begegne ihr am gewählten Datum wieder.",
+      "canonical": "https://nofidiary.com/de/time-capsules",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/time-capsules"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/time-capsules"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/time-capsules"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/time-capsules"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/time-capsules"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/time-capsules"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/stickers",
+      "title": "Kleine Zeichen. Deine Sprache. — NoFi Diary",
+      "description": "Entdecke NoFi-Diary-Sticker als persönliche Bildsprache für private Tagebuchseiten.",
+      "canonical": "https://nofidiary.com/de/stickers",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/stickers"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/stickers"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/stickers"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/stickers"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/stickers"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/stickers"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/themes",
+      "title": "Gib einer Erinnerung Atmosphäre. — NoFi Diary",
+      "description": "Entdecke NoFi-Diary-Themes und sieh, wie dieselbe Erinnerung eine andere Atmosphäre trägt.",
+      "canonical": "https://nofidiary.com/de/themes",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/themes"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/themes"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/themes"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/themes"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/themes"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/themes"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/appearances",
+      "title": "Mach NoFi zu deinem Ort. — NoFi Diary",
+      "description": "Entdecke NoFi-Diary-Appearances und wie sie die App um Erinnerungen verändern, nicht die Erinnerungen.",
+      "canonical": "https://nofidiary.com/de/appearances",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/appearances"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/appearances"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/appearances"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/appearances"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/appearances"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/appearances"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/terms",
+      "title": "Nutzungsbedingungen — NoFi Diary",
+      "description": "Bedingungen für die Nutzung der NoFi-Diary-App und Website.",
+      "canonical": "https://nofidiary.com/de/terms",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/terms"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/terms"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/terms"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/terms"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/terms"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/terms"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/disclaimer",
+      "title": "Haftungshinweise — NoFi Diary",
+      "description": "Wichtige Informationen zu lokaler Speicherung, Teilen und technischen Grenzen von NoFi Diary.",
+      "canonical": "https://nofidiary.com/de/disclaimer",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/disclaimer"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/disclaimer"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/disclaimer"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/disclaimer"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/disclaimer"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/disclaimer"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/fragments/001-road-to-sea",
+      "title": "Fragment 001 — Bevor wir am Meer waren | NoFi Diary",
+      "description": "Eines der ersten Fragmente aus NoFi Diary: ein privater Offline-Ort für die Momente, die du bewahren möchtest.",
+      "canonical": "https://nofidiary.com/de/fragments/001-road-to-sea",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/001-road-to-sea"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/001-road-to-sea"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/001-road-to-sea"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/001-road-to-sea"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/001-road-to-sea"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/fragments/002-the-song-kept-playing",
+      "title": "Fragment 002 — Das Lied lief weiter | NoFi Diary",
+      "description": "Ein kleines Klangfragment aus NoFi Diary.",
+      "canonical": "https://nofidiary.com/de/fragments/002-the-song-kept-playing",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/002-the-song-kept-playing"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/002-the-song-kept-playing"
+        ]
+      ]
+    },
+    {
+      "pathname": "/de/fragments/003-three-small-shadows",
+      "title": "Fragment 003 — Als die Schatten auftauchten | NoFi Diary",
+      "description": "Zuerst waren da drei Schatten unter Wasser. Dann tauchten sie auf: Delfine, nur wenige Meter von uns entfernt. Die Abendsonne beleuchtete ihre Rücken. Für einen Moment vergaßen wir zu sprechen.",
+      "canonical": "https://nofidiary.com/de/fragments/003-three-small-shadows",
+      "robots": "noindex, nofollow",
+      "htmlLanguage": "en",
+      "h1": 1,
+      "alternates": [
+        [
+          "en",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ],
+        [
+          "it",
+          "https://nofidiary.com/it/fragments/003-three-small-shadows"
+        ],
+        [
+          "fr",
+          "https://nofidiary.com/fr/fragments/003-three-small-shadows"
+        ],
+        [
+          "es",
+          "https://nofidiary.com/es/fragments/003-three-small-shadows"
+        ],
+        [
+          "de",
+          "https://nofidiary.com/de/fragments/003-three-small-shadows"
+        ],
+        [
+          "x-default",
+          "https://nofidiary.com/fragments/003-three-small-shadows"
+        ]
+      ]
+    }
+  ],
+  "failures": []
+}

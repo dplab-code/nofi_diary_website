@@ -13,7 +13,7 @@ function load(path, mocks = {}, env = process.env) {
     module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2017,
   } }).outputText;
   const module = { exports: {} };
-  new Function("require", "module", "exports", "process", compiled)(name => name in mocks ? mocks[name] : require(name), module, module.exports, { env });
+  new Function("require", "module", "exports", "process", compiled)(name => name in mocks ? mocks[name] : name.startsWith("@/") ? load(name.slice(2) + ".ts", mocks, env) : require(name), module, module.exports, { env });
   return module.exports;
 }
 const config = load("lib/social-channels.ts");
@@ -23,12 +23,12 @@ export const fixtureUrls = [
   "https://www.instagram.com/test_only_fixture/", "https://bsky.app/profile/test-only.invalid",
   "https://www.youtube.com/@test-only-fixture", "https://www.tiktok.com/@test_only_fixture",
   "https://www.reddit.com/r/test_only_fixture/",
-  "https://it.pinterest.com/test_only_fixture/", "https://x.com/test_fixture",
+  "https://it.pinterest.com/test_only_fixture/", "https://www.threads.com/@test_fixture",
 ];
 const fixtures = config.socialChannels.map((channel, i) => ({ ...channel, enabled: true, url: fixtureUrls[i] }));
 
 test("full-site candidates are scoped to Vercel previews; production and other branches retain Coming Soon", () => {
-  for (const branch of ["codex/private-memories", "feature/nofi-elsewhere"]) {
+  for (const branch of ["codex/private-memories", "feature/nofi-elsewhere", "codex/public-launch-readiness"]) {
     for (const flag of [undefined, "true", "false"]) {
       assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: branch, COMING_SOON: flag }).isComingSoon, false);
     }
@@ -39,7 +39,7 @@ test("full-site candidates are scoped to Vercel previews; production and other b
     }
   }
   assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: "feature/other" }).isComingSoon, true);
-  assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "production", COMING_SOON: "false" }).isComingSoon, false);
+  assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "production", COMING_SOON: "false", SITE_RELEASE_MODE: "public", INDEXABLE: "true" }).isComingSoon, false);
   assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: "feature/nofi-elsewhere" }).isIndexable, false);
 });
 

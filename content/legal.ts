@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { websiteServices } from "@/content/website-services";
 
 export type LegalDocumentId = "privacy" | "terms" | "disclaimer";
 
@@ -246,11 +247,12 @@ export function getLegalContent(locale: Locale): LegalLocale {
     ...source,
     documents: Object.fromEntries(Object.entries(source.documents).map(([id, document]) => [id, {
       ...document,
+      ...(id === "privacy" ? { version: "1.2", lastUpdated: "2026-10-20" } : {}),
       introduction: inject(document.introduction),
       description: inject(document.description),
-      sections: document.sections.map(section => ({
+      sections: document.sections.map((section, index) => ({
         ...section,
-        paragraphs: section.paragraphs.map(inject),
+        paragraphs: (id === "privacy" && index === 9 ? websiteServices[locale] : section.paragraphs).map(inject),
         bullets: section.bullets?.map(inject),
       })),
     }])) as Record<LegalDocumentId, Document>,

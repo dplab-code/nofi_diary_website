@@ -1,3 +1,4 @@
+import { canIndexPublicPages } from "@/lib/site-release";
 import { NextRequest, NextResponse } from "next/server";
 import { isComingSoon, isIndexable } from "@/lib/coming-soon";
 
@@ -10,7 +11,7 @@ function withIndexingGuard(response: NextResponse, request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
   const locale = request.nextUrl.pathname.match(/^\/(it|fr|es|de)(?:\/|$)/)?.[1] ?? "en";
   response.headers.set("Content-Language", locale);
-  if (!isIndexable || host === "localhost" || host === "127.0.0.1" || host.endsWith(".vercel.app")) {
+  if (!canIndexPublicPages || host === "localhost" || host === "127.0.0.1" || host.endsWith(".vercel.app")) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
   }
   return response;

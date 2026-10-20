@@ -1,10 +1,5 @@
-import { isComingSoon, isIndexable } from "@/lib/coming-soon";
+import { resolveRelease } from "@/lib/release-config";
 
 export type SiteReleaseMode = "preview" | "public";
 
-export const siteReleaseMode: SiteReleaseMode =
-  process.env.SITE_RELEASE_MODE === "public" ? "public" : "preview";
-
-export const isPublicRelease = siteReleaseMode === "public" && !isComingSoon;
-
-export const canIndexPublicPages = isIndexable && (isComingSoon || isPublicRelease);
+export const { siteReleaseMode, isPublicRelease, canIndexPublicPages } = resolveRelease(process.env);
