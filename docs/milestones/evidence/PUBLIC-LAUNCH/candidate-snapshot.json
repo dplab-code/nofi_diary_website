@@ -1,0 +1,29 @@
+{
+  "commit": "4c989557990d68d1eff7219b99af68175cd09c74",
+  "rollbackCommit": "1ab82c3ef070f90e6fcfa8cf574c1c77be6712b8",
+  "timestamp": "2026-10-20T19:55:36.979Z",
+  "deployment": "https://nofi-diary-website-git-codex-public-bdb324-dplab-codes-projects.vercel.app",
+  "environment": "preview",
+  "COMING_SOON": "false",
+  "SITE_RELEASE_MODE": "preview",
+  "INDEXABLE": "false",
+  "effectiveRelease": {
+    "isComingSoon": false,
+    "isIndexable": false,
+    "siteReleaseMode": "preview",
+    "isPublicRelease": false,
+    "canIndexPublicPages": false
+  },
+  "sitemap": "https://nofidiary.com/sitemap.xml",
+  "robots": "https://nofidiary.com/robots.txt",
+  "googlePlay": "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary",
+  "publishedFragments": 3,
+  "source": "Local validated candidate configuration; remote deployment Ready independently verified",
+  "previewDeploymentStatus": "READY — verified via Vercel GitHub commit status and bot deployment comment",
+  "remoteCrawl": "NOT RUN: deployment protected by Vercel authentication; available browser redirected to login",
+  "productionDeployment": null,
+  "publicLaunchDecision": "NO-GO",
+  "deploymentDashboard": "https://vercel.com/dplab-codes-projects/nofi-diary-website/69tUbWPCiXRm4tUpVxENFatHkkDd",
+  "deploymentReadyAt": "2026-10-20T19:55:37.503Z",
+  "remoteEnvironmentFlags": "Not inspected; values above are the locally tested desired preview configuration"
+}

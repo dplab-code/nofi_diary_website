@@ -78,6 +78,8 @@ Google Play: il controllo anonimo del 20 ottobre risponde HTTP 404. L’utente c
 | `npm run test:elsewhere` | PASS | Cinque gruppi, sicurezza URL, sette canali e localizzazione, rendering server e isolamento flag candidate |
 | `npm run release:crawl` locale | PASS | 60 pagine × controlli SEO, 45 destinazioni interne HTTP 200; unknown/draft Fragment HTTP 404 |
 | Browser mobile/desktop | PASS | `/`, `/it`, Time Capsules, Manifesto, Fragment 002, Privacy; immagini eager caricate, nessun overflow, nessun asset 404 applicativo o hydration error |
+| Deployment Vercel | PASS | Stato Vercel Ready sul commit `4c98955`, confermato da status GitHub e commento del bot |
+| Crawl Vercel remoto | NOT RUN / autenticazione | La preview è protetta da autenticazione Vercel; il browser disponibile alla chat viene reindirizzato al login. Non vengono dichiarati test remoti non eseguiti |
 | Navigazione / lingua / audio | PASS | Selector reale EN→IT, navigazione al Manifesto, audio Fragment avviato e avanzato |
 | Metricool | PASS integrazione | Script stubbed: un loader e una chiamata per pagina, una ulteriore chiamata su navigazione client; hash esatto; nessun traffico di test inviato alla dashboard dal crawl |
 | Indicizzazione/search engine production | NOT RUN | Nessuno switch pubblico o submit; deliberatamente fuori dalla consegna candidate |
@@ -104,7 +106,11 @@ Il proxy mantiene correttamente `Content-Language`; il documento viene aggiornat
 
 ## Snapshot e rollback
 
-Eseguire `npm run release:snapshot` con gli stessi flag del deployment. Il comando registra esclusivamente commit, URL deployment, timestamp, tre flag, stato effettivo, robots/sitemap, Google Play e numero Fragment pubblicati (3), senza stampare altri environment o segreti. Lo snapshot della candidate e i risultati del crawl remoto vengono aggiunti alle evidenze dopo il deploy preview.
+Eseguire `npm run release:snapshot` con gli stessi flag del deployment. Il comando registra esclusivamente commit, URL deployment, timestamp, tre flag, stato effettivo, robots/sitemap, Google Play e numero Fragment pubblicati (3), senza stampare altri environment o segreti. Lo [snapshot della candidate](evidence/PUBLIC-LAUNCH/candidate-snapshot.json) registra il codice verificato a `4c989557990d68d1eff7219b99af68175cd09c74` e la configurazione locale desiderata per la preview. Il deployment è stato confermato **Ready** alle 21:55:37 Europe/Rome del 20 ottobre, tramite stato GitHub e commento Vercel. I flag dello snapshot non sono presentati come valori ispezionati nell’ambiente remoto.
+
+**[Apri la candidate](https://nofi-diary-website-git-codex-public-bdb324-dplab-codes-projects.vercel.app)** · [Deployment Vercel](https://vercel.com/dplab-codes-projects/nofi-diary-website/69tUbWPCiXRm4tUpVxENFatHkkDd).
+
+La preview richiede autenticazione Vercel e il browser disponibile alla chat viene reindirizzato al login. Non sono stati richiesti token o modifiche alle protezioni. Il crawl completo remoto resta da eseguire con una sessione autorizzata; il crawl locale riproducibile è allegato e PASS. Il controllo remoto non è sostituito dallo stato Ready del deployment.
 
 Rollback point della precedente candidate: `1ab82c3ef070f90e6fcfa8cf574c1c77be6712b8`. Prima di un futuro switch production registrare anche **il deployment production attuale** e i suoi flag: il rollback production deve ripristinare quel deployment e la terna precedente insieme, non promuovere automaticamente questo SHA di preview.
 
@@ -123,6 +129,7 @@ Non essendoci tutti i P0 PASS, **nessun content freeze e nessun GO pubblico sono
 ## Evidenze
 
 - [Crawl locale e matrice canonical/hreflang](evidence/PUBLIC-LAUNCH/local-crawl.json)
+- [Snapshot candidate e stato del deployment](evidence/PUBLIC-LAUNCH/candidate-snapshot.json)
 - [Lighthouse prima/dopo](evidence/PUBLIC-LAUNCH/lighthouse-summary.json)
 - [Homepage IT mobile](evidence/PUBLIC-LAUNCH/home-it-375.png) · [desktop](evidence/PUBLIC-LAUNCH/home-it-1440.png)
 - [Fragment 002 mobile](evidence/PUBLIC-LAUNCH/fragment-002-375.png) · [desktop](evidence/PUBLIC-LAUNCH/fragment-002-1440.png)
@@ -130,7 +137,9 @@ Non essendoci tutti i P0 PASS, **nessun content freeze e nessun GO pubblico sono
 ## Esito obbligatorio di release
 
 ```text
-Release candidate SHA: nello snapshot della candidate allegato dopo commit
+Release candidate code SHA: 4c989557990d68d1eff7219b99af68175cd09c74
+Candidate PR: https://github.com/dplab-code/nofi_diary_website/pull/3
+Candidate deployment: READY, URL nello snapshot; crawl remoto NOT RUN (autenticazione Vercel)
 Production deployment: nessuno (candidate soltanto)
 Release timestamp: non avvenuto
 P0 status: NO-GO — esclusione backup Android non dimostrata; disponibilità app pubblica ancora attesa
@@ -147,5 +156,5 @@ Performance: PASS navigazione/responsive; WARN Lighthouse mobile; dati campo non
 Google Play CTA: PASS URL/package; PENDING pubblicazione app
 Published Fragments: PASS (3, tutte le lingue)
 Rollback commit: 1ab82c3ef070f90e6fcfa8cf574c1c77be6712b8 (candidate precedente)
-FINAL DECISION: NO-GO per production; candidate pronta per revisione
+FINAL DECISION: NO-GO per production; candidate pubblicata e pronta per revisione, crawl remoto da completare con autenticazione
 ```
