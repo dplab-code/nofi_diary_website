@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "release:check": "node scripts/release-check.mjs",
+    "release:crawl": "node scripts/release-crawl.mjs",
+    "release:snapshot": "node scripts/release-snapshot.mjs",
     "test:elsewhere": "node --test scripts/test-elsewhere.mjs",
     "test:elsewhere:browser": "node scripts/test-elsewhere-browser.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs"

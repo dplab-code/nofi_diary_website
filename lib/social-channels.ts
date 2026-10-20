@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 
-export const socialChannelIds = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "x"] as const;
+export const socialChannelIds = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "threads"] as const;
 export type SocialChannelId = (typeof socialChannelIds)[number];
 export type SocialChannel = { id: SocialChannelId; name: string; url: string | null; enabled: boolean; order: number };
 
@@ -12,14 +12,14 @@ export const socialChannels: readonly SocialChannel[] = [
   { id: "tiktok", name: "TikTok", url: "https://www.tiktok.com/@nofidiary", enabled: true, order: 4 },
   { id: "reddit", name: "Reddit", url: "https://www.reddit.com/user/nofi_diary/", enabled: true, order: 5 },
   { id: "pinterest", name: "Pinterest", url: "https://it.pinterest.com/nofidiary/", enabled: true, order: 6 },
-  { id: "x", name: "X", url: "https://x.com/NoFiDiary", enabled: true, order: 7 },
+  { id: "threads", name: "Threads", url: "https://www.threads.com/@nofi_diary", enabled: true, order: 7 },
 ];
 
 const hosts: Record<SocialChannelId, readonly string[]> = {
   instagram: ["instagram.com", "www.instagram.com"], bluesky: ["bsky.app"],
   youtube: ["youtube.com", "www.youtube.com"], tiktok: ["tiktok.com", "www.tiktok.com"],
   reddit: ["reddit.com", "www.reddit.com"],
-  pinterest: ["pinterest.com", "www.pinterest.com", "it.pinterest.com"], x: ["x.com", "www.x.com"],
+  pinterest: ["pinterest.com", "www.pinterest.com", "it.pinterest.com"], threads: ["threads.com", "www.threads.com"],
 };
 
 export function isSocialProfileUrl(id: SocialChannelId, value: string | null): value is string {
@@ -32,7 +32,7 @@ export function isSocialProfileUrl(id: SocialChannelId, value: string | null): v
     const patterns: Record<SocialChannelId, RegExp> = {
       instagram: /^\/(?!explore(?:\/|$)|accounts(?:\/|$)|reels?(?:\/|$)|p(?:\/|$)|stories(?:\/|$)|direct(?:\/|$))[a-zA-Z0-9._]+\/?$/,
       pinterest: /^\/(?!pin(?:\/|$)|search(?:\/|$)|ideas(?:\/|$))[a-zA-Z0-9_]+\/?$/,
-      x: /^\/(?!home(?:\/|$)|explore(?:\/|$)|search(?:\/|$)|settings(?:\/|$)|i(?:\/|$)|messages(?:\/|$))[a-zA-Z0-9_]{1,15}\/?$/,
+      threads: /^\/@[a-zA-Z0-9._]+\/?$/,
       bluesky: /^\/profile\/[a-zA-Z0-9.:-]+\/?$/,
       youtube: /^\/(?:@[a-zA-Z0-9._-]+|channel\/[a-zA-Z0-9_-]+|c\/[a-zA-Z0-9_-]+|user\/[a-zA-Z0-9_-]+)\/?$/,
       tiktok: /^\/@[a-zA-Z0-9._]+\/?$/,

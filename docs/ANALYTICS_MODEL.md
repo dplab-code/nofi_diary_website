@@ -5,7 +5,7 @@
 NoFi measures how the public website helps people discover the product. It does not measure how a person uses the NoFi app.
 
 - Website: communication, discovery, content, store conversion and selected events.
-- Analytics layer: Vercel Web Analytics and Vercel Speed Insights only.
+- Analytics layer: Vercel Web Analytics, Vercel Speed Insights and Metricool’s explicitly approved website visit tracker.
 - Project Hub: a future private maintainer tool that correlates initiatives, sources, traffic and outcomes; it does not replicate Vercel's dashboard.
 - App: no behavioural analytics, installation identifier, user identifier or diary-content collection.
 
@@ -22,13 +22,13 @@ Vercel Web Analytics is configured in `app/layout.tsx`. Store CTAs use `TrackedS
 | `language_change` | Localization usefulness | A language link is selected | `to_locale` | Navigation choice only |
 | `privacy_open` | Privacy-information interest | A Coming Soon Privacy link is selected | `placement=header|footer` | Link intent, not confirmation that the policy was read |
 | `shared_fragment_view` | Shared Fragment reach | A published Fragment page mounts | `fragment`, `locale` | Page exposure; the fragment value is a public editorial ID |
-| `social_exit_click` | Voluntary interest in an Elsewhere destination | Explicit activation of a published social link | `channel=instagram|bluesky|youtube|tiktok|reddit|pinterest|x`, `placement=coming_soon|home`, `locale=en|it|fr|es|de` | Link intent only; not a completed visit, conversion or new follower |
+| `social_exit_click` | Voluntary interest in an Elsewhere destination | Explicit activation of a published social link | `channel=instagram|bluesky|youtube|tiktok|reddit|pinterest|threads`, `placement=coming_soon|home`, `locale=en|it|fr|es|de` | Link intent only; not a completed visit, conversion or new follower |
 
 ### Elsewhere exit measurement
 
 `SocialExitTracking` progressively enhances the server-rendered native anchors in `NoFiElsewhere`. One scoped listener is cleaned up on unmount and locale changes; no existing store or Coming Soon link tracker wraps these anchors. Only `social_exit_click` is added. Rendering, section exposure and “Another thought” do not emit this event. The handler never prevents default navigation and catches analytics failures. Profile URLs are used unchanged; no outbound UTM parameters are added.
 
-Only the three registered, enumerated properties are sent. No profile URL, visitor handle, identifier, session information, memory content or other behavior is included. No platform SDK, advertising cookie, remarketing pixel or additional analytics dependency is introduced. Browser tests intercept the local Vercel API to check event name, properties and single emission; this verifies code integration, not production ingestion. Actual receipt still requires a published official channel and observation in the production Vercel dashboard. Seven profile URLs supplied by the project owner are configured and enabled (Instagram, Bluesky, YouTube, TikTok, Reddit, Pinterest and X). The section is active in the candidate; production event receipt remains unverified.
+Only the three registered, enumerated properties are sent. No profile URL, visitor handle, identifier, session information, memory content or other behavior is included. No platform SDK, advertising cookie, remarketing pixel or additional analytics dependency is introduced. Browser tests intercept the local Vercel API to check event name, properties and single emission; this verifies code integration, not production ingestion. Actual receipt still requires a published official channel and observation in the production Vercel dashboard. Seven profile URLs supplied by the project owner are configured and enabled (Instagram, Bluesky, YouTube, TikTok, Reddit, Pinterest and Threads). The section is active in the candidate; production event receipt remains unverified.
 
 `app_share_landing` is intentionally represented through acquisition parameters rather than a JavaScript event. A NoFi-generated share uses:
 
@@ -138,3 +138,12 @@ Do not mark “real page views collected” or “Web Vitals available” comple
 - Custom events: <https://vercel.com/docs/analytics/custom-events>
 - Analytics privacy and compliance: <https://vercel.com/docs/analytics/privacy-policy>
 - Speed Insights quickstart: <https://vercel.com/docs/speed-insights/quickstart>
+
+
+## Metricool website connector — approved 2026-10-20
+
+The owner explicitly requested the Metricool tag with site hash `4b1f47aa5bdf6604eecdfb061d2c5e42`. `MetricoolTracker` in the root layout loads `https://tracker.metricool.com/resources/be.js` after hydration once and calls `beTracker.t` on the initial page and subsequent pathname changes. A ref avoids duplicate calls; failures never interrupt navigation. This script is an additional website provider, not mobile-app telemetry. It receives the document URL (including query/hash), window width/height and referrer when present; network connection exposes IP to the provider. Do not put diary content, private tokens or visitor identifiers in URLs. No custom Vercel event properties are forwarded to Metricool.
+
+The vendor describes this visit tracker as cookie-free and without stored visitor IDs. The script inspected on 2026-10-20 creates an image request to `tracker.metricool.com/c3po.jpg`; it does not write cookies or localStorage. This observation does not verify backend retention or override provider terms. References: [connection guide](https://help.metricool.com/how-to-connect-your-website-or-blog-to-metricool-ejuy1), [visit-tracker privacy explanation](https://help.metricool.com/use-of-cookies-in-metricool-v5dg7). The website-services paragraph of the privacy policy is updated in all five languages; app promises are unchanged.
+
+Local browser tests substitute a stub tracker to verify one loader and one call per page/path without adding test traffic to the dashboard. Real dashboard reception, provider contractual/retention settings and production connection verification remain manual release checks. Vercel preview visits can appear in Metricool when real scripts are allowed; a received request is not proof of a product conversion.

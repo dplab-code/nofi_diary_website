@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/content/seo";
+import { googlePlayUrl } from "@/lib/store";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +7,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { exploreCopy, type ExplorePageId } from "@/content/explore";
 import { copy, localePath, locales, type Locale } from "@/lib/i18n";
 
-const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
+const playUrl = googlePlayUrl;
 const imageFor: Record<ExplorePageId,string> = { "time-capsules":"/images/editorial/time-capsule.png", stickers:"/images/editorial/collection-stickers-transparent.png", themes:"/images/editorial/collection-themes.png", appearances:"/images/editorial/collection-appearances.png" };
 const exploreUi: Record<Locale, { getApp:string; next:string; all:string; labels:Record<ExplorePageId,string>; expression:string; later:string; boundary:string }> = {
   en:{getApp:"Get NoFi on Google Play",next:"Continue exploring",all:"All creative collections",labels:{"time-capsules":"Time Capsules",stickers:"Sticker Packs",themes:"Themes",appearances:"Appearances"},expression:"Expression, not decoration",later:"For another day",boundary:"A clear boundary"},
@@ -46,7 +48,7 @@ const appearanceDifferenceCopy: Record<Locale,{theme:string;appearance:string;ex
 export function exploreMetadata(locale: Locale, page: ExplorePageId): Metadata {
   const t = exploreCopy(locale); const item = page === "time-capsules" ? t.timeCapsules : t[page];
   const url = localePath(locale, `/${page}`);
-  return { title:item.title, description:item.description, alternates:{canonical:url,languages:Object.fromEntries(locales.map(l=>[l,localePath(l,`/${page}`)]))}, openGraph:{title:`${item.title} — NoFi Diary`,description:item.description,url,type:"website",images:[{url:imageFor[page],alt:item.title}]} };
+  return pageMetadata(locale, `/${page}`, `${item.title} — NoFi Diary`, item.description, imageFor[page]);
 }
 
 function EditorialHero({ label, title, subtitle, image, imageAlt, cta }: { label:string; title:string; subtitle:string; image:string; imageAlt:string; cta?:string }) {

@@ -39,6 +39,14 @@ http://localhost:3000
 
 ## Available Commands
 
+Validate release invariants and SEO configuration:
+
+```bash
+npm run release:check
+```
+
+See [the launch readiness report](docs/milestones/PUBLIC_LAUNCH_READINESS_REPORT.md) for candidate evidence, the current NO-GO blockers and the atomic launch/rollback procedure.
+
 Run type checking:
 
 ```bash
@@ -55,7 +63,7 @@ The project should always build successfully before deployment.
 
 ## Analytics and observability
 
-The public website uses Vercel Web Analytics and Vercel Speed Insights for aggregated product discovery, selected conversion-intent events and real-user performance. No behavioural analytics are introduced into the NoFi app.
+The public website uses Vercel Web Analytics, Vercel Speed Insights and the explicitly approved Metricool visit tracker for aggregated product discovery, selected conversion-intent events and real-user performance. No behavioural analytics are introduced into the NoFi app.
 
 See [docs/ANALYTICS_MODEL.md](docs/ANALYTICS_MODEL.md) for the events registry, UTM convention, KPI definitions, privacy boundary and production activation checklist. The future private administrative domain is seeded under [project-hub](project-hub/README.md); it is not a public website route.
 
@@ -87,9 +95,9 @@ Some pages, illustrations, screenshots and external links are placeholders and s
 
 Before publishing the website:
 
-- Replace the placeholder Privacy Policy.
+- Resolve the Android backup exclusion evidence gap recorded in the launch report.
 - Replace the placeholder Terms & Conditions.
-- Configure the real Google Play URL.
+- Verify public access to the configured Google Play package listing (alpha eligibility is separate).
 - Replace placeholder illustrations with approved screenshots and branding assets.
 - Verify every product, privacy and security claim against the actual application.
 - Add the final favicon and application icons.

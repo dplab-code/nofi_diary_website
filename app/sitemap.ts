@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { locales, localePath } from "@/lib/i18n";
-import { canIndexPublicPages } from "@/lib/site-release";
+import { canIndexPublicPages, isPublicRelease } from "@/lib/site-release";
+import { publicPagePaths } from "@/content/seo";
 import { publishedFragments } from "@/content/fragments";
 
 const siteUrl = "https://nofidiary.com";
@@ -11,7 +12,7 @@ const languageAlternates = (path = "") => Object.fromEntries(
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!canIndexPublicPages) return [];
 
-  const fixedPages = ["", "/privacy"].flatMap((path, groupIndex) => locales.map(locale => ({
+  const fixedPages = (isPublicRelease ? publicPagePaths : ["", "/privacy"]).flatMap((path, groupIndex) => locales.map(locale => ({
     url: `${siteUrl}${localePath(locale, path)}`,
     changeFrequency: (groupIndex === 0 ? "weekly" : "yearly") as "weekly" | "yearly",
     priority: groupIndex === 0 ? 1 : 0.4,

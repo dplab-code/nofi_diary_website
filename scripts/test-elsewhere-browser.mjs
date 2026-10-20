@@ -22,9 +22,9 @@ const output = path.join(root, "tmp/elsewhere-evidence");
 const port = process.env.ELSEWHERE_TEST_PORT || "3107";
 const origin = `http://localhost:${port}`;
 const locales = ["en", "it", "fr", "es", "de"];
-const ids = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "x"];
+const ids = ["instagram", "bluesky", "youtube", "tiktok", "reddit", "pinterest", "threads"];
 // User-provided official destinations; all external requests are intercepted.
-const urls = ["https://www.instagram.com/nofi_diary", "https://bsky.app/profile/nofidiary.bsky.social", "https://www.youtube.com/@NoFiDiary", "https://www.tiktok.com/@nofidiary", "https://www.reddit.com/user/nofi_diary/", "https://it.pinterest.com/nofidiary/", "https://x.com/NoFiDiary"];
+const urls = ["https://www.instagram.com/nofi_diary", "https://bsky.app/profile/nofidiary.bsky.social", "https://www.youtube.com/@NoFiDiary", "https://www.tiktok.com/@nofidiary", "https://www.reddit.com/user/nofi_diary/", "https://it.pinterest.com/nofidiary/", "https://www.threads.com/@nofi_diary"];
 const headings = ["We are here.", "Siamo qui.", "Nous sommes ici.", "Estamos aquí.", "Wir sind hier."];
 const results = [];
 const record = message => { results.push(message); console.log(message); };

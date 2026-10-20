@@ -20,8 +20,7 @@ export function NoFiElsewhere({ locale, placement }: { locale: Locale; placement
       </header>
       <ol className={styles.destinations}>
         {channels.map((channel, index) => <li key={channel.id}>
-          <a href={channel.url} target="_blank" rel="noopener noreferrer" data-social-channel={channel.id}
-            aria-label={`${channel.name} — ${socialDescriptions[locale][channel.id]} (${copy.external})`}>
+          <a href={channel.url} target="_blank" rel="noopener noreferrer" data-social-channel={channel.id}>
             <span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
             <div><h3>{channel.name}</h3><p>{socialDescriptions[locale][channel.id]}</p><small>{copy.external}</small></div>
             <span className={styles.arrow} aria-hidden="true">↗</span>

@@ -7,6 +7,9 @@ import { FragmentVisit } from "@/components/FragmentVisit";
 import type { NofiFragment } from "@/content/fragments";
 import { localeNames, localePath, locales, type Locale } from "@/lib/i18n";
 import styles from "./FragmentPage.module.css";
+import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
+import { copy as siteCopy } from "@/lib/i18n";
+import { isComingSoon } from "@/lib/coming-soon";
 
 const backCopy: Record<Locale, string> = { en: "Back to NoFi", it: "Torna a NoFi", fr: "Retour à NoFi", es: "Volver a NoFi", de: "Zurück zu NoFi" };
 const privacyCopy: Record<Locale, string> = { en: "Privacy", it: "Privacy", fr: "Confidentialité", es: "Privacidad", de: "Datenschutz" };
@@ -79,10 +82,10 @@ function Fragment002Canvas({ fragment, locale }: { fragment: NofiFragment; local
 }
 
 export function FragmentPage({ fragment, locale }: { fragment: NofiFragment; locale: Locale }) {
-  if (fragment.id === "002") return <Fragment002Canvas fragment={fragment} locale={locale} />;
+  if (fragment.id === "002" && isComingSoon) return <Fragment002Canvas fragment={fragment} locale={locale} />;
 
   const copy = fragment.copy[locale];
   const pageCopy = comingSoonCopy[locale];
   const home = localePath(locale);
-  return <div className={styles.page}><ComingSoonHeader locale={locale} currentPath={`/fragments/${fragment.slug}`} /><FragmentVisit fragment={fragment.id} locale={locale} /><main className={styles.main}><Link className={styles.back} href={home}>← {backCopy[locale]}</Link><article className={styles.article}><p className={styles.eyebrow}>NoFi Diary · Fragment {fragment.id}</p><h1>{copy.title}</h1><p className={styles.excerpt}>{copy.excerpt}</p>{fragment.id === "003" ? <Image className={styles.journalImage} src={fragment.image} alt={copy.imageAlt} width={1254} height={1254} priority sizes="(max-width: 700px) 92vw, 800px" /> : <div className={styles.memoryFrame}><div className={styles.memory}><Image src={fragment.image} alt={copy.imageAlt} fill priority sizes="(max-width: 700px) 92vw, 800px" /></div></div>}{fragment.audio && <section className={styles.audioCard} aria-label={pageCopy.voiceLabel}><p>{pageCopy.voiceLabel}</p><FragmentAudio src={fragment.audio} duration={23} gain={2.25} bars={60} labels={{ play: pageCopy.play, pause: pageCopy.pause, timeline: pageCopy.timeline }} fragment={fragment.id} /></section>}<p className={styles.body}>{copy.body}</p><Link className={`${styles.back} ${styles.bottomBack}`} href={home}>← {backCopy[locale]}</Link></article></main><footer className={styles.footer}><strong>NoFi</strong><p>{pageCopy.footerLine}</p><Link className={styles.privacy} href={localePath(locale,"/privacy")}>{privacyCopy[locale]}</Link><span>© 2026</span></footer></div>;
+  return <div className={styles.page}>{isComingSoon ? <ComingSoonHeader locale={locale} currentPath={`/fragments/${fragment.slug}`} /> : <SiteHeader locale={locale} nav={siteCopy(locale).nav} currentPath={`/fragments/${fragment.slug}`} />}<FragmentVisit fragment={fragment.id} locale={locale} /><main className={styles.main}><Link className={styles.back} href={home}>← {backCopy[locale]}</Link><article className={styles.article}><p className={styles.eyebrow}>NoFi Diary · Fragment {fragment.id}</p><h1>{copy.title}</h1><p className={styles.excerpt}>{copy.excerpt}</p>{fragment.id === "003" ? <Image className={styles.journalImage} src={fragment.image} alt={copy.imageAlt} width={1254} height={1254} priority sizes="(max-width: 700px) 92vw, 800px" /> : <div className={styles.memoryFrame}><div className={styles.memory}><Image src={fragment.image} alt={copy.imageAlt} fill priority sizes="(max-width: 700px) 92vw, 800px" /></div></div>}{fragment.audio && <section className={styles.audioCard} aria-label={pageCopy.voiceLabel}><p>{pageCopy.voiceLabel}</p><FragmentAudio src={fragment.audio} duration={23} gain={2.25} bars={60} labels={{ play: pageCopy.play, pause: pageCopy.pause, timeline: pageCopy.timeline }} fragment={fragment.id} /></section>}<p className={styles.body}>{copy.body}</p><Link className={`${styles.back} ${styles.bottomBack}`} href={home}>← {backCopy[locale]}</Link></article></main>{isComingSoon ? <footer className={styles.footer}><strong>NoFi</strong><p>{pageCopy.footerLine}</p><Link className={styles.privacy} href={localePath(locale,"/privacy")}>{privacyCopy[locale]}</Link><span>© 2026</span></footer> : <SiteFooter locale={locale} text={siteCopy(locale).footer} nav={siteCopy(locale).nav} />}</div>;
 }

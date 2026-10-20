@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/content/seo";
+import { canIndexPublicPages } from "@/lib/site-release";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getLegalContent, type LegalDocumentId } from "@/content/legal";
@@ -10,7 +12,7 @@ const documentIds: LegalDocumentId[] = ["privacy", "terms", "disclaimer"];
 export function isLegalDocument(value: string): value is LegalDocumentId { return documentIds.includes(value as LegalDocumentId); }
 export function legalMetadata(locale: Locale, id: LegalDocumentId): Metadata {
   const document = getLegalContent(locale).documents[id];
-  return { title: document.title, description: document.description, alternates: { canonical: localePath(locale, `/${id}`), languages: Object.fromEntries(locales.map(item => [item, localePath(item, `/${id}`)])) } };
+  return { ...pageMetadata(locale, `/${id}`, `${document.title} — NoFi Diary`, document.description), robots: { index: id === "privacy" && canIndexPublicPages, follow: canIndexPublicPages } };
 }
 export function LegalPage({ locale, documentId }: { locale: Locale; documentId: LegalDocumentId }) {
   const siteCopy = copy(locale); const legal = getLegalContent(locale); const document = legal.documents[documentId];

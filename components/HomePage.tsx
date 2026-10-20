@@ -1,3 +1,5 @@
+import { mobileApplicationData } from "@/content/seo";
+import { googlePlayUrl } from "@/lib/store";
 import Image from "next/image";
 import Link from "next/link";
 import { MemoryJourney } from "@/components/MemoryJourney";
@@ -8,7 +10,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { TrackedStoreLink } from "@/components/TrackedStoreLink";
 import { copy, Locale, localePath } from "@/lib/i18n";
 
-const playUrl = process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ?? "https://play.google.com/store/apps/details?id=com.nofi.nofi_diary";
+const playUrl = googlePlayUrl;
 const memoryImages = ["memory-page-cutout.png", "memory-box-cutout.png", "memory-capsule-cutout.png", "memory-diary-cutout.png"];
 const featureImages = ["feature-capture-cutout.png", "feature-create-cutout.png", "feature-keep-cutout.png"];
 const collectionImages = ["/images/editorial/collection-stickers.png", "/images/editorial/collection-themes.png", "/images/editorial/collection-appearances.png"];
@@ -57,6 +59,7 @@ function PrivacyIcon({ index }: { index: number }) {
 export function HomePage({ locale }: { locale: Locale }) {
   const t = copy(locale); const ui = homeUi[locale]; const anatomy = memoryAnatomy[locale];
   return <main>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(mobileApplicationData(locale)).replace(/</g, "\\u003c") }} />
     <SiteHeader locale={locale} nav={t.nav} />
     <section className="hero" id="top"><div className="shell heroGrid">
       <div className="heroCopy"><p className="kicker">{ui.hero}</p><h1>{t.heroTitle}</h1><p className="lead">{t.heroLead}</p><div className="actions"><TrackedStoreLink className="playBadge" href={playUrl} placement="hero" variant="google_play_badge" aria-label={ui.play}><GooglePlayIcon /><span><small>GET IT ON</small><strong>Google Play</strong></span></TrackedStoreLink><Link className="button heroSecondary" href="#how">{t.seeHow}</Link></div><p className="micro heroAssurance"><NoAccountIcon /><span>{t.micro}</span></p></div>
