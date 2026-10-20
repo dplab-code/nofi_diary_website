@@ -12,7 +12,7 @@ Questa consegna prepara una nuova candidate del **sito completo**, non pubblica 
 1. X rimosso dalla configurazione, dai testi attivi e dai test.
 2. Threads inserito al suo posto: `https://www.threads.com/@nofi_diary`, con descrizioni EN/IT/FR/ES/DE. Nessun LinkedIn. Le sette destinazioni sono Instagram, Bluesky, YouTube, TikTok, Reddit, Pinterest e Threads.
 3. Google Play centralizzato in `lib/store.ts`: `https://play.google.com/store/apps/details?id=com.nofi.nofi_diary`. Usato da header, homepage, Explore e JSON-LD. Il package è confermato da `nofi_diary/android/app/build.gradle` e dai report Alpha build 26/28; il track non cambia l’application ID. L’accesso reale resta determinato dalla distribuzione Play.
-4. `MetricoolTracker` nel root layout carica lo script richiesto dopo l’idratazione con hash `4b1f47aa5bdf6604eecdfb061d2c5e42`. Un solo loader, una chiamata iniziale e una per navigazione client a un pathname diverso; nessuna duplicazione da render, nessuna interferenza se bloccato. La sezione dei servizi del sito nella privacy è aggiornata nelle cinque lingue, versione 1.2 del 20 ottobre; i claim dell’app sono preservati.
+4. `MetricoolTracker` nel root layout carica lo script richiesto dopo l’idratazione con hash `4b1f47aa5bdf6604eecdfb061d2c5e42`. Un solo loader, una chiamata iniziale e una per navigazione client a un pathname diverso; nessuna duplicazione da render, nessuna interferenza se bloccato. La sezione dei servizi del sito nella privacy è aggiornata nelle cinque lingue, versione 1.3 del 20 ottobre; il paragrafo backup è stato successivamente corretto su richiesta esplicita dell’utente, come descritto nell’audit sotto.
 
 Lo script Metricool letto il 20 ottobre trasmette URL completo, dimensioni finestra e referrer con una richiesta immagine a `tracker.metricool.com/c3po.jpg`. Non scrive cookie o localStorage nel codice osservato. Il fornitore descrive il visit tracker come privo di cookie e identificativi memorizzati: [documentazione del tracker](https://help.metricool.com/how-to-connect-your-website-or-blog-to-metricool-ejuy1), [chiarimento privacy](https://help.metricool.com/use-of-cookies-in-metricool-v5dg7). Non vengono fatte promesse autonome sulla conservazione backend. La decisione di aggiungere questo fornitore è esplicita nella richiesta dell’utente; non è telemetria dell’app. Ricezione in dashboard e configurazione contrattuale/retention restano da verificare prima del lancio.
 
@@ -49,7 +49,7 @@ La sitemap pubblica contiene esattamente 50 URL: sette gruppi fissi × cinque li
 
 ## Audit dei claim e blocker reali
 
-Fonti: `docs/PRELAUNCH_PRIVACY_CLAIMS.md`, `content/legal.ts`, codice Android/Flutter e report locali della app. Non è stata modificata l’app né la policy per far coincidere artificialmente marketing e prodotto.
+Fonti: `docs/PRELAUNCH_PRIVACY_CLAIMS.md`, `content/legal.ts`, codice Android/Flutter e report locali della app. L’app non è stata modificata. Su richiesta esplicita dell’utente, la policy v1.3 descrive il comportamento Android verificato, rimuovendo la precedente promessa di esclusione completa dal backup.
 
 | Claim | Evidenza | Esito |
 | --- | --- | --- |
@@ -58,9 +58,9 @@ Fonti: `docs/PRELAUNCH_PRIVACY_CLAIMS.md`, `content/legal.ts`, codice Android/Fl
 | No NoFi cloud sync automatica | Confini della policy conservati; trasferimento intenzionale a terzi distinto dal cloud NoFi | PASS nel perimetro esaminato |
 | Export/import e Nearby | Servizi Dart e trasporti Wi-Fi Direct; manifest CAMERA/RECORD_AUDIO/NEARBY_WIFI_DEVICES e localizzazione limitata ad API precedenti | PASS documentale; non ripetuti test fisici dell’app |
 | Nessun SDK analytics/crash reporting nell’app | Nessuna dipendenza Firebase Analytics/Crashlytics/Sentry nel pubspec esaminato; servizi sito esplicitamente separati | PASS nel perimetro esaminato |
-| Esclusione contenuti privati dal backup Android automatico | Il manifest sorgente e quello compilato di build 28 (`build/release-28/final/manifest.xml`) non dichiarano `allowBackup=false`, `fullBackupContent` o `dataExtractionRules`; nessuna regola di esclusione trovata nel progetto Android principale | **FAIL / P0: dichiarazione non dimostrata** |
+| Backup Android e backup manuale | Codice Flutter: database e media nei documenti dell’app; identità e file crittografici in `noBackupFilesDir`. APK produzione 1.2.0 build 61 e manifest AAB senza esclusioni esplicite. Policy v1.3 aggiornata nelle cinque lingue su richiesta dell’utente | **PASS coerenza del testo; esclusione completa non implementata né dichiarata** |
 
-Android documenta `allowBackup=true` come default e l’inclusione di gran parte dei file in assenza di regole: [manifest application](https://developer.android.com/guide/topics/manifest/application-element), [Auto Backup](https://developer.android.com/identity/data/autobackup). Questo non dimostra che un backup sia realmente avvenuto, ma impedisce di certificare il claim di esclusione. Serve conferma sul bundle effettivamente destinato al pubblico, con policy di backup implementata e verificata, oppure revisione esplicita del claim da parte del responsabile. La policy applicativa non è stata alterata automaticamente.
+Android documenta l’inclusione predefinita di gran parte dei file e l’esclusione di `noBackupFilesDir`: [Auto Backup](https://developer.android.com/identity/data/autobackup). Non è stato verificato un backup effettivo. La policy ora informa che Android può includere dati del diario nei backup di sistema o nei trasferimenti tra dispositivi, secondo impostazioni, versione e produttore; distingue queste operazioni dal backup manuale dell’app. Evidenza e SHA-256 dell’APK build 61 in `docs/PRELAUNCH_PRIVACY_CLAIMS.md`. Il precedente P0 di discrepanza del claim è risolto tramite revisione esplicitamente richiesta; nessuna esclusione tecnica viene certificata.
 
 Google Play: il controllo anonimo del 20 ottobre risponde HTTP 404. L’utente conferma che l’app non è pubblicata. **Target configurato: PASS; disponibilità pubblica: PENDING atteso.** Ripetere lo smoke test quando l’app sarà pubblicata. La candidate del sito è validabile prima di quel momento, il GO pubblico completo no.
 
@@ -116,7 +116,7 @@ Rollback point della precedente candidate: `1ab82c3ef070f90e6fcfa8cf574c1c77be67
 
 ## Procedura futura e content freeze
 
-1. Risolvere il P0 backup con evidenza riferita all’esatta app pubblica e verificare gli altri claim rispetto a quel bundle.
+1. Ricontrollare i claim rispetto all’esatto bundle pubblico. La discrepanza backup è risolta dalla policy v1.3; ricontrollarla se cambia la configurazione dell’app.
 2. Quando l’app è pubblicata, verificare la scheda Play senza account tester. Confermare dati legali e configurazione dei fornitori sito; osservare il connettore Metricool nella dashboard.
 3. Ripetere check/crawl sulla candidate approvata, registrare snapshot e rollback della production corrente. Solo quando tutti i P0 sono PASS dichiarare content freeze: nessun redesign, nuovo Fragment, tracker o esperimento di copy.
 4. Dopo GO esplicito, promuovere **lo stesso commit approvato** con `COMING_SOON=false`, `SITE_RELEASE_MODE=public`, `INDEXABLE=true` nello stesso deployment. Nessuno switch intermedio.
@@ -142,7 +142,7 @@ Candidate PR: https://github.com/dplab-code/nofi_diary_website/pull/3
 Candidate deployment: READY, URL nello snapshot; crawl remoto NOT RUN (autenticazione Vercel)
 Production deployment: nessuno (candidate soltanto)
 Release timestamp: non avvenuto
-P0 status: NO-GO — esclusione backup Android non dimostrata; disponibilità app pubblica ancora attesa
+P0 status: NO-GO — disponibilità app pubblica ancora attesa; discrepanza policy backup risolta in v1.3
 P1 status: HTML lang server-side rinviato; Lighthouse mobile 84/85 indicativo
 Indexability: PASS configurazione e build pubblica simulata; preview correttamente noindex
 robots.txt: PASS
@@ -151,10 +151,20 @@ Canonical: PASS
 Hreflang: PASS
 Metadata: PASS
 Structured data: PASS semantico, nessuna promessa di rich result
-Privacy claims: FAIL — backup automatico Android
+Privacy claims: PASS nel perimetro esaminato — disclosure backup corretta in v1.3; esclusione completa non dichiarata
 Performance: PASS navigazione/responsive; WARN Lighthouse mobile; dati campo non disponibili
 Google Play CTA: PASS URL/package; PENDING pubblicazione app
 Published Fragments: PASS (3, tutte le lingue)
 Rollback commit: 1ab82c3ef070f90e6fcfa8cf574c1c77be6712b8 (candidate precedente)
 FINAL DECISION: NO-GO per production; candidate pubblicata e pronta per revisione, crawl remoto da completare con autenticazione
 ```
+
+## Revisione policy successiva allo snapshot
+
+Il 20 ottobre 2026, dopo l’audit del codice e della build Android 61, l’utente ha richiesto di correggere la policy. Le modifiche v1.3 e gli esiti del presente report sostituiscono la precedente valutazione backup. Lo snapshot, i risultati di build/crawl e il deployment sopra documentati si riferiscono ai commit precedenti; non costituiscono verifica remota del nuovo testo. La pubblicazione dell’app e il crawl remoto restano pendenti.
+
+## Verifica di coerenza dei testi — 2026-10-20
+
+Revisione dei testi pubblici nelle cinque lingue: FAQ, card privacy homepage, Coming Soon, pagine di approfondimento, policy/termini/disclaimer, Manifesto, Fragments, condivisione privata, metadata e anteprime social. Corrette le FAQ che limitavano l’uscita dei contenuti alla sola esportazione e le Capsule del tempo che escludevano qualsiasi copia cloud. Precisato il possibile backup Android anche nelle card privacy e nel Coming Soon. Il componente FAQ inglese riusa le risposte della homepage.
+
+Verifiche sulla candidate aggiornata: TypeScript PASS, `release:check` PASS, build completa PASS. Controllo HTTP locale su **60 pagine renderizzate** nelle cinque lingue: PASS; **35 verifiche** sulla presenza effettiva delle nuove precisazioni e assenza delle vecchie promesse. Il Coming Soon è stato verificato nel sorgente nelle cinque lingue: nella modalità sito completo la sua route reindirizza alla homepage. Evidenza: [audit dei testi](evidence/PUBLIC-LAUNCH/privacy-copy-audit.json). Nessuna verifica di backup/ripristino su dispositivi e nessuna pubblicazione remota di queste modifiche.

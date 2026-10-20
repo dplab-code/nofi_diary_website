@@ -28,7 +28,7 @@ export const fixtureUrls = [
 const fixtures = config.socialChannels.map((channel, i) => ({ ...channel, enabled: true, url: fixtureUrls[i] }));
 
 test("full-site candidates are scoped to Vercel previews; production and other branches retain Coming Soon", () => {
-  for (const branch of ["codex/private-memories", "feature/nofi-elsewhere", "codex/public-launch-readiness"]) {
+  for (const branch of ["codex/private-memories", "feature/nofi-elsewhere", "codex/public-launch-readiness", "codex/privacy-backup-clarity"]) {
     for (const flag of [undefined, "true", "false"]) {
       assert.equal(load("lib/coming-soon.ts", {}, { VERCEL_ENV: "preview", VERCEL_GIT_COMMIT_REF: branch, COMING_SOON: flag }).isComingSoon, false);
     }
