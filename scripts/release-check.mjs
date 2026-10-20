@@ -13,6 +13,7 @@ for (const mode of ["preview", "public"]) for (const index of ["true", "false", 
 for (const env of [preview, { ...preview, INDEXABLE: "true", SITE_RELEASE_MODE: "public" }]) assert.equal(resolveRelease(env).canIndexPublicPages, false);
 for (const mode of ["preview", "public"]) assert.equal(resolveRelease({ ...prod, COMING_SOON: "true", SITE_RELEASE_MODE: mode }).isComingSoon, true);
 assert.equal(resolveRelease({ ...preview, COMING_SOON: "true", VERCEL_GIT_COMMIT_REF: "codex/public-launch-readiness" }).isComingSoon, false);
+assert.equal(resolveRelease({ ...preview, COMING_SOON: "true", VERCEL_GIT_COMMIT_REF: "codex/privacy-backup-clarity" }).isComingSoon, false);
 assert.throws(() => resolveRelease({ ...prod, INDEXABLE: "yes" }), /NO-GO/);
 console.log("PASS release environment matrix, invalid production rejection and preview isolation");
 

@@ -4,7 +4,7 @@ export function resolveRelease(env: Environment) {
   const production = env.VERCEL_ENV === "production";
   const preview = env.VERCEL_ENV === "preview" || env.VERCEL_ENV === "development";
   const candidate = env.VERCEL_ENV === "preview" && [
-    "codex/private-memories", "feature/nofi-elsewhere", "codex/public-launch-readiness",
+    "codex/private-memories", "feature/nofi-elsewhere", "codex/public-launch-readiness", "codex/privacy-backup-clarity",
   ].includes(env.VERCEL_GIT_COMMIT_REF ?? "");
   const isComingSoon = !candidate && env.COMING_SOON !== "false";
   const siteReleaseMode = env.SITE_RELEASE_MODE === "public" ? "public" : "preview";

@@ -1,0 +1,379 @@
+{
+  "checkedAt": "2026-10-20T20:22:53.397Z",
+  "scope": "Local production build in preview/noindex mode. Rendered text/HTTP check; no device backup/restore or remote deployment validation.",
+  "locales": [
+    "en",
+    "it",
+    "fr",
+    "es",
+    "de"
+  ],
+  "comingSoonDisclosureSourceChecks": 5,
+  "pages": 60,
+  "verifiedDisclosureStrings": 35,
+  "result": "PASS",
+  "records": [
+    {
+      "pathname": "/",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 3
+    },
+    {
+      "pathname": "/privacy",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/manifesto",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/time-capsules",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/stickers",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/themes",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/appearances",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/terms",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/disclaimer",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fragments/001-road-to-sea",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fragments/002-the-song-kept-playing",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fragments/003-three-small-shadows",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 3
+    },
+    {
+      "pathname": "/it/privacy",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/it/manifesto",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/time-capsules",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/it/stickers",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/themes",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/appearances",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/terms",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/disclaimer",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/fragments/001-road-to-sea",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/fragments/002-the-song-kept-playing",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/it/fragments/003-three-small-shadows",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 3
+    },
+    {
+      "pathname": "/fr/privacy",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/fr/manifesto",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/time-capsules",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/fr/stickers",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/themes",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/appearances",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/terms",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/disclaimer",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/fragments/001-road-to-sea",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/fragments/002-the-song-kept-playing",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/fr/fragments/003-three-small-shadows",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 3
+    },
+    {
+      "pathname": "/es/privacy",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/es/manifesto",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/time-capsules",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/es/stickers",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/themes",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/appearances",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/terms",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/disclaimer",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/fragments/001-road-to-sea",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/fragments/002-the-song-kept-playing",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/es/fragments/003-three-small-shadows",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 3
+    },
+    {
+      "pathname": "/de/privacy",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/de/manifesto",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/time-capsules",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 2
+    },
+    {
+      "pathname": "/de/stickers",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/themes",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/appearances",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/terms",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/disclaimer",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/fragments/001-road-to-sea",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/fragments/002-the-song-kept-playing",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    },
+    {
+      "pathname": "/de/fragments/003-three-small-shadows",
+      "status": 200,
+      "obsoleteClaims": false,
+      "verifiedDisclosureStrings": 0
+    }
+  ],
+  "candidateBranch": "codex/privacy-backup-clarity",
+  "baseCommit": "c83b85453a0a2282a5353cb881f7019967a1b376"
+}
