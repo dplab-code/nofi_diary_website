@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   },
   description: "A private, offline-first creative diary for photos, voice, tactile pages and time capsules.",
   applicationName: "NoFi Diary",
+  other: { "p:domain_verify": "1e4f791e94a1b3fb617750cd9e336a5b" },
   manifest: "/manifest.webmanifest",
   icons: { icon: [{ url: "/icons/nofi-32.png", sizes: "32x32", type: "image/png" }, { url: "/icons/nofi-192.png", sizes: "192x192", type: "image/png" }], apple: [{ url: "/icons/nofi-apple-180.png", sizes: "180x180", type: "image/png" }] },
   robots: {
