@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
+import { recordWebsiteEvent } from "@/lib/cloudflare-events";
 import type { Locale } from "@/lib/i18n";
 
 type MemoryId = "eccoli" | "fuori" | "sancius" | "altrove";
@@ -67,7 +68,7 @@ function VoicePlayer({src,duration,labels}:{src:string;duration:number;labels:{p
 function NativeMemoryScreen({screen,audio,fragment,labels}:{screen:string;audio?:string;fragment:MemoryId;labels:{play:string;pause:string}}){
   const player=useRef<HTMLAudioElement>(null); const trackedPlay=useRef(false); const [playing,setPlaying]=useState(false);
   const toggle=async()=>{if(!player.current)return;if(player.current.paused)await player.current.play();else player.current.pause();};
-  return <div className={`realMemoryScreenshot${audio?" hasAudio":""}`}><img src={screen} alt="" />{audio&&<><audio ref={player} src={audio} preload="metadata" onPlay={()=>{setPlaying(true);if(!trackedPlay.current){trackedPlay.current=true;track("gallery_interaction",{interaction_type:"audio_start",gallery:"real_memories",fragment});}}} onPause={()=>setPlaying(false)} onEnded={()=>setPlaying(false)}/><button type="button" className={playing?"isPlaying":""} onClick={toggle} aria-label={playing?labels.pause:labels.play}/></>}</div>;
+  return <div className={`realMemoryScreenshot${audio?" hasAudio":""}`}><img src={screen} alt="" />{audio&&<><audio ref={player} src={audio} preload="metadata" onPlay={()=>{setPlaying(true);if(!trackedPlay.current){trackedPlay.current=true;recordWebsiteEvent('gallery_interaction',{interaction_type:'audio_start',gallery:'real_memories',fragment});track("gallery_interaction",{interaction_type:"audio_start",gallery:"real_memories",fragment});}}} onPause={()=>setPlaying(false)} onEnded={()=>setPlaying(false)}/><button type="button" className={playing?"isPlaying":""} onClick={toggle} aria-label={playing?labels.pause:labels.play}/></>}</div>;
 }
 
 export function RealMemories({locale}:{locale:Locale}){

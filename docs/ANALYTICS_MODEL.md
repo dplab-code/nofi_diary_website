@@ -5,11 +5,21 @@
 NoFi measures how the public website helps people discover the product. It does not measure how a person uses the NoFi app.
 
 - Website: communication, discovery, content, store conversion and selected events.
-- Analytics layer: Vercel Web Analytics and Vercel Speed Insights only.
+- Analytics layer: Vercel Web Analytics and Speed Insights, plus the independent NoFi event collector on Cloudflare Workers Free + D1 EU. Counts from different providers must not be added together.
 - Project Hub: a future private maintainer tool that correlates initiatives, sources, traffic and outcomes; it does not replicate Vercel's dashboard.
 - App: no behavioural analytics, installation identifier, user identifier or diary-content collection.
 
 Vercel Web Analytics is configured in `app/layout.tsx`. Store CTAs use `TrackedStoreLink`; Coming Soon events record only page-level discovery, one section arrival, deliberate navigation and the first audio start. Event properties are deliberately low-cardinality and must never contain personal data or diary content.
+
+## Cloudflare site collection — 6 November 2026
+
+`WebsiteEvents` observes public route/language changes; `lib/cloudflare-events.ts` sends only page_view, shared_fragment_view, download_click and first audio_start per fragment/route. The current prelaunch site stays prelaunch: deployment does not enable unavailable store links or unreleased pages. Editorial fragment IDs 001/002/003 and real-memory IDs eccoli/fuori/sancius/altrove are separate fixed labels; coming_soon_fragments and real_memories identify their respective galleries. A view is an event, not a unique person; store clicks are not installations. Strict Mode/remounts and hash-only navigation do not duplicate a visit; returning from another route counts a new view. Audio repeats on the same route/fragment do not count again.
+
+The fixed endpoint is `https://nofi-site-events.frosty-hill-86d4.workers.dev/v1/events`. No key is shipped to the browser; reads and diagnostics use separate protected endpoints in Marketing OS. Only the production custom origins send; previews/local development do not. Fetch is best effort with keepalive, credentials omitted and referrer-policy no-referrer; failures never interrupt navigation/audio and there is no retry queue. Maximum 120 events per document is a client guard, separate from cloud limits. This means blocked JS, privacy signals, navigation timing and quotas can reduce coverage.
+
+Before transmission, URLs become fixed page/language labels, campaigns use the collector vocabulary and arbitrary values become unrecognized. Referrer is reduced to a recognized hostname or a generic label. No full URL, free text, personal diary content, IP address, visitor/device ID, cookie or browser storage is used by this adapter. Attribution survives SPA navigation only in document memory; document reload/new tab starts fresh. UUIDv4 identifies only an event receipt, retained seven days for deduplication; daily aggregates are retained 400 days. Cloudflare necessarily handles connection metadata at its edge. Global Privacy Control or Do Not Track suppress this adapter, without claiming to control the separate Vercel integrations.
+
+Backend/cloud code and activation evidence live in `dplab-ai/nofi-marketing-lab-api` (`integrations/site-events/`) and `dplab-ai/ultimate-marketing-dashboard` (`docs/m04a/`). Privacy notice v1.2 is updated in all five languages. Run `npm run test:site-events` and `npm run build` before release. The 6 November lockfile update moves Next.js 16.3.0 to 16.4.5 and compatible transitive fixes; npm audit reported zero vulnerabilities afterward. Rollback the site deployment and disable COLLECTION_ENABLED on the existing Worker; preserve D1 and application read/test keys. Do not delete resources, change billing, or alter the mobile app.
 
 ## Events Registry
 

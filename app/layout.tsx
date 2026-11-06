@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
+import { WebsiteEvents } from "@/components/WebsiteEvents";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { canIndexPublicPages } from "@/lib/site-release";
@@ -35,5 +37,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#f8f1e8", colorScheme: "light" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><body><Script id="locale-lang" strategy="beforeInteractive">{`(function(){var p=location.pathname.split('/')[1];if(['it','fr','es','de'].includes(p))document.documentElement.lang=p})()`}</Script>{children}<Analytics /><SpeedInsights /></body></html>;
+  return <html lang="en" suppressHydrationWarning><body><Script id="locale-lang" strategy="beforeInteractive">{`(function(){var p=location.pathname.split('/')[1];if(['it','fr','es','de'].includes(p))document.documentElement.lang=p})()`}</Script>{children}<Suspense fallback={null}><WebsiteEvents /></Suspense><Analytics /><SpeedInsights /></body></html>;
 }
