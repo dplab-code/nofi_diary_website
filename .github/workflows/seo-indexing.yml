@@ -1,13 +1,33 @@
 name: SEO indexing release gates
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - app/robots.ts
+      - app/sitemap.ts
+      - app/manifesto/page.tsx
+      - app/[locale]/manifesto/page.tsx
+      - components/ExplorePages.tsx
+      - lib/seo-routes.ts
+      - lib/site-release.ts
+      - lib/coming-soon.ts
+      - tests/seo-indexing.test.mjs
+      - .github/workflows/seo-indexing.yml
   push:
     branches:
+      - main
       - chatgpt/seo-indexing-public-pages-20261110
     paths:
       - app/robots.ts
       - app/sitemap.ts
+      - app/manifesto/page.tsx
+      - app/[locale]/manifesto/page.tsx
+      - components/ExplorePages.tsx
       - lib/seo-routes.ts
+      - lib/site-release.ts
+      - lib/coming-soon.ts
       - tests/seo-indexing.test.mjs
       - .github/workflows/seo-indexing.yml
   workflow_dispatch:
@@ -23,11 +43,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        mode: [public, coming-soon]
+        include:
+          - mode: public
+            coming_soon: 'false'
+            release: public
+            indexable: 'true'
+          - mode: coming-soon
+            coming_soon: 'true'
+            release: preview
+            indexable: 'true'
+          - mode: preview-blocked
+            coming_soon: 'false'
+            release: preview
+            indexable: 'true'
+          - mode: public-noindex
+            coming_soon: 'false'
+            release: public
+            indexable: 'false'
     env:
-      COMING_SOON: ${{ matrix.mode == 'public' && 'false' || 'true' }}
-      SITE_RELEASE_MODE: ${{ matrix.mode == 'public' && 'public' || 'preview' }}
-      INDEXABLE: 'true'
+      COMING_SOON: ${{ matrix.coming_soon }}
+      SITE_RELEASE_MODE: ${{ matrix.release }}
+      INDEXABLE: ${{ matrix.indexable }}
       SEO_EXPECTED_MODE: ${{ matrix.mode }}
       NEXT_TELEMETRY_DISABLED: '1'
     steps:
