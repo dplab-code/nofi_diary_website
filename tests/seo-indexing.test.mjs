@@ -7,7 +7,7 @@ import { createServer } from "node:net";
 
 const host = "127.0.0.1";
 const mode = process.env.SEO_EXPECTED_MODE;
-assert.ok(["public", "coming-soon"].includes(mode), "SEO_EXPECTED_MODE must be public or coming-soon");
+assert.ok(["public", "coming-soon", "preview-blocked", "public-noindex"].includes(mode), "Unknown SEO_EXPECTED_MODE");
 
 const languages = ["en", "it", "fr", "es", "de"];
 const editorial = ["/manifesto", "/time-capsules", "/stickers", "/themes", "/appearances"];
@@ -20,7 +20,13 @@ const sourceUrls = [
 ];
 const expectedUrls = mode === "public"
   ? [...sourceUrls, ...editorial.flatMap((route) => languages.map((lang) => localizedPath(lang, route)))]
-  : sourceUrls;
+  : mode === "coming-soon" ? sourceUrls : [];
+const fullUrl = (lang, route) => "https://nofidiary.com" + (localizedPath(lang, route) || "/");
+const attr = (tag, name) => tag.match(new RegExp("\\b" + name + '="([^"]*)"', "i"))?.[1] ?? null;
+const localizedVariants = (route) => ({
+  ...Object.fromEntries(languages.map((lang) => [lang, fullUrl(lang, route)])),
+  "x-default": fullUrl("en", route),
+});
 
 async function openPort() {
   const server = createServer();
@@ -54,11 +60,12 @@ try {
   }
   assert.ok(ready, "Next.js fixture not ready: " + serverLog.slice(-2000));
 
-  await test("sitemap includes only intended canonical multilingual pages", async () => {
+  await test("sitemap lists exactly the intended localized canonicals with reciprocal hreflang", async () => {
     const res = await fetch(origin + "/sitemap.xml");
     assert.equal(res.status, 200);
     const xml = await res.text();
-    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((v) => v[1]);
+    const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => match[1]);
+    const locs = blocks.map((block) => block.match(/<loc>([^<]+)<\/loc>/)?.[1]);
     const expected = expectedUrls.map((route) => "https://nofidiary.com" + (route || "/"));
     assert.equal(locs.length, expected.length);
     assert.equal(new Set(locs).size, locs.length, "duplicate URL in sitemap");
@@ -67,43 +74,67 @@ try {
     for (const route of ["/terms", "/disclaimer", "/coming-soon"]) {
       assert.ok(!xml.includes("<loc>https://nofidiary.com" + route + "</loc>"), "excluded route in sitemap");
     }
-    if (mode === "public") {
-      assert.ok(xml.includes('hreflang="it"') || xml.includes('hreflang="it"'.replace("hreflang", "hreflang")), "missing hreflang Italian");
+    for (const [index, block] of blocks.entries()) {
+      const path = new URL(locs[index]).pathname;
+      const localizedBase = path.replace(/^\/(?:it|fr|es|de)(?=\/|$)/, "");
+      const base = localizedBase === "/" ? "" : localizedBase;
+      const expectedAlternates = localizedVariants(base);
+      const linkTags = [...block.matchAll(/<xhtml:link\b[^>]*>/gi)].map((m) => m[0]);
+      const actualAlternates = linkTags.map((tag) => [attr(tag, "hreflang"), attr(tag, "href")]);
+      assert.equal(linkTags.length, 6, "exactly EN/IT/FR/ES/DE + x-default for " + locs[index]);
+      assert.deepEqual(
+        Object.fromEntries(actualAlternates), expectedAlternates,
+        "incorrect hreflang targets in sitemap for " + locs[index]
+      );
     }
   });
 
-  await test("robots does not block public editorial pages and preserves release gates", async () => {
+  await test("robots respects release gates and keeps legal/draft routes excluded", async () => {
     const res = await fetch(origin + "/robots.txt");
     assert.equal(res.status, 200);
     const rules = await res.text();
-    assert.match(rules, /Disallow: \/coming-soon/i);
-    for (const lang of languages) {
-      for (const path of ["/terms", "/disclaimer"]) {
-        assert.ok(rules.includes("Disallow: " + localizedPath(lang, path)), "legal crawl policy changed");
+    if (mode === "preview-blocked" || mode === "public-noindex") {
+      assert.match(rules, /Disallow: \/($|\r?\n)/);
+      assert.ok(!rules.includes("Sitemap:"), "blocked release must not advertise a sitemap");
+      const indexResponse = await fetch(origin + "/");
+      assert.equal(indexResponse.status, 200);
+      const indexHtml = await indexResponse.text();
+      assert.match(indexHtml, /<meta name="robots" content="[^"]*noindex/i, "blocked release requires noindex");
+    } else {
+      assert.match(rules, /Disallow: \/coming-soon/i);
+      for (const lang of languages) {
+        for (const path of ["/terms", "/disclaimer"]) {
+          assert.ok(rules.includes("Disallow: " + localizedPath(lang, path)), "legal crawl policy changed");
+        }
+        for (const path of editorial) {
+          const directive = "Disallow: " + localizedPath(lang, path);
+          assert.equal(rules.includes(directive), mode !== "public", "wrong rule for " + directive);
+        }
       }
-      for (const path of editorial) {
-        const directive = "Disallow: " + localizedPath(lang, path);
-        assert.equal(rules.includes(directive), mode !== "public", "wrong rule for " + directive);
-      }
+      assert.match(rules, /Sitemap: https:\/\/nofidiary\.com\/sitemap\.xml/i);
     }
-    assert.match(rules, /Sitemap: https:\/\/nofidiary\.com\/sitemap\.xml/i);
   });
 
   if (mode === "public") {
-    await test("all 25 editorial URLs render an indexable self-canonical page", async () => {
+    await test("all 25 editorial URLs use self-canonical and exact HTML hreflang metadata", async () => {
       for (const route of editorial) {
         for (const lang of languages) {
           const path = localizedPath(lang, route);
           const response = await fetch(origin + path);
-          assert.equal(response.status, 200, `HTTP status for ${path}`);
+          assert.equal(response.status, 200, "HTTP status for " + path);
           const html = await response.text();
-          const canonical = "https://nofidiary.com" + path;
-          assert.ok(html.includes('rel="canonical" href="' + canonical + '"'), `canonical for ${path}`);
-          assert.ok(!/<meta name="robots" content="[^"]*noindex/i.test(html), `noindex on ${path}`);
-          for (const other of languages) {
-            const alt = "https://nofidiary.com" + localizedPath(other, route);
-            assert.ok(html.includes('href="' + alt + '"'), `missing language alternate ${other} for ${path}`);
-          }
+          assert.ok(!/<meta name="robots" content="[^"]*noindex/i.test(html), "noindex on " + path);
+          const links = [...html.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
+          const canonical = links.filter((link) => attr(link, "rel") === "canonical");
+          assert.equal(canonical.length, 1, "exactly one canonical link for " + path);
+          assert.equal(attr(canonical[0], "href"), fullUrl(lang, route), "canonical for " + path);
+          const alternates = links.filter((link) => attr(link, "rel") === "alternate" && attr(link, "hreflang"));
+          const actual = alternates.map((link) => [attr(link, "hreflang"), attr(link, "href")]);
+          assert.equal(actual.length, 6, "exactly five alternate locales and x-default for " + path);
+          assert.deepEqual(
+            Object.fromEntries(actual), localizedVariants(route),
+            "HTML hreflang reciprocal mapping for " + path
+          );
         }
       }
     });
