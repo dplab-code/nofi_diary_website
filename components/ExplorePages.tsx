@@ -46,7 +46,7 @@ const appearanceDifferenceCopy: Record<Locale,{theme:string;appearance:string;ex
 export function exploreMetadata(locale: Locale, page: ExplorePageId): Metadata {
   const t = exploreCopy(locale); const item = page === "time-capsules" ? t.timeCapsules : t[page];
   const url = localePath(locale, `/${page}`);
-  return { title:item.title, description:item.description, alternates:{canonical:url,languages:Object.fromEntries(locales.map(l=>[l,localePath(l,`/${page}`)]))}, openGraph:{title:`${item.title} — NoFi Diary`,description:item.description,url,type:"website",images:[{url:imageFor[page],alt:item.title}]} };
+  return { title:item.title, description:item.description, alternates:{canonical:url,languages:{...Object.fromEntries(locales.map(l=>[l,localePath(l,`/${page}`)])),"x-default":localePath("en",`/${page}`)}}, openGraph:{title:`${item.title} — NoFi Diary`,description:item.description,url,type:"website",images:[{url:imageFor[page],alt:item.title}]} };
 }
 
 function EditorialHero({ label, title, subtitle, image, imageAlt, cta }: { label:string; title:string; subtitle:string; image:string; imageAlt:string; cta?:string }) {
