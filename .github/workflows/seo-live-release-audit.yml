@@ -1,0 +1,27 @@
+name: NoFi SEO production release readback
+on:
+  push:
+    branches:
+      - chatgpt/seo-production-smoke-20261110
+    paths:
+      - .github/workflows/seo-live-release-audit.yml
+      - scripts/seo-live-release-audit.mjs
+permissions:
+  contents: read
+concurrency:
+  group: seo-live-release-readonly
+  cancel-in-progress: true
+jobs:
+  live_http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --check scripts/seo-live-release-audit.mjs
+      - name: Verify public nofidiary.com robots sitemap and 25 pages
+        run: node scripts/seo-live-release-audit.mjs
