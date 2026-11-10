@@ -1,0 +1,50 @@
+name: SEO indexing release gates
+
+on:
+  push:
+    branches:
+      - chatgpt/seo-indexing-public-pages-20261110
+    paths:
+      - app/robots.ts
+      - app/sitemap.ts
+      - lib/seo-routes.ts
+      - tests/seo-indexing.test.mjs
+      - .github/workflows/seo-indexing.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo:
+    name: Next.js SEO · ${{ matrix.mode }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [public, coming-soon]
+    env:
+      COMING_SOON: ${{ matrix.mode == 'public' && 'false' || 'true' }}
+      SITE_RELEASE_MODE: ${{ matrix.mode == 'public' && 'public' || 'preview' }}
+      INDEXABLE: 'true'
+      SEO_EXPECTED_MODE: ${{ matrix.mode }}
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout candidate, no persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build real Next.js metadata routes
+        run: npm run build
+      - name: TypeScript check
+        run: npm run typecheck
+      - name: Smoke-test robots, sitemap, canonical and hreflang in isolated server
+        run: node tests/seo-indexing.test.mjs
